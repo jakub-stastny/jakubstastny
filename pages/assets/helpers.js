@@ -1,4 +1,4 @@
-function tag(tagName, ...args) {
+export function tag(tagName, ...args) {
   const element = document.createElement(tagName);
 
   args.forEach(arg => {
@@ -22,4 +22,15 @@ function tag(tagName, ...args) {
   });
 
   return element;
+}
+
+/*
+ * linkOrNot("More about me", "/about")
+ */
+export function linkOrNot(title, href) {
+  if (window.location.pathname === href) {
+    return title
+  } else {
+    return tag('a', {href}, title)
+  }
 }

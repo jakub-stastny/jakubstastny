@@ -1,3 +1,5 @@
+import { tag, linkOrNot } from "/assets/helpers.js"
+
 const styleContent = `
   header {
     background: #f1f1f1
@@ -16,7 +18,7 @@ class MyHeader extends HTMLElement {
 
     shadow.appendChild(tag('style', styleContent))
     shadow.appendChild(tag('header', [
-      tag('a', {href: "/"}, tag('h1', "Jakub Šťastný"))
+      linkOrNot(tag('h1', "Jakub Šťastný"), "/")
     ]))
   }
 }

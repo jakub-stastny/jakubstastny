@@ -1,3 +1,5 @@
+import { tag, linkOrNot } from "/assets/helpers.js"
+
 const styleContent = `
   footer {
     background: #f1f1f1;
@@ -21,7 +23,7 @@ class MyFooter extends HTMLElement {
     // HTML
     shadow.appendChild(tag('footer', [
       tag('p', "Jakub Šťastný 2024"),
-      tag('a', {href: "/contact"}, tag('i', {class: "fas fa-envelope icon"}))
+      linkOrNot(tag('i', {class: "fas fa-envelope icon"}), "/contact")
     ]))
   }
 }
