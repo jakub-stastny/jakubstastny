@@ -1,5 +1,25 @@
-function tag(tagName, content) {
-  const element = document.createElement(tagName)
-  element.textContent = content
-  return element
+function tag(tagName, ...args) {
+  const element = document.createElement(tagName);
+
+  args.forEach(arg => {
+    if (typeof arg === 'string' || typeof arg === 'number') {
+      element.textContent = arg;
+    } else if (arg instanceof HTMLElement) {
+      element.appendChild(arg);
+    } else if (Array.isArray(arg)) {
+      arg.forEach(child => {
+        if (child instanceof HTMLElement) {
+          element.appendChild(child);
+        } else if (typeof child === 'string' || typeof child === 'number') {
+          element.appendChild(document.createTextNode(child));
+        }
+      });
+    } else if (typeof arg === 'object' && arg !== null) {
+      Object.keys(arg).forEach(key => {
+        element.setAttribute(key, arg[key]);
+      });
+    }
+  });
+
+  return element;
 }
