@@ -1,0 +1,7 @@
+# Disable everything by default.
+User-agent: *
+Disallow: /
+
+# Allow list.
+Allow: /$
+Allow: /about$
