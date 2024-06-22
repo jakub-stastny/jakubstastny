@@ -1,1 +1,18 @@
-h1 { color: red; }
+html {
+  font-family: sans-serif;
+}
+
+.main {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+header, main, footer {
+  padding: 10px;
+}
+
+footer {
+  background: #f1f1f1;
+  text-align: center;
+}
