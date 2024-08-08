@@ -2,13 +2,8 @@
   (:require [cherry.core :refer [defclass]]))
 
 (defn- set-attrs [element map]
-  (js/console.log "set-attrs" element (clj->js map))
-  (reduce-kv (fn [element key value]
-               (js/console.log element (name key) value) ;;;
-               (.setAttribute element (name key) value)
-               ;; Maybe we can do with doseq.
-               element)
-             element map)
+  (doseq [[key value] map]
+    (.setAttribute element (name key) value))
   element)
 
 (defn- set-children [element list]
@@ -16,7 +11,6 @@
     (.appendChild element child)))
 
 (defn- set-inner-html [element html]
-  (js/console.log "set-inner-html" element html)
   (set! element -innerHTML html))
 
 (defn tag
@@ -45,7 +39,6 @@
        (throw (js/TypeError. "Invalid argument type"))))))
 
 (defn append-tag [instance tag-or-tag-name & tag-opts]
-  (prn "append-tag" tag-or-tag-name tag-opts)
   (let [shadow-root (.-shadowRoot instance)
         child-node (if (symbol? tag-or-tag-name) (apply tag tag-or-tag-name tag-opts) tag-or-tag-name)]
     ;; (js/console.log "append-tag to " shadow-root child-node)
