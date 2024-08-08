@@ -16,7 +16,7 @@
   (prn event)
   (let [{:keys [path]} event]
     (when (cljs-file? path)
-      (process/shell "npx cherry compile" path))))
+      (process/shell (str "npx cherry compile " path)))))
 
 (def watcher (fw/watch "pages" handler {:recursive true}))
 

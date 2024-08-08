@@ -12,28 +12,36 @@
 (defn- set-inner-html [element html]
   (set! element -innerHTML html))
 
+(defn- set-content [element content]
+  (cond
+    (vector? content)
+    (set-children element content)
+
+    (string? content)
+    (set-inner-html element content)
+
+    (instance? js/HTMLElement content)
+    (.appendChild element content)
+
+    :else
+    (js/console.log "[set-content] Invalid attribute type" content)))
+
 (defn tag
   ([tag-name]
-   ;; (tag :hr)
    (js/document.createElement (name tag-name)))
 
   ([tag-name arg]
    (let [element (js/document.createElement (name tag-name))]
-     (cond
-       ;; (tag :link {:rel "stylesheet" :href "..."})
-       (map? arg)
-       (do (set-attrs element arg) element)
+     (if (map? arg)
+       (set-attrs element arg)
+       (set-content element arg))
+     element))
 
-       ;; (tag :header [(tag :h1 "Site name")])
-       (vector? arg)
-       (do (set-children element arg) element)
-
-       ;; (tag :h1 "Site name")
-       (string? arg)
-       (do (set-inner-html element arg) element)
-
-       :else
-       (throw (js/TypeError. "Invalid argument type"))))))
+  ([tag-name attrs content]
+   (let [element (js/document.createElement (name tag-name))]
+     (set-attrs element attrs)
+     (set-content element content)
+     element)))
 
 (defn append-tag [instance tag-or-tag-name & tag-opts]
   (let [shadow-root (.-shadowRoot instance)
@@ -43,5 +51,5 @@
 
 (defn no-self-referring-link [title link]
   (if (= js/window.location.pathname link)
-    title
+    (tag :span title)
     (tag :a {:href link} title)))

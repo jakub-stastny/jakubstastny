@@ -40,3 +40,12 @@ header {
   bottom: 0;
   width: 100%;
 }
+
+footer {
+  background: #f1f1f1;
+  padding: 10px;
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
