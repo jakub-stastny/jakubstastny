@@ -27,10 +27,17 @@
   (let [path (str/replace-first uri #"^/" "")]
     (if (get-ext path) path (str path ".html"))))
 
+;; SVG sprites needs CORS.
+;; https://docs.fontawesome.com/web/add-icons/svg-sprites
+(defn add-cors [headers]
+  (merge headers {"Access-Control-Allow-Origin" "*"
+                  "Access-Control-Allow-Methods" "GET,HEAD"
+                  "Access-Control-Allow-Headers" "Content-Type"}))
+
 (defn serve [path]
   (let [mime-type (get-mime-type (get-ext path))]
     (println (str " ... HTTP 200, MIME " mime-type "."))
-    {:headers {"Content-Type" mime-type} :body (fs/file path)}))
+    {:headers (add-cors {"Content-Type" mime-type}) :body (fs/file path)}))
 
 (defn not-found [path]
   (println " ... HTTP 404.")
