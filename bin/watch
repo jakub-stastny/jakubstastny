@@ -1,0 +1,25 @@
+#!/usr/bin/env bb
+
+(require '[babashka.process :as process]
+         '[babashka.fs :as fs]
+         '[babashka.pods :as pods])
+
+(pods/load-pod 'org.babashka/fswatcher "0.0.5")
+(require '[pod.babashka.fswatcher :as fw])
+
+(defn cljs-file? [path]
+  (and (fs/exists? path)
+       (fs/regular-file? path)
+       (.endsWith path ".cljs")))
+
+(defn handler [event]
+  (prn event)
+  (let [{:keys [path]} event]
+    (when (cljs-file? path)
+      (process/shell "npx cherry compile" path))))
+
+(def watcher (fw/watch "pages" handler {:recursive true}))
+
+println "~ Watching for changes in CLJS files."
+
+@(promise)
