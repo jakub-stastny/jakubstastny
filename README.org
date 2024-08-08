@@ -1,0 +1,3 @@
+https://github.com/squint-cljs/cherry
+npx cherry compile wc_example.cljs
+./bin/serve

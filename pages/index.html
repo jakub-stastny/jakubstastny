@@ -4,8 +4,17 @@
     <title>Root</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script type="importmap">
+      {
+        "imports": {
+          "cherry-cljs/cljs.core.js": "./node_modules/cherry-cljs/cljs.core.js"
+        }
+      }
+    </script>
+
     <link rel="stylesheet" href="/assets/styles.css">
-    <script type="module" src="/assets/components/my-header.js"></script>
+    <script type="module" src="/assets/components/my-header.mjs"></script>
     <script type="module" src="/assets/components/my-footer.js"></script>
   </head>
 

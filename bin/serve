@@ -13,6 +13,7 @@
 (defonce mime-types
   {"html" "text/html"
    "js"   "text/javascript"
+   "mjs"  "text/javascript"
    "css"  "text/css"
    "png"  "image/png"
    "jpg"  "image/jpeg"
@@ -41,7 +42,10 @@
         fs-base-path (if (= server-path "/")
                        "index.html"
                        (standardise-path server-path))
-        fs-full-path (str base-dir fs-base-path)]
+        ;; TODO: Extract this out. It's to respect the import map.
+        fs-full-path (if (str/includes? fs-base-path "node_modules")
+                       fs-base-path
+                       (str base-dir fs-base-path))]
     (print (str "~ HTTP " http-method " " server-path " -> " fs-full-path))
     (if (fs/readable? fs-full-path) (serve fs-full-path) (not-found fs-full-path))))
 
