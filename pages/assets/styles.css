@@ -41,6 +41,15 @@ header {
   width: 100%;
 }
 
+header a {
+  color: black;
+  text-decoration: none;
+}
+
+header a:visited {
+  color: black;
+}
+
 footer {
   background: #f1f1f1;
   padding: 10px;
