@@ -16,7 +16,10 @@
   (prn event)
   (let [{:keys [path]} event]
     (when (cljs-file? path)
-      (process/shell (str "npx cherry compile " path)))))
+      (try
+        ;; TODO: Don't print the whole error, rather just time stamp and OK/Err.
+        (process/shell (str "npx cherry compile " path))
+        (catch Exception (prn error))))))
 
 (def watcher (fw/watch "pages" handler {:recursive true}))
 
