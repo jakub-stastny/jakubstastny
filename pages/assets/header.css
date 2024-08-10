@@ -4,7 +4,7 @@
  * in order to avoid flickering.
  */
 header {
-  background: linear-gradient(to bottom, lightskyblue, oldlace);
+  background: linear-gradient(to bottom, var(--secondary-color), var(--primary-color));
   padding: 40px;
   text-align: center;
 }

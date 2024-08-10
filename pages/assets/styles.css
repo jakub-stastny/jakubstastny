@@ -10,6 +10,13 @@ html, body {
   padding: 0;
 }
 
+/* Variables */
+:root {
+  --primary-color: linen;
+  --secondary-color: lightskyblue;
+  --link-color: blue;
+}
+
 /* Styling */
 html {
   font-family: sans-serif;
@@ -17,11 +24,11 @@ html {
 
 main {
   padding: 50px;
-  background: linen;
+  background: var(--primary-color);
 }
 
 a { text-decoration: none; }
-a:visited { color: blue; }
+a:visited { color: var(--link-color); }
 
 h1 { margin-bottom: 1ex; }
 p { margin-bottom: 1ex; line-height: 1.4 }
