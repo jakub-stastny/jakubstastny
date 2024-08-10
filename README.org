@@ -2,6 +2,7 @@
 
 Source code of [[https://jakubstastny.guru?utm_source=gh][jakubstastny.guru]]. This branch (~rel~) contains Cherry-compiled ~.mjs~ files. The CLJS source is on the ~master~ branch.
 
-* Netlify
+* Links
 
-- [[https://app.netlify.com/sites/jakubstastny/deploys]]
+- [[https://app.netlify.com/sites/jakubstastny/deploys][Netlify app]]
+- [[https://analytics.google.com/analytics/web/#/a217212867p299480918/admin/streams/table/][Google Analytics]]
