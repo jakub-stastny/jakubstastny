@@ -1,6 +1,6 @@
 * About
 
-Source code of [[https://jakubstastny.guru?source=gh][jakubstastny.guru]]. This branch (~rel~) contains Cherry-compiled ~.mjs~ files. The CLJS source is on the ~master~ branch.
+Source code of [[https://jakubstastny.guru?utm_source=gh][jakubstastny.guru]]. This branch (~rel~) contains Cherry-compiled ~.mjs~ files. The CLJS source is on the ~master~ branch.
 
 * Netlify
 
