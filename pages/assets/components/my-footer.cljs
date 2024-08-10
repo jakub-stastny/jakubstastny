@@ -9,11 +9,13 @@
                (super)
                (let [shadow (.attachShadow this #js {"mode" "open"})]
                  (append-tag this (tag :script {:type "module" :src "/assets/components/fa-icon.mjs"}))
+                 (append-tag this (tag :link {:rel "stylesheet" :href "/assets/styles.css"}))
                  (append-tag this (tag :link {:rel "stylesheet" :href "/assets/footer.css"}))
                  (append-tag this (tag :footer
-                                       [(tag :p (str "Jakub Šťastný " (.getFullYear (js/Date.))))
+                                       [(tag :p {:class "copyright"} (str "Jakub Šťastný " (.getFullYear (js/Date.))))
                                         (tag :ul {:class "inline-list"}
-                                             [(tag :li (no-self-referring-link "About me" "/about"))
+                                             [(tag :li (no-self-referring-link "Main page" "/"))
+                                              (tag :li (no-self-referring-link "About me" "/about"))
                                               ;; (no-self-referring-link (tag :fa-icon {:name "envelope"}) "/contact")
                                               (tag :li (no-self-referring-link "Contact" "/contact"))])])))))
 

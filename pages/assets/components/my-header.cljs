@@ -8,6 +8,7 @@
   (constructor [this]
                (super)
                (let [shadow (.attachShadow this #js {"mode" "open"})]
+                 (append-tag this (tag :link {:rel "stylesheet" :href "/assets/styles.css"}))
                  (append-tag this (tag :link {:rel "stylesheet" :href "/assets/header.css"}))
                  (append-tag this (tag :header
                                        [(tag :h1 (no-self-referring-link "Jakub Šťastný" "/"))])))))

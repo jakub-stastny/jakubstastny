@@ -1,3 +1,7 @@
+(ns my-footer
+  (:require [cherry.core :refer [defclass]]
+            [helpers :refer [tag]]))
+
 (defclass MyEmail
   (extends HTMLElement)
 

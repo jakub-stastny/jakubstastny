@@ -6,43 +6,22 @@
 }
 
 html, body {
-  height: 100%;
   margin: 0;
   padding: 0;
 }
 
-/* Main */
+/* Styling */
 html {
   font-family: sans-serif;
 }
 
-.main {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  min-height: 100vh;
-}
-
 main {
-  margin-top: 20px;
   padding: 50px;
+  background: linen;
 }
 
-my-header {
-  /* position: relative; */
-  width: 100%;
-  height: 120px;
-}
-
-my-footer {
-  bottom: 0;
-  width: 100%;
-}
-
-/* Styling */
-a:visited {
-  text-decoration: none;
-  color: blue;
-}
+a { text-decoration: none; }
+a:visited { color: blue; }
 
 h1 { margin-bottom: 1ex; }
 p { margin-bottom: 1ex; line-height: 1.4 }

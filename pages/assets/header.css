@@ -4,14 +4,13 @@
  * in order to avoid flickering.
  */
 header {
-  background: #f1f1f1;
+  background: linear-gradient(to bottom, lightskyblue, oldlace);
   padding: 40px;
   text-align: center;
 }
 
 header a {
   color: black;
-  text-decoration: none;
 }
 
 header a:visited {
