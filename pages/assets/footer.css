@@ -1,0 +1,10 @@
+/*
+ * These are styles of within the component.
+ * The basic positioning and sizing is set in the main CSS file
+ * in order to avoid flickering.
+ */
+footer {
+  background: #f1f1f1;
+  padding: 10px;
+  text-align: center;
+}

@@ -26,35 +26,19 @@ main {
   padding: 50px;
 }
 
+my-header {
+  /* position: relative; */
+  width: 100%;
+  height: 120px;
+}
+
+my-footer {
+  bottom: 0;
+  width: 100%;
+}
+
 /* Styling */
 a:visited {
   text-decoration: none;
   color: blue;
-}
-
-header {
-  background: #f1f1f1;
-  padding: 40px;
-  text-align: center;
-  position: relative;
-  bottom: 0;
-  width: 100%;
-}
-
-header a {
-  color: black;
-  text-decoration: none;
-}
-
-header a:visited {
-  color: black;
-}
-
-footer {
-  background: #f1f1f1;
-  padding: 10px;
-  text-align: center;
-  position: relative;
-  bottom: 0;
-  width: 100%;
 }
