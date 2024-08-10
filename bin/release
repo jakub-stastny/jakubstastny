@@ -1,0 +1,19 @@
+#!/usr/bin/env zsh
+
+if ! git diff-index --quiet HEAD --; then
+  echo "[ERROR] Working directory dirty."
+  exit 1
+fi
+
+echo "~ Updating Cherry"
+rm -rf pages/assets/cherry-cljs/*
+cp -R node_modules/cherry-cljs/{cljs.core.js,lib} pages/assets/cherry-cljs
+
+echo "\n~Compiling CLJS"
+./bin/compile
+
+cp -R pages pages-copy
+
+echo "\n~Switching to rel"
+rm -rf pages
+mv pages-copy pages
