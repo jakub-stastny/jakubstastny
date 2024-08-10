@@ -19,14 +19,16 @@
     <script type="module" src="/assets/components/my-header.mjs"></script>
     <script type="module" src="/assets/components/my-footer.mjs"></script>
 
-    <!-- Google tag (gtag.js) -->
+    <!-- Google Analytics 4 (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-KQSJ36RMR3"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments) }
+      if (window.location.hostname !== 'localhost' || window.location.hostname !== '127.0.0.1') {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments) }
 
-      gtag('js', new Date());
-      gtag('config', 'G-KQSJ36RMR3');
+        gtag('js', new Date());
+        gtag('config', 'G-KQSJ36RMR3');
+      }
     </script>
   </head>
 
