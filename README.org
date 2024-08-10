@@ -1,3 +1,4 @@
-https://github.com/squint-cljs/cherry
-npx cherry compile wc_example.cljs
-./bin/serve
+* About
+[[https://app.netlify.com/sites/jakubstastny/deploys][file:https://api.netlify.com/api/v1/badges/1d02dbcb-a282-4a06-a75b-f7300841ca91/deploy-status]]
+
+[[https://jakubstastny.guru]]
