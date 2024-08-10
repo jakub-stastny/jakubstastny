@@ -1,4 +1,7 @@
 * About
-[[https://app.netlify.com/sites/jakubstastny/deploys][file:https://api.netlify.com/api/v1/badges/1d02dbcb-a282-4a06-a75b-f7300841ca91/deploy-status]]
 
-[[https://jakubstastny.guru]]
+Source code of [[https://jakubstastny.guru][jakubstastny.guru]]. This branch (~rel~) contains Cherry-compiled ~.mjs~ files. The CLJS source is on the ~master~ branch.
+
+* Netlify
+
+- [[https://app.netlify.com/sites/jakubstastny/deploys]]
