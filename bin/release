@@ -15,7 +15,7 @@ echo "\n~ Compiling CLJS"
 cp -R pages pages-copy
 
 echo "\n~ Switching to rel"
-git checkout -b rel
+git checkout rel
 
 rm -rf pages
 mv pages-copy pages
