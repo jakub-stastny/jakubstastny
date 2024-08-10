@@ -19,6 +19,14 @@ Use the ~?from=reddit~ QS.
 
 *** TODO Add Google Analytics
 
+*** TODO Thank @borkdude
+Cherry fucking rocks! Also this source can serve as a reference of a real-world project using Cherry.
+
 ** TODO Version with a blog
 *** TODO Override the back button behaviour
 So things don't get reloaded.
+
+*** TODO Dynamic page URLs
+We either:
+- No longer have all the various static HTML pages and only have 1 SPA-style HTML like index.html that links app.js.
+- Or we handle the blog as a separate app on a separate subdomain. This would be preferable for speed and other concerns.
