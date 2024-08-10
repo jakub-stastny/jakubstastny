@@ -9,21 +9,21 @@
       {
         "imports": {
           "cherry-cljs/cljs.core.js": "./assets/cherry-cljs/cljs.core.js",
-          "helpers": "./assets/helpers.mjs"
+          "helpers": "./lib/helpers.mjs"
         }
       }
     </script>
 
-    <link rel="stylesheet" href="/assets/layout.css">
-    <link rel="stylesheet" href="/assets/styles.css">
-    <script type="module" src="/assets/components/my-header.mjs"></script>
-    <script type="module" src="/assets/components/my-footer.mjs"></script>
-    <script type="module" src="/assets/components/my-email.mjs"></script>
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <script type="module" src="/components/my-header.mjs"></script>
+    <script type="module" src="/components/my-footer.mjs"></script>
+    <script type="module" src="/components/my-email.mjs"></script>
 
     <!-- Google Analytics 4 (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-KQSJ36RMR3"></script>
     <script>
-      if (window.location.hostname !== 'localhost' || window.location.hostname !== '127.0.0.1') {
+      if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments) }
 
