@@ -3,3 +3,6 @@ node_modules
 .#*
 \#*#
 *.cljs
+
+# Add favicons in use with git add -f.
+pages/assets/fa/*
