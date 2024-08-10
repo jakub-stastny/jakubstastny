@@ -3,9 +3,10 @@ Source code of [[https://jakubstastny.guru][jakubstastny.guru]] written in Cloju
 
 * Development
 #+begin_src shell
-  npx cherry compile wc_example.cljs
-  ./bin/serve
-  ./bin/watch
+  ./bin/serve   # Serve locally.
+  ./bin/compile # Compile everything.
+  ./bin/watch   # Watch for changes, compile.
+  ./bin/release # Compile & push to the rel branch.
 #+end_src
 
 * Tasks
