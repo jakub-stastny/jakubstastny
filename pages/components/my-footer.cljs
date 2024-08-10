@@ -8,9 +8,9 @@
   (constructor [this]
                (super)
                (let [shadow (.attachShadow this #js {"mode" "open"})]
-                 (append-tag this (tag :script {:type "module" :src "/assets/components/fa-icon.mjs"}))
-                 (append-tag this (tag :link {:rel "stylesheet" :href "/assets/css/styles.css"}))
-                 (append-tag this (tag :link {:rel "stylesheet" :href "/assets/css/footer.css"}))
+                 (append-tag this (tag :script {:type "module" :src "/components/fa-icon.mjs"}))
+                 (append-tag this (tag :link {:rel "stylesheet" :href "/css/styles.css"}))
+                 (append-tag this (tag :link {:rel "stylesheet" :href "/css/footer.css"}))
                  (append-tag this (tag :footer
                                        [(tag :p {:class "copyright"} (str "Jakub Šťastný " (.getFullYear (js/Date.))))
                                         (tag :ul {:class "inline-list"}
