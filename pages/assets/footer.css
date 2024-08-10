@@ -1,0 +1,33 @@
+/*
+ * These are styles of within the component.
+ * The basic positioning and sizing is set in the main CSS file
+ * in order to avoid flickering.
+ */
+
+footer {
+  background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.copyright {
+  color: darkgrey;
+}
+
+.inline-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.inline-list li {
+  margin-right: 10px; /* Adjust spacing as needed */
+}
+
+.inline-list li:not(:last-child)::after {
+  content: "|";
+  margin-left: 10px; /* Adjust spacing as needed */
+}

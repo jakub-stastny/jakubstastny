@@ -1,0 +1,34 @@
+/* CSS reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Variables */
+:root {
+  --primary-color: linen;
+  --secondary-color: lightskyblue;
+  --link-color: blue;
+}
+
+/* Styling */
+html {
+  font-family: sans-serif;
+}
+
+main {
+  padding: 50px;
+  background: var(--primary-color);
+}
+
+a { text-decoration: none; }
+a:visited { color: var(--link-color); }
+
+h1 { margin-bottom: 1ex; }
+p { margin-bottom: 1ex; line-height: 1.4 }

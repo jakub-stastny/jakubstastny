@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Root</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script type="importmap">
+      {
+        "imports": {
+          "cherry-cljs/cljs.core.js": "./node_modules/cherry-cljs/cljs.core.js",
+          "helpers": "./assets/helpers.mjs"
+        }
+      }
+    </script>
+
+    <link rel="stylesheet" href="/assets/layout.css">
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script type="module" src="/assets/components/my-header.mjs"></script>
+    <script type="module" src="/assets/components/my-footer.mjs"></script>
+  </head>
+
+  <body>
+    <div class="main">
+      <my-header></my-header>
+
+      <main>
+        <h1>Root</h1>
+      </main>
+
+      <my-footer></my-footer>
+    </div>
+  </body>
+</html>
