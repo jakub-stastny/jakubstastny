@@ -12,6 +12,9 @@
                  (append-tag this (tag :link {:rel "stylesheet" :href "/assets/footer.css"}))
                  (append-tag this (tag :footer
                                        [(tag :p (str "Jakub Šťastný " (.getFullYear (js/Date.))))
-                                        (no-self-referring-link (tag :fa-icon {:name "envelope"}) "/contact")])))))
+                                        (tag :ul {:class "inline-list"}
+                                             [(tag :li (no-self-referring-link "About me" "/about"))
+                                              ;; (no-self-referring-link (tag :fa-icon {:name "envelope"}) "/contact")
+                                              (tag :li (no-self-referring-link "Contact" "/contact"))])])))))
 
 (js/customElements.define "my-footer" MyFooter)

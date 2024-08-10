@@ -23,6 +23,7 @@ html {
 }
 
 main {
+  margin-top: 20px;
   padding: 50px;
 }
 
@@ -42,3 +43,6 @@ a:visited {
   text-decoration: none;
   color: blue;
 }
+
+h1 { margin-bottom: 1ex; }
+p { margin-bottom: 1ex; line-height: 1.4 }
