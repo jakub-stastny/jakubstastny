@@ -2,13 +2,20 @@
   (:require [cherry.core :refer [defclass]]
             [helpers :refer [tag]]))
 
+;; This approach didn't work with <a href="/contact"><fa-icon.
+;; (.appendChild this (tag :object {:type "image/svg+xml" :data path :style "height: 14pt"}))
 (defclass FaIcon
   (extends HTMLElement)
   (constructor [this] (super))
 
   Object
-  (connectedCallback [this]
-   (let [path (str "/assets/fa/svgs/solid/" (.getAttribute this "name") ".svg")]
-     (.appendChild this (tag :object {:type "image/svg+xml" :data path :style "height: 14pt"})))))
+  (^:async connectedCallback [this]
+   (let [name (.getAttribute this "name")
+         path (str "/assets/fa/svgs/solid/" name ".svg")
+         response (js/await (js/fetch path))
+         svg (js/await (.text response))]
+     (set! (.-innerHTML this) svg)
+     ;; This is a bit silly. Maybe wrap in a div and set the style of the div.
+     (js* "this.getElementsByTagName('svg')[0].style.height = '14pt'"))))
 
 (js/customElements.define "fa-icon" FaIcon)
