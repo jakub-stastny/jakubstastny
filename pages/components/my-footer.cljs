@@ -16,6 +16,7 @@
                                         (tag :ul {:class "inline-list"}
                                              [(tag :li (no-self-referring-link "Main page" "/"))
                                               (tag :li (no-self-referring-link "About me" "/about"))
+                                              (tag :li (no-self-referring-link "Services" "/services"))
                                               ;; (no-self-referring-link (tag :fa-icon {:name "envelope"}) "/contact")
                                               (tag :li (no-self-referring-link "Contact" "/contact"))])])))))
 

@@ -5,7 +5,8 @@
  */
 
 footer {
-  background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+  /* background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color)); */
+  background-color: #343a40; color: #ffffff;
   padding: 10px;
   display: flex;
   align-items: center;
