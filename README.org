@@ -11,14 +11,12 @@ Source code of [[https://jakubstastny.guru?utm_source=gh][jakubstastny.guru]] wr
 
 * Tasks
 ** Pre-release
-*** TODO Index page
+*** TODO Kick off: index page
+*** TODO Final styles
+*** TODO Final about page
+*** TODO Final contact page
 
 ** Version 1
-*** TODO Update my social media links
-Use the ~?from=reddit~ QS.
-
-*** TODO Add Google Analytics
-
 *** TODO Thank @borkdude
 Cherry fucking rocks! Also this source can serve as a reference of a real-world project using Cherry.
 
@@ -30,3 +28,6 @@ So things don't get reloaded.
 We either:
 - No longer have all the various static HTML pages and only have 1 SPA-style HTML like index.html that links app.js.
 - Or we handle the blog as a separate app on a separate subdomain. This would be preferable for speed and other concerns.
+
+* Links
+- [[https://github.com/jakub-stastny/jakubstastny/tree/rel?tab=readme-ov-file#links][Production links]] such as Netlify and Google Analytics console.
