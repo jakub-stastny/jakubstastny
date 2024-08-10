@@ -19,3 +19,8 @@ git checkout rel
 
 rm -rf pages
 mv pages-copy pages
+
+git add pages
+git commit -m "Automated commit from $(date '+%d/%m/%Y at %H:%M')"
+
+git checkout master
