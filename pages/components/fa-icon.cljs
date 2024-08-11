@@ -11,7 +11,7 @@
   Object
   (^:async connectedCallback [this]
    (let [name (.getAttribute this "name")
-         path (str "/assets/fa/svgs/solid/" name ".svg")
+         path (str "/assets/fa/svgs/" name ".svg")
          response (js/await (js/fetch path))
          svg (js/await (.text response))]
      (set! (.-innerHTML this) svg)

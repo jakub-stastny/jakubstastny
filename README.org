@@ -39,4 +39,4 @@ We either:
 *** TODO Dark mode
 
 * Links
-- [[https://github.com/jakub-stastny/jakubstastny/tree/rel?tab=readme-ov-file#links][Production links]] such as Netlify and Google Analytics console.
+- [[https://github.com/jakub-stastny/jakubstastny/tree/rel?tab=readme-ov-file#links][Production links]] such as Netlify and Google Analytics console as well as links to pages that link the site (YouTube Studio and my Reddit).
