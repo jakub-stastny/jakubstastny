@@ -11,11 +11,18 @@
   Object
   (^:async connectedCallback [this]
    (let [name (.getAttribute this "name")
-         path (str "/assets/fa/svgs/" name ".svg")
+         qualified-name (if (.includes name "/") name (str "solid/" name))
+         path (str "/assets/fa/svgs/" qualified-name ".svg")
          response (js/await (js/fetch path))
-         svg (js/await (.text response))]
+         svg (js/await (.text response))
+         colour (.getAttribute this "colour")]
      (set! (.-innerHTML this) svg)
+
      ;; This is a bit silly. Maybe wrap in a div and set the style of the div.
-     (js* "this.getElementsByTagName('svg')[0].style.height = '14pt'"))))
+     (js* "const svg = this.getElementsByTagName('svg')[0]")
+     (js* "svg.style.height = '14pt'")
+
+     (when colour
+       (js* "svg.children[0].setAttribute('fill', this.getAttribute('colour'))")))))
 
 (js/customElements.define "fa-icon" FaIcon)

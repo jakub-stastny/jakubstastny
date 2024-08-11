@@ -17,11 +17,11 @@
                                              [(tag :li (no-self-referring-link "Main page" "/"))
                                               (tag :li (no-self-referring-link "About me" "/about"))
                                               (tag :li (no-self-referring-link "Services" "/services"))
-                                              ;; (no-self-referring-link (tag :fa-icon {:name "solid/envelope"}) "/contact")
                                               (tag :li (no-self-referring-link "Contact" "/contact"))
+                                              (tag :li (tag :my-email (tag :a (tag :fa-icon {:name "envelope"}))))
                                               (tag :li (tag :a {:href "https://www.youtube.com/@jakub-stastny" :target "_blank" :rel "noopener"}
-                                                            (tag :fa-icon {:name "brands/youtube"})))
+                                                            (tag :fa-icon {:name "brands/youtube" :colour "#EA3323"})))
                                               (tag :li (tag :a {:href "https://www.reddit.com/user/jakubstastny" :target "_blank" :rel "noopener"}
-                                                            (tag :fa-icon {:name "brands/reddit"})))])])))))
+                                                            (tag :fa-icon {:name "brands/reddit" :colour "#EB5528"})))])])))))
 
 (js/customElements.define "my-footer" MyFooter)
