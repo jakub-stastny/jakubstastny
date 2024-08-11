@@ -44,7 +44,8 @@ Do I want to read the whole chart? I prefer with a question, astrology isn't my 
 - Move Cherry code into a ~component~ macro that will write the Cherry component on the disk. Keep everything in src, pages should be all generated (CSS? SVG?)
 
 *** TODO Thank @borkdude
-Cherry fucking rocks! Also this source can serve as a reference of a real-world project using Cherry.
+- Will I want to rename the repo?
+- Cherry fucking rocks! Also this source can serve as a reference of a real-world project using Cherry.
 
 ** TODO Version with a blog
 *** TODO Override the back button behaviour

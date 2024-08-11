@@ -51,3 +51,10 @@ p { margin-bottom: 1ex; line-height: 1.4 }
   content: "|";
   margin-left: 10px; /* Adjust spacing as needed */
 }
+
+blockquote {
+  /* margin-left: 1em; */
+  padding: 0.7em 1.2em;
+  background: aliceblue;
+  font-style: italic;
+}
