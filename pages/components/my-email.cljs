@@ -34,7 +34,6 @@
                   (let [subject (or (.getAttribute this "subject") "")
                         mailto (.build-mailto this subject)]
                     (doseq [node slot-children]
-                      (js/console.log node) ;;;;
                       (when (and (instance? js/HTMLElement node)
                                  (= (.-tagName node) "A"))
                         (set! (.-href node) mailto)))))
@@ -42,7 +41,6 @@
   (connectedCallback [this]
                      (let [slot (.querySelector (.-shadowRoot this) "slot")
                            slot-children (.assignedNodes slot)]
-                       (js/console.log "sc" slot-children)
                        (if (empty? slot-children)
                          (.insert-default this slot-children)
                          (.update-in-slot this slot-children)))))
