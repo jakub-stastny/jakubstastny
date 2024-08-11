@@ -10,11 +10,19 @@ Source code of [[https://jakubstastny.guru?utm_source=gh][jakubstastny.guru]] wr
 #+end_src
 
 * Tasks
-** Pre-release
-*** TODO Kick off: index page
-*** TODO Final styles
+** MVP version
+*** TODO Initial styles
+
 *** TODO Final about page
+
 *** TODO Final contact page
+
+*** TODO Final services page
+With a page for each service, such as /services/energy-healing etc.
+How it works: you send me your DoB and request a reading. I will confirm, you will send me money and we talk.
+Do I want to read the whole chart? I prefer with a question, astrology isn't my main focus.
+
+*** TODO Newsletter
 
 *** TODO Sponsorships
 - Buy me a coffee? I already have.
@@ -22,7 +30,19 @@ Source code of [[https://jakubstastny.guru?utm_source=gh][jakubstastny.guru]] wr
 - PayPal.
 - All these are in Reddit, add in the [[https://www.reddit.com/settings/profile?rdt=54962][settings]].
 
-** Version 1
+*** TODO Final index page
+
+** Proper build version
+*** TODO Set up build based on CLJ or Babashka
+- Do I need separate repos for main/blog/wiki (think Netlify deploy).
+  - If so, I need a shared package that has config, components, CSS vars and whatnot.
+- Generate HTML pages (hiccup?). The main content may either be HTML or hiccup.
+- Minify/Uglify JS & CSS on build. Possibly add timestamp to reload cache ?t=timestamp.
+- GA only in the production build.
+- <term name="satori"> like abbr, but more interactive, consider desktop/mobile.
+- Build-time checks: make sure the components exists, compile it.
+- Move Cherry code into a ~component~ macro that will write the Cherry component on the disk. Keep everything in src, pages should be all generated (CSS? SVG?)
+
 *** TODO Thank @borkdude
 Cherry fucking rocks! Also this source can serve as a reference of a real-world project using Cherry.
 
