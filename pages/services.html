@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Services</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script type="importmap">
+      {
+        "imports": {
+          "cherry-cljs/cljs.core.js": "./assets/cherry-cljs/cljs.core.js",
+          "helpers": "./lib/helpers.mjs"
+        }
+      }
+    </script>
+
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <script type="module" src="/components/my-header.mjs"></script>
+    <script type="module" src="/components/my-footer.mjs"></script>
+    <script type="module" src="/components/my-email.mjs"></script>
+
+    <!-- Google Analytics 4 (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KQSJ36RMR3"></script>
+    <script>
+      if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments) }
+
+        gtag('js', new Date());
+        gtag('config', 'G-KQSJ36RMR3');
+      }
+    </script>
+  </head>
+
+  <body>
+    <div class="main">
+      <my-header></my-header>
+
+      <main>
+        <section id="services-intro" style="text-align: center; padding: 30px 20px;">
+          <h1>Services</h1>
+          <p style="margin-top: 20px;">Supporting your spiritual journey with personalised guidance, astrology readings, and healing practices.</p>
+        </section>
+
+        <section id="spiritual-guidance" style="text-align: center; padding: 60px 20px; background-color: #f3f4f6;">
+          <h2>Spiritual Guidance / Talk Therapy</h2>
+          <p style="margin-top: 20px;">Engage in donation-based sessions focused on helping you find clarity and peace through conversation and spiritual insight.</p>
+          <div style="margin-top: 20px;">
+            <my-email subject="I'd like to talk">
+              <a style="padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;">Get in Touch</a>
+            </my-email>
+          </div>
+        </section>
+
+        <section id="astrology-reading" style="text-align: center; padding: 60px 20px; background-color: #ffffff;">
+          <h2>Intuitive Vedic Astrology Reading</h2>
+          <p style="margin-top: 20px;">Deepen your self-understanding with a detailed astrology reading. Discover the insights your birth chart holds.</p>
+          <p style="margin-top: 10px;">Price: $100</p>
+          <div style="margin-top: 20px;">
+            <my-email subject="I'd like a reading">
+              <a style="padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;">Book a Session</a>
+            </my-email>
+          </div>
+        </section>
+
+        <section id="energy-healing" style="text-align: center; padding: 60px 20px; background-color: #f3f4f6;">
+          <h2>Remote Energy Healing</h2>
+          <p style="margin-top: 20px;">Experience powerful energy healing from a distance. Balance your energies and promote well-being.</p>
+          <p style="margin-top: 10px;">Price: $100</p>
+          <div style="margin-top: 20px;">
+            <my-email subject="I'd like a session">
+              <a style="padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;">Book a Session</a>
+            </my-email>
+          </div>
+        </section>
+      </main>
+
+      <my-footer></my-footer>
+    </div>
+  </body>
+</html>
