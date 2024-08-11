@@ -34,6 +34,7 @@
                   (let [subject (or (.getAttribute this "subject") "")
                         mailto (.build-mailto this subject)]
                     (doseq [node slot-children]
+                      (js/console.log node) ;;;;
                       (when (and (instance? js/HTMLElement node)
                                  (= (.-tagName node) "A"))
                         (set! (.-href node) mailto)))))

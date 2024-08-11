@@ -12,9 +12,9 @@ html, body {
 
 /* Variables */
 :root {
-  --primary-color: linen;
-  --secondary-color: lightskyblue;
-  --link-color: blue;
+  --primary-colour: linen;
+  --secondary-colour: lightskyblue;
+  --link-colour: blue;
 }
 
 /* Styling */
@@ -24,11 +24,27 @@ html {
 
 main {
   padding: 50px;
-  background: var(--primary-color);
+  background: var(--primary-colour);
 }
 
 a { text-decoration: none; }
-a:visited { color: var(--link-color); }
+a:visited { color: var(--link-colour); }
 
 h1 { margin-bottom: 1ex; }
 p { margin-bottom: 1ex; line-height: 1.4 }
+
+.inline-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.inline-list li {
+  margin-right: 10px; /* Adjust spacing as needed */
+}
+
+.inline-list li:not(:last-child)::after {
+  content: "|";
+  margin-left: 10px; /* Adjust spacing as needed */
+}
