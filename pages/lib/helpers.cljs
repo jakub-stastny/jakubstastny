@@ -53,3 +53,8 @@
   (if (= js/window.location.pathname link)
     (tag :span title)
     (tag :a {:href link} title)))
+
+(defn css-var [name]
+  (let [css-var-name (str "--" name)
+        computed-styles (getComputedStyle document.documentElement)]
+    (.getPropertyValue computed-styles css-var-name)))

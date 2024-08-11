@@ -1,6 +1,6 @@
 (ns my-footer
   (:require [cherry.core :refer [defclass]]
-            [helpers :refer [append-tag tag no-self-referring-link]]))
+            [helpers :refer [append-tag tag no-self-referring-link css-var]]))
 
 (defclass MyFooter
   (extends HTMLElement)
@@ -16,8 +16,8 @@
                                         (tag :ul {:class "inline-list"}
                                              [(tag :li (tag :my-email (tag :a (tag :fa-icon {:name "envelope" :colour "lightblue"}))))
                                               (tag :li (tag :a {:href "https://www.youtube.com/@jakub-stastny" :target "_blank" :rel "noopener"}
-                                                            (tag :fa-icon {:name "brands/youtube" :colour "#EA3323"})))
+                                                            (tag :fa-icon {:name "brands/youtube" :colour (css-var "youtube-colour")})))
                                               (tag :li (tag :a {:href "https://www.reddit.com/user/jakubstastny" :target "_blank" :rel "noopener"}
-                                                            (tag :fa-icon {:name "brands/reddit" :colour "#EB5528"})))])])))))
+                                                            (tag :fa-icon {:name "brands/reddit" :colour (css-var "reddit-colour")})))])])))))
 
 (js/customElements.define "my-footer" MyFooter)

@@ -42,6 +42,7 @@
   (connectedCallback [this]
                      (let [slot (.querySelector (.-shadowRoot this) "slot")
                            slot-children (.assignedNodes slot)]
+                       (js/console.log "sc" slot-children)
                        (if (empty? slot-children)
                          (.insert-default this slot-children)
                          (.update-in-slot this slot-children)))))

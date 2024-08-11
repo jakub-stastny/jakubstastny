@@ -15,6 +15,8 @@ html, body {
   --primary-colour: linen;
   --secondary-colour: lightskyblue;
   --link-colour: blue;
+  --reddit-colour: #EB5528;
+  --youtube-colour: #EA3323;
 }
 
 /* Styling */
