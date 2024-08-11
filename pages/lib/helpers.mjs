@@ -61,7 +61,7 @@ let i__184 = 0;
 while(true){
 if ((i__184) < (count__173)) {
 const child5 = cherry_core._nth.call(null, chunk__162, i__184);
-element.appendChild(child5);
+element.appendChild((cherry_core.truth_.call(null, cherry_core.string_QMARK_.call(null, child5))) ? (document.createTextNode(child5)) : (child5));
 let G__6 = seq__151;
 let G__7 = chunk__162;
 let G__8 = count__173;
@@ -88,7 +88,7 @@ i__184 = G__16;
 continue;
 } else {
 const child17 = cherry_core.first.call(null, seq__1511);
-element.appendChild(child17);
+element.appendChild((cherry_core.truth_.call(null, cherry_core.string_QMARK_.call(null, child17))) ? (document.createTextNode(child17)) : (child17));
 let G__18 = cherry_core.next.call(null, seq__1511);
 let G__19 = null;
 let G__20 = 0;
@@ -151,6 +151,16 @@ return element4;
 f19.cljs$lang$maxFixedArity = 3;
 return f19;
 })();
+var no_self_referring_link = (function (title, link) {
+if (cherry_core.truth_.call(null, cherry_core._EQ_.call(null, window.location.pathname, link))) {
+return tag.call(null, cherry_core.keyword("span"), title);} else {
+return tag.call(null, cherry_core.keyword("a"), cherry_core.array_map(cherry_core.keyword("href"), link), title);}
+});
+var css_var = (function (name) {
+const css_var_name1 = cherry_core.str.call(null, "--", name);
+const computed_styles2 = getComputedStyle.call(null, document.documentElement);
+return computed_styles2.getPropertyValue(css_var_name1);
+});
 var append_tag = (() => {
 const f23 = (function (var_args) {
 const args241 = cherry_core.array.call(null);
@@ -184,15 +194,5 @@ return self__22535__auto__12.cljs$core$IFn$_invoke$arity$variadic(G__278, G__281
 });
 return f23;
 })();
-var no_self_referring_link = (function (title, link) {
-if (cherry_core.truth_.call(null, cherry_core._EQ_.call(null, window.location.pathname, link))) {
-return tag.call(null, cherry_core.keyword("span"), title);} else {
-return tag.call(null, cherry_core.keyword("a"), cherry_core.array_map(cherry_core.keyword("href"), link), title);}
-});
-var css_var = (function (name) {
-const css_var_name1 = cherry_core.str.call(null, "--", name);
-const computed_styles2 = getComputedStyle.call(null, document.documentElement);
-return computed_styles2.getPropertyValue(css_var_name1);
-});
 
-export { set_attrs, set_children, set_inner_html, set_content, tag, append_tag, no_self_referring_link, css_var }
+export { set_attrs, set_children, set_inner_html, set_content, tag, no_self_referring_link, css_var, append_tag }

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Uncopyright</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script type="importmap">
+      {
+        "imports": {
+          "cherry-cljs/cljs.core.js": "./assets/cherry-cljs/cljs.core.js",
+          "helpers": "./lib/helpers.mjs"
+        }
+      }
+    </script>
+
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <script type="module" src="/components/my-header.mjs"></script>
+    <script type="module" src="/components/my-nav.mjs"></script>
+    <script type="module" src="/components/my-footer.mjs"></script>
+    <script type="module" src="/components/my-email.mjs"></script>
+
+    <!-- Google Analytics 4 (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KQSJ36RMR3"></script>
+    <script>
+      if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments) }
+
+        gtag('js', new Date());
+        gtag('config', 'G-KQSJ36RMR3');
+      }
+    </script>
+  </head>
+
+  <body>
+    <div class="main">
+      <my-header></my-header>
+      <my-nav></my-nav>
+
+      <main>
+        <h1>Uncopyright</h1>
+        <p>
+          By words of Leo Babauta of ZenHabits.net:
+        </p>
+
+        <blockquote>
+          <p>
+            This entire blog, and all my ebooks, are uncopyrighted.
+          </p>
+
+          <p>
+            That means I’ve put them in the public domain, and released my copyright on all these works.
+          </p>
+
+          <p>
+            There is no need to email me for permission — use my content however you want! Email it, share it, reprint it with or without credit. Change it around, put in a bunch of swear words and attribute them to me. It’s OK.
+          </p>
+
+          <p>
+            Attribution is appreciated but not required.
+          </p>
+        </blockquote>
+
+        <p>
+          Read the full <a href="https://zenhabits.net/uncopyright" target="_blank" rel="noopener">uncopyright manifesto</a>.
+        </p>
+
+        <h2>Site source code is OSS</h2>
+        <p>
+          Apart from the content, this site source-code is available on GitHub: <a href="https://github.com/jakub-stastny/jakubstastny" target="_blank" rel="noopener">jakub-stastny/jakubstastny</a>.
+        </p>
+
+        <p>
+          That means you can use it to launch a similar website, tweaking it for your purpose.
+        </p>
+      </main>
+
+      <my-footer></my-footer>
+    </div>
+  </body>
+</html>
