@@ -5,7 +5,7 @@
  */
 
 footer {
-  /* background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color)); */
+  /* background: linear-gradient(to bottom, var(--primary-colour), var(--secondary-colour)); */
   background-color: #343a40; color: #ffffff;
   padding: 10px;
   display: flex;
@@ -15,20 +15,4 @@ footer {
 
 .copyright {
   color: darkgrey;
-}
-
-.inline-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-}
-
-.inline-list li {
-  margin-right: 10px; /* Adjust spacing as needed */
-}
-
-.inline-list li:not(:last-child)::after {
-  content: "|";
-  margin-left: 10px; /* Adjust spacing as needed */
 }

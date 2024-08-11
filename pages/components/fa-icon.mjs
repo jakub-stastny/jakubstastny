@@ -8,11 +8,16 @@ const this$ = this;
 async connectedCallback() { 
 const this$ = this;
 const self__ = this;const name1 = this$.getAttribute("name");
-const path2 = cherry_core.str.call(null, "/assets/fa/svgs/solid/", name1, ".svg");
-const response3 = (await fetch(path2));
-const svg4 = (await response3.text());
-this$.innerHTML = svg4;
-return this.getElementsByTagName('svg')[0].style.height = '14pt';
+const qualified_name2 = (cherry_core.truth_.call(null, name1.includes("/"))) ? (name1) : (cherry_core.str.call(null, "solid/", name1));
+const path3 = cherry_core.str.call(null, "/assets/fa/svgs/", qualified_name2, ".svg");
+const response4 = (await fetch(path3));
+const svg5 = (await response4.text());
+const colour6 = this$.getAttribute("colour");
+this$.innerHTML = svg5;
+const svg = this.getElementsByTagName('svg')[0];
+svg.style.height = '14pt';
+if (cherry_core.truth_.call(null, colour6)) {
+return svg.children[0].setAttribute('fill', this.getAttribute('colour'));}
 }};
 customElements.define("fa-icon", FaIcon);
 

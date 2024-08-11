@@ -189,5 +189,10 @@ if (cherry_core.truth_.call(null, cherry_core._EQ_.call(null, window.location.pa
 return tag.call(null, cherry_core.keyword("span"), title);} else {
 return tag.call(null, cherry_core.keyword("a"), cherry_core.array_map(cherry_core.keyword("href"), link), title);}
 });
+var css_var = (function (name) {
+const css_var_name1 = cherry_core.str.call(null, "--", name);
+const computed_styles2 = getComputedStyle.call(null, document.documentElement);
+return computed_styles2.getPropertyValue(css_var_name1);
+});
 
-export { set_attrs, set_children, set_inner_html, set_content, tag, append_tag, no_self_referring_link }
+export { set_attrs, set_children, set_inner_html, set_content, tag, append_tag, no_self_referring_link, css_var }
