@@ -11,6 +11,8 @@
                  (append-tag this (tag :link {:rel "stylesheet" :href "/css/styles.css"}))
                  (append-tag this (tag :link {:rel "stylesheet" :href "/css/header.css"}))
                  (append-tag this (tag :header
-                                       [(tag :h1 (no-self-referring-link "Jakub Šťastný" "/"))])))))
+                                       (tag :div {:class "wrapper"}
+                                            [(tag :h1 (no-self-referring-link "Jakub Šťastný" "/"))
+                                             (tag :h2 {:class "tagline"} "Guiding you to wholeness")]))))))
 
 (js/customElements.define "my-header" MyHeader)

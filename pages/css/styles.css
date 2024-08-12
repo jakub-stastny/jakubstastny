@@ -12,12 +12,12 @@ html, body {
 
 /* Variables */
 :root {
-  --primary-colour: linen;
-  --secondary-colour: lightskyblue;
+  --primary-colour: #f3c623;
+  --secondary-colour: #eef5e3;
   --link-colour: blue;
   --reddit-colour: #EB5528;
   --youtube-colour: #EA3323;
-  --envelope-colour: lightskyblue;
+  --envelope-colour: steelblue;
 }
 
 /* Styling */
@@ -27,7 +27,8 @@ html {
 
 main {
   padding: 50px;
-  background: var(--primary-colour);
+  background: var(--secondary-colour);
+  font-family: serif;
 }
 
 a { text-decoration: none; }
