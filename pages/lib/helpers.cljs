@@ -62,10 +62,3 @@
     (get m k)
     (throw (ex-info (str "Key '" k "' not found in the map")
                     {:map m :key k}))))
-
-;; DEPRECATED
-(defn append-tag [instance tag-or-tag-name & tag-opts]
-  (let [shadow-root (.-shadowRoot instance)
-        child-node (if (symbol? tag-or-tag-name) (apply tag tag-or-tag-name tag-opts) tag-or-tag-name)]
-    ;; (js/console.log "append-tag to " shadow-root child-node)
-    (.appendChild shadow-root child-node)))

@@ -2,6 +2,25 @@
   (:require [cherry.core :refer [defclass]]
             [helpers :refer [tag]]))
 
+;; OK how about the config?
+(defn build-email []
+  (str "jakub.stastny.pt" "+" "web" "@" "gmail.com"))
+
+(defn build-mailto [subject]
+  (str "mailto:" (build-email) "?subject=" (js/encodeURIComponent subject)))
+
+(defn insert-default [root subject]
+  (let [email (build-email)
+        mailto (build-mailto subject)]
+    (.appendChild root (tag :a {:href mailto} email))))
+
+(defn update-in-slot [subject slot-children]
+  (let [mailto (build-mailto subject)]
+    (doseq [node slot-children]
+      (when (and (instance? js/HTMLElement node)
+                 (= (.-tagName node) "A"))
+        (set! (.-href node) mailto)))))
+
 ;; Insert default mailto link:
 ;; <my-email></my-email>
 ;;
@@ -18,31 +37,12 @@
                (.appendChild (.-shadowRoot this) (tag :slot)))
 
   Object
-  (build-email [this]
-               (str "jakub.stastny.pt" "+" "web" "@" "gmail.com"))
-
-  (build-mailto [this subject]
-                (str "mailto:" (.build-email this) "?subject=" (js/encodeURIComponent subject)))
-
-  (insert-default [this]
-                  (let [subject (or (.getAttribute this "subject") "")
-                        email (.build-email this)
-                        mailto (.build-mailto this subject)]
-                    (.appendChild (.-shadowRoot this) (tag :a {:href mailto} email))))
-
-  (update-in-slot [this slot-children]
-                  (let [subject (or (.getAttribute this "subject") "")
-                        mailto (.build-mailto this subject)]
-                    (doseq [node slot-children]
-                      (when (and (instance? js/HTMLElement node)
-                                 (= (.-tagName node) "A"))
-                        (set! (.-href node) mailto)))))
-
   (connectedCallback [this]
-                     (let [slot (.querySelector (.-shadowRoot this) "slot")
+                     (let [subject (or (.getAttribute this "subject") "")
+                           slot (.querySelector (.-shadowRoot this) "slot")
                            slot-children (.assignedNodes slot)]
                        (if (empty? slot-children)
-                         (.insert-default this slot-children)
-                         (.update-in-slot this slot-children)))))
+                         (insert-default (.-shadowRoot this) subject)
+                         (update-in-slot subject slot-children)))))
 
 (js/customElements.define "my-email" MyEmail)
