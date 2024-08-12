@@ -29,11 +29,13 @@ Do I want to read the whole chart? I prefer with a question, astrology isn't my 
 - Patreon.
 - PayPal.
 - All these are in Reddit, add in the [[https://www.reddit.com/settings/profile?rdt=54962][settings]].
+- Telegram? There's an icon in FA.
 
 *** TODO Final index page
 
 ** Proper build version
 *** TODO Set up build based on CLJ or Babashka
+- Squint works from CLJ, so Cherry should too (I asked @borkdude in #Cherry Slack).
 - Do I need separate repos for main/blog/wiki (think Netlify deploy).
   - If so, I need a shared package that has config, components, CSS vars and whatnot.
 - Generate HTML pages (hiccup?). The main content may either be HTML or hiccup.

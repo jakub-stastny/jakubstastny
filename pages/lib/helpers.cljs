@@ -51,10 +51,17 @@
     (tag :span title)
     (tag :a {:href link} title)))
 
+;; TODO: add css-var! that fails if no CSS var was found or empty.
 (defn css-var [name]
   (let [css-var-name (str "--" name)
         computed-styles (getComputedStyle document.documentElement)]
     (.getPropertyValue computed-styles css-var-name)))
+
+(defn get! [m k]
+  (if (contains? m k)
+    (get m k)
+    (throw (ex-info (str "Key '" k "' not found in the map")
+                    {:map m :key k}))))
 
 ;; DEPRECATED
 (defn append-tag [instance tag-or-tag-name & tag-opts]
