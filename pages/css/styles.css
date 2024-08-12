@@ -37,22 +37,6 @@ a:visited { color: var(--link-colour); }
 h1 { margin-bottom: 1ex; }
 p { margin-bottom: 1ex; line-height: 1.4 }
 
-.inline-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-}
-
-.inline-list li {
-  margin-right: 10px; /* Adjust spacing as needed */
-}
-
-.inline-list li:not(:last-child)::after {
-  content: "|";
-  margin-left: 10px; /* Adjust spacing as needed */
-}
-
 blockquote {
   /* margin-left: 1em; */
   padding: 0.7em 1.2em;
