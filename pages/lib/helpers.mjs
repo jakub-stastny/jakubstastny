@@ -161,6 +161,11 @@ const css_var_name1 = cherry_core.str.call(null, "--", name);
 const computed_styles2 = getComputedStyle.call(null, document.documentElement);
 return computed_styles2.getPropertyValue(css_var_name1);
 });
+var get_BANG_ = (function (m, k) {
+if (cherry_core.truth_.call(null, cherry_core.contains_QMARK_.call(null, m, k))) {
+return cherry_core.get.call(null, m, k);} else {
+throw cherry_core.ex_info.call(null, cherry_core.str.call(null, "Key '", k, "' not found in the map"), cherry_core.array_map(cherry_core.keyword("map"), m, cherry_core.keyword("key"), k))}
+});
 var append_tag = (() => {
 const f23 = (function (var_args) {
 const args241 = cherry_core.array.call(null);
@@ -195,4 +200,4 @@ return self__22535__auto__12.cljs$core$IFn$_invoke$arity$variadic(G__278, G__281
 return f23;
 })();
 
-export { set_attrs, set_children, set_inner_html, set_content, tag, no_self_referring_link, css_var, append_tag }
+export { css_var, no_self_referring_link, append_tag, set_attrs, get_BANG_, set_children, tag, set_content, set_inner_html }
