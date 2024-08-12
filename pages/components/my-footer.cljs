@@ -1,11 +1,7 @@
 (ns my-footer
   (:require [cherry.core :refer [defclass]]
-            [helpers :refer [tag css-var get!]]))
-
-;; TODO: Push upwards, when I have CLJ-based build system.
-(def config
-  {:youtube-link "https://www.youtube.com/@jakub-stastny"
-   :reddit-link "https://www.reddit.com/user/jakubstastny"})
+            [helpers :refer [tag css-var]]
+            [config :refer [youtube-link reddit-link]]))
 
 (defn social-icon [name link]
   (tag :a {:href link :target "_blank" :rel "noopener"}
@@ -17,8 +13,8 @@
         (tag :fa-icon {:name "envelope" :colour (css-var "envelope-colour")})
 
         envelope (tag :li (tag :my-email {:subject "Hey there!"} (tag :a fa-envelope)))
-        youtube (tag :li (social-icon "youtube" (get! config :youtube-link)))
-        reddit (tag :li (social-icon "reddit" (get! config :reddit-link)))
+        youtube (tag :li (social-icon "youtube" youtube-link))
+        reddit (tag :li (social-icon "reddit" reddit-link))
 
         social-icons (tag :ul {:class "footer-icons"} [youtube envelope reddit])]
     (.appendChild root (tag :script {:type "module" :src "/components/fa-icon.mjs"}))

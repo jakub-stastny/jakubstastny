@@ -1,10 +1,9 @@
 (ns my-footer
   (:require [cherry.core :refer [defclass]]
-            [helpers :refer [tag]]))
+            [helpers :refer [tag]]
+            [config :refer [email-chunks]]))
 
-;; OK how about the config?
-(defn build-email []
-  (str "jakub.stastny.pt" "+" "web" "@" "gmail.com"))
+(defn build-email [] (apply str email-chunks))
 
 (defn build-mailto [subject]
   (str "mailto:" (build-email) "?subject=" (js/encodeURIComponent subject)))
