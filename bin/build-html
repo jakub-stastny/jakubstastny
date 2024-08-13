@@ -42,10 +42,15 @@
               [:main content]
               [:my-footer]]]])))
 
+(defn ensure-parent-dir [file-path]
+  (when (str/includes? (subs file-path 6) "/")
+    (fs/create-dirs (str/join "/" (butlast (str/split file-path #"/"))))))
+
 (defn page [{:keys [path title content]}]
   (let [path-fix-index (if (str/ends-with? path "/") (str path "index") path)
         html-path (str "pages" path-fix-index ".html")]
     (println (str "~ Building " html-path "."))
+    (ensure-parent-dir html-path)
     (spit html-path (template title content))))
 
 (doseq [file (fs/glob "src/pages" "*.edn")]
