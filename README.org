@@ -41,6 +41,9 @@ Source code of [[https://jakubstastny.guru?utm_source=gh][jakubstastny.guru]] wr
 - Build-time checks: make sure the components exists, compile it.
 - Move Cherry code into a ~component~ macro that will write the Cherry component on the disk. Keep everything in src, pages should be all generated (CSS? SVG?)
 
+*** TODO Tangling
+- Maybe rather than using a complicated build pipeline, we just use Tangler, so we can have CLJS + CSS in one file.
+
 *** TODO Thank @borkdude
 - Will I want to rename the repo?
 - Cherry fucking rocks! Also this source can serve as a reference of a real-world project using Cherry.

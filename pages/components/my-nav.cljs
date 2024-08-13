@@ -1,26 +1,26 @@
 (ns my-nav
   (:require [cherry.core :refer [defclass]]
-            [helpers :refer [tag no-self-referring-link]]
+            [helpers :refer [tag no-self-referring-link get!]]
             [router :refer [router]]))
 
 (defn item-link [router-entry]
-  (no-self-referring-link (:title router-entry) (:path router-entry)))
+  (no-self-referring-link (get! router-entry :title) (get! router-entry :path)))
 
 (defn render [root]
   (.appendChild root (tag :link {:rel "stylesheet" :href "/css/styles.css"}))
   (.appendChild root (tag :link {:rel "stylesheet" :href "/css/nav.css"}))
 
-  (let [main (item-link (:index router))
-        about (item-link (:about router))
-        spiritual-guidance (item-link (:services-guidance router))
-        astro-reading (item-link (:services-reading router))
-        remote-healing (item-link (:services-healing router))
-        services [(item-link (:services router))
+  (let [main (item-link (get! router :index))
+        about (item-link (get! router :about))
+        spiritual-guidance (item-link (get! router :services-guidance))
+        astro-reading (item-link (get! router :services-reading))
+        remote-healing (item-link (get! router :services-healing))
+        services [(item-link (get! router :services))
                   (tag :ul
                        [(tag :li spiritual-guidance)
                         (tag :li astro-reading)
                         (tag :li remote-healing)])]
-        contact (item-link (:contact router))]
+        contact (item-link (get! router :contact))]
     (.appendChild root
                   (tag :nav
                        (tag :ul
