@@ -10,28 +10,47 @@
 ;; Compile everything at start.
 (process/shell "./bin/build-html")
 (process/shell "./bin/compile")
+(doseq [path (fs/glob "src/components" "**/*.css")]
+  (fs/copy path (str "pages/css/" (fs/file-name path)) {:replace-existing true}))
 
 (defn matches-ext? [path ext]
   (and (fs/exists? path)
        (fs/regular-file? path)
-       (.endsWith path ".cljs")))
+       (.endsWith path ext)))
 
 (defn cljs-handler [{:keys [path]}]
   (when (matches-ext? path "cljs")
     (try
       ;; TODO: Don't print the whole error, rather just time stamp and OK/Err.
-      (process/shell (str "npx cherry compile " path))
+      (process/shell str "./bin/compile " path)
       (catch Exception (prn error)))))
 
 (defn html-handler [{:keys [path]}]
-  (when (matches-ext? path "edn")
+  (when (matches-ext? path "cljs")
     (try
       ;; TODO: Don't print the whole error, rather just time stamp and OK/Err.
-      (process/shell "./bin/build-html") ;; TODO: Pass arguments and build only 1.
+      (process/shell "./bin/build-html" path)
       (catch Exception (prn error)))))
 
-(def cljs-watcher (fw/watch "pages" cljs-handler {:recursive true}))
-(def html-watcher (fw/watch "src/pages" html-handler {:recursive true}))
+(defn components-handler [{:keys [path] :as event}]
+  (when (matches-ext? path "cljs")
+    (cljs-handler event))
+
+  (when (matches-ext? path "css")
+    (try
+      (let [target (str "pages/css/" (fs/file-name path))]
+        (fs/copy path target {:replace-existing true})
+        (println "~ CSS" target))
+      (catch Exception (prn error)))))
+
+(defn no-emacs-file [handler]
+  (fn [{:keys [path] :as event}]
+    (when (not (str/includes? path "#"))
+      (handler event))))
+
+(def cljs-watcher (fw/watch "pages" (no-emacs-file cljs-handler) {:recursive true}))
+(def html-watcher (fw/watch "src/pages" (no-emacs-file html-handler) {:recursive true}))
+(def components-watcher (fw/watch "src/components" (no-emacs-file components-handler) {:recursive true}))
 
 println "~ Watching for changes in CLJS files."
 

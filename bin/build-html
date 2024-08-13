@@ -87,6 +87,16 @@
     (ensure-parent-dir html-path)
     (spit html-path (template title content))))
 
-(doseq [file (fs/glob "src/pages" "*.edn")]
-  (let [path (str file) data (edn/read-string (slurp path))]
-    (page data)))
+(defn process-args [args]
+  (doseq [path args]
+    (let [data (edn/read-string (slurp path))]
+      (page data))))
+
+(defn process-default []
+  (doseq [file (fs/glob "src/pages" "*.edn")]
+    (let [path (str file) data (edn/read-string (slurp path))]
+      (page data))))
+
+(if (seq *command-line-args*)
+  (process-args *command-line-args*)
+  (process-default))
