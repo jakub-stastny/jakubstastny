@@ -6,6 +6,7 @@ Source code of [[https://jakubstastny.guru?utm_source=gh][jakubstastny.guru]]. T
 ** Apps
 - [[https://app.netlify.com/sites/jakubstastny/deploys][Netlify app]]
 - [[https://analytics.google.com/analytics/web/#/a217212867p299480918/admin/streams/table/][Google Analytics]]
+- [[https://dashboard.mailerlite.com/forms/129574726427214925/overview#snippet][MailerLite]]
 
 ** Social media settings
 - [[https://studio.youtube.com/channel/UCGSRA8C9-7t7OPoOG6ykT4w/editing/details][YouTube Studio]]
