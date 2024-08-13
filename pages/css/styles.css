@@ -43,3 +43,7 @@ blockquote {
   background: aliceblue;
   font-style: italic;
 }
+
+.price {
+  font-style: italic;
+}
