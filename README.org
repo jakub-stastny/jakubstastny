@@ -19,6 +19,7 @@ Source code of [[https://jakubstastny.guru?utm_source=gh][jakubstastny.guru]] wr
 - PayPal.
 - All these are in Reddit, add in the [[https://www.reddit.com/settings/profile?rdt=54962][settings]].
 
+** After tangler release
 *** TODO Tangling
 - Maybe rather than using a complicated build pipeline, we just use Tangler, so we can have CLJS + CSS in one file.
 
@@ -46,7 +47,7 @@ We either:
 - Do I need separate repos for main/blog/wiki (think Netlify deploy).
   - If so, I need a shared package that has config, components, CSS vars and whatnot.
 - Minify/Uglify JS & CSS on build. Possibly add timestamp to reload cache ?t=timestamp.
-- GA only in the production build.
+- GA only in the production build (./bin/release passes an argument to the build scripts like ./bin/compile --release)
 - <term name="satori"> like abbr, but more interactive, consider desktop/mobile.
 - Build-time checks: make sure the components exists, compile it.
 - Move Cherry code into a ~component~ macro that will write the Cherry component on the disk. Keep everything in src, pages should be all generated (CSS? SVG?)
