@@ -11,21 +11,27 @@
 (process/shell "./bin/build-html")
 (process/shell (str "npx cherry compile " (str/join " " (fs/glob "pages" "**/*.cljs"))))
 
-(defn cljs-file? [path]
+(defn matches-ext? [path ext]
   (and (fs/exists? path)
        (fs/regular-file? path)
        (.endsWith path ".cljs")))
 
-(defn handler [event]
-  (prn event)
-  (let [{:keys [path]} event]
-    (when (cljs-file? path)
-      (try
-        ;; TODO: Don't print the whole error, rather just time stamp and OK/Err.
-        (process/shell (str "npx cherry compile " path))
-        (catch Exception (prn error))))))
+(defn cljs-handler [{:keys [path]}]
+  (when (matches-ext? path "cljs")
+    (try
+      ;; TODO: Don't print the whole error, rather just time stamp and OK/Err.
+      (process/shell (str "npx cherry compile " path))
+      (catch Exception (prn error)))))
 
-(def watcher (fw/watch "pages" handler {:recursive true}))
+(defn html-handler [{:keys [path]}]
+  (when (matches-ext? path "edn")
+    (try
+      ;; TODO: Don't print the whole error, rather just time stamp and OK/Err.
+      (process/shell "./bin/build-html") ;; TODO: Pass arguments and build only 1.
+      (catch Exception (prn error)))))
+
+(def cljs-watcher (fw/watch "pages" cljs-handler {:recursive true}))
+(def html-watcher (fw/watch "src/pages" html-handler {:recursive true}))
 
 println "~ Watching for changes in CLJS files."
 

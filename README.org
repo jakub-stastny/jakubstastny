@@ -11,14 +11,6 @@ Source code of [[https://jakubstastny.guru?utm_source=gh][jakubstastny.guru]] wr
 
 * Tasks
 ** MVP version
-*** TODO Initial styles
-
-*** TODO Final about page
-
-*** TODO Final contact page
-
-*** TODO Final services page
-
 *** TODO Newsletter
 
 *** TODO Sponsorships
@@ -26,27 +18,13 @@ Source code of [[https://jakubstastny.guru?utm_source=gh][jakubstastny.guru]] wr
 - Patreon.
 - PayPal.
 - All these are in Reddit, add in the [[https://www.reddit.com/settings/profile?rdt=54962][settings]].
-- Telegram? There's an icon in FA.
-
-*** TODO Final index page
-
-** Proper build version
-*** TODO Set up build based on CLJ or Babashka
-- Squint works from CLJ, so Cherry should too (I asked @borkdude in #Cherry Slack).
-- Do I need separate repos for main/blog/wiki (think Netlify deploy).
-  - If so, I need a shared package that has config, components, CSS vars and whatnot.
-- Minify/Uglify JS & CSS on build. Possibly add timestamp to reload cache ?t=timestamp.
-- GA only in the production build.
-- <term name="satori"> like abbr, but more interactive, consider desktop/mobile.
-- Build-time checks: make sure the components exists, compile it.
-- Move Cherry code into a ~component~ macro that will write the Cherry component on the disk. Keep everything in src, pages should be all generated (CSS? SVG?)
 
 *** TODO Tangling
 - Maybe rather than using a complicated build pipeline, we just use Tangler, so we can have CLJS + CSS in one file.
 
 *** TODO Thank @borkdude
 - Will I want to rename the repo?
-- Cherry fucking rocks! Also this source can serve as a reference of a real-world project using Cherry.
+- Also this source can serve as a reference of a real-world project using Cherry.
 
 ** TODO Version with a blog
 *** TODO Override the back button behaviour
@@ -57,8 +35,21 @@ We either:
 - No longer have all the various static HTML pages and only have 1 SPA-style HTML like index.html that links app.js.
 - Or we handle the blog as a separate app on a separate subdomain. This would be preferable for speed and other concerns.
 
-** Nice to have
-*** TODO Dark mode
+** Maybe consider
+*** Telegram contact
+- There's an icon in FA.
+
+*** Dark mode
+
+*** Set up build based on CLJ or Babashka
+- Squint works from CLJ, so Cherry should too (I asked @borkdude in #Cherry Slack).
+- Do I need separate repos for main/blog/wiki (think Netlify deploy).
+  - If so, I need a shared package that has config, components, CSS vars and whatnot.
+- Minify/Uglify JS & CSS on build. Possibly add timestamp to reload cache ?t=timestamp.
+- GA only in the production build.
+- <term name="satori"> like abbr, but more interactive, consider desktop/mobile.
+- Build-time checks: make sure the components exists, compile it.
+- Move Cherry code into a ~component~ macro that will write the Cherry component on the disk. Keep everything in src, pages should be all generated (CSS? SVG?)
 
 * Links
 - [[https://github.com/jakub-stastny/jakubstastny/tree/rel?tab=readme-ov-file#links][Production links]] such as Netlify and Google Analytics console as well as links to pages that link the site (YouTube Studio and my Reddit).
