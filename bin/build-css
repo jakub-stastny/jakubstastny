@@ -1,11 +1,10 @@
 #!/usr/bin/env bb
 
-(defn target-path [source-path]
-  (str "pages/css/" (fs/file-name source-path)))
-
 (defn process-args [args]
-  (doseq [path args]
-    (fs/copy path (target-path path) {:replace-existing true})))
+  (doseq [source-path args]
+    (let [target-path (str "pages/css/" (fs/file-name source-path))]
+      (println (str "~ CSS " source-path " -> " target-path))
+      (fs/copy source-path target-path {:replace-existing true}))))
 
 (defn process-default []
   (process-args (map str (fs/glob "src/components" "**/*.css"))))
