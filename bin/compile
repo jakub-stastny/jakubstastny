@@ -1,3 +1,17 @@
 #!/usr/bin/env zsh
 
-npx cherry compile pages/**/*.cljs
+# Usage:
+# ./bin/compile
+# ./bin/compile src/components/my-email.cljs
+if [ "$#" -gt 0 ]; then
+  npx cherry compile "$@"
+else
+  npx cherry compile src/{lib,components}/**/*.cljs
+fi
+
+for compiled_file in src/{lib,components}/**/*.mjs; do
+  target_file="pages/${compiled_file#src/}"
+  mkdir -p "$(dirname $target_file)"
+  echo "$compiled_file -> $target_file"
+  mv $compiled_file $target_file
+done

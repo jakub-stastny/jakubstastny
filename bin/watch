@@ -9,7 +9,7 @@
 
 ;; Compile everything at start.
 (process/shell "./bin/build-html")
-(process/shell (str "npx cherry compile " (str/join " " (fs/glob "pages" "**/*.cljs"))))
+(process/shell "./bin/compile")
 
 (defn matches-ext? [path ext]
   (and (fs/exists? path)
