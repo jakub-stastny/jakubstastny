@@ -8,7 +8,7 @@
    [:h2 "Services"]
    [:p "I’m Jakub Stastny, a spiritual guide dedicated to helping others find balance and purpose in their lives. My approach is practical and grounded, designed to help you navigate your journey with confidence and peace."]
    [:p {:style "margin-top: 20px;"}
-    [:a {:href "/about" :style "color: #007bff; text-decoration: underline;"} "Read my story"]]]
+    [:a {:href :about :style "color: #007bff; text-decoration: underline;"} "Read my story"]]]
 
   [:section#services {:style "text-align: center; padding: 50px 20px; background-color: #f8f9fa;"}
    [:h2 "Services"]
@@ -16,5 +16,5 @@
     [:p "Whether you’re seeking clarity through talk therapy, insight through astrology, or healing through energy work, I’m here to support you on your spiritual journey."]
     [:div {:style "margin-top: 20px;"}
      [:p {:style "margin-top: 20px;"}
-      [:a {:href "/services" :style "padding: 10px 20px; margin-right: 10px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;"} "Explore services"]
-      [:a {:href "/contact" :style "padding: 10px 20px; background-color: #28a745; color: #fff; text-decoration: none; border-radius: 5px;"} "Get in touch"]]]]]]}
+      [:a {:href :services :style "padding: 10px 20px; margin-right: 10px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;"} "Explore services"]
+      [:a {:href :contact :style "padding: 10px 20px; background-color: #28a745; color: #fff; text-decoration: none; border-radius: 5px;"} "Get in touch"]]]]]]}

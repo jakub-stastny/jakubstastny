@@ -12,9 +12,9 @@
 
   (let [main (item-link (:index router))
         about (item-link (:about router))
-        spiritual-guidance (item-link (:spiritual-guidance router))
-        astro-reading (item-link (:intuitive-reading router))
-        remote-healing (item-link (:energy-healing router))
+        spiritual-guidance (item-link (:services-guidance router))
+        astro-reading (item-link (:services-reading router))
+        remote-healing (item-link (:services-healing router))
         services [(item-link (:services router))
                   (tag :ul
                        [(tag :li spiritual-guidance)

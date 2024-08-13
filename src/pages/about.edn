@@ -6,4 +6,4 @@
   [:p "For me, true spiritual practice isn’t about castles in the clouds—it’s about living in a way that brings contentment, peace, and bliss. It’s about finding balance and being present in the moment, whether that’s at home with my wife and dogs or guiding others on their journey."]
   [:p "As a spiritual guide, I’m here to help you navigate your own path. My approach is practical and grounded, rooted in the belief that spirituality should enhance your life, not complicate it. When you’re successful in your practice, you’ll find a deeper sense of peace and the ability to positively touch the lives of others."]
   [:p "I’ve always found the most satisfaction in helping people, using my unique perspective and abilities to support them on their journey. Whether you’re seeking clarity, growth, or simply a deeper understanding of yourself, I’m here to guide you."]
-  [:p "If you feel we've got something to talk about, feel free to " [:a {:href "/contact"} "contact me"] "."]]}
+  [:p "If you feel we've got something to talk about, feel free to " [:a {:href :contact} "contact me"] "."]]}

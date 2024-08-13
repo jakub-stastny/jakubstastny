@@ -1,4 +1,4 @@
-{:path "/contact" :title "About me" :content
+{:path "/contact" :title "Contact me" :content
  [:main
   [:h1 "Contact me"]
   [:p "I’m here to listen and support you on your journey. Whether you have a question, need advice, or just want to talk, feel free to reach out."]
@@ -7,4 +7,4 @@
   [:p "To get in touch, email me at " [:my-email {:subject "Hey, found you through your webpage"}] ". I’ll respond as soon as I can."]
   [:p "Looking forward to connecting!"]
   [:h2 "Uncopyright"]
-  [:p "If you want to use any content from this website, you are welcome to do so. I release copyrights on all of the content as well as on the source code of this website. Read " [:a {:href "/uncopyright"} "uncopyright"] " for more info."]]}
+  [:p "If you want to use any content from this website, you are welcome to do so. I release copyrights on all of the content as well as on the source code of this website. Read " [:a {:href :uncopyright} "uncopyright"] " for more info."]]}
