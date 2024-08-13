@@ -12,6 +12,9 @@ cp -R node_modules/cherry-cljs/{cljs.core.js,lib} pages/assets/cherry-cljs
 echo "\n~ Building HTML"
 ./bin/build-html
 
+echo "\n~ Building CSS"
+./bin/build-css
+
 echo "\n~ Compiling CLJS"
 ./bin/compile
 
