@@ -166,38 +166,5 @@ if (cherry_core.truth_.call(null, cherry_core.contains_QMARK_.call(null, m, k)))
 return cherry_core.get.call(null, m, k);} else {
 throw cherry_core.ex_info.call(null, cherry_core.str.call(null, "Key '", k, "' not found in the map"), cherry_core.array_map(cherry_core.keyword("map"), m, cherry_core.keyword("key"), k))}
 });
-var append_tag = (() => {
-const f23 = (function (var_args) {
-const args241 = cherry_core.array.call(null);
-const len__22506__auto__2 = cherry_core.alength.call(null, arguments);
-let i253 = 0;
-while(true){
-if ((i253) < (len__22506__auto__2)) {
-args241.push((arguments[i253]));
-let G__4 = (i253 + 1);
-i253 = G__4;
-continue;
-};break;
-}
-;
-const argseq__22667__auto__5 = ((2) < (cherry_core.alength.call(null, args241))) ? (new cherry_core.IndexedSeq(args241.slice(2), 0, null)) : (null);
-return f23.cljs$core$IFn$_invoke$arity$variadic((arguments[0]), (arguments[1]), argseq__22667__auto__5);
-});
-f23.cljs$core$IFn$_invoke$arity$variadic = (function (instance, tag_or_tag_name, tag_opts) {
-const shadow_root6 = instance.shadowRoot;
-const child_node7 = (cherry_core.truth_.call(null, cherry_core.symbol_QMARK_.call(null, tag_or_tag_name))) ? (cherry_core.apply.call(null, tag, tag_or_tag_name, tag_opts)) : (tag_or_tag_name);
-return shadow_root6.appendChild(child_node7);
-});
-f23.cljs$lang$maxFixedArity = 2;
-f23.cljs$lang$applyTo = (function (seq26) {
-const G__278 = cherry_core.first.call(null, seq26);
-const seq269 = cherry_core.next.call(null, seq26);
-const G__2810 = cherry_core.first.call(null, seq269);
-const seq2611 = cherry_core.next.call(null, seq269);
-const self__22535__auto__12 = this;
-return self__22535__auto__12.cljs$core$IFn$_invoke$arity$variadic(G__278, G__2810, seq2611);
-});
-return f23;
-})();
 
-export { css_var, no_self_referring_link, append_tag, set_attrs, get_BANG_, set_children, tag, set_content, set_inner_html }
+export { set_attrs, set_children, set_inner_html, set_content, tag, no_self_referring_link, css_var, get_BANG_ }

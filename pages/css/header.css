@@ -4,8 +4,13 @@
  * in order to avoid flickering.
  */
 header {
-  background: linear-gradient(to bottom, var(--secondary-colour), var(--primary-colour));
-  padding: 40px;
+  /* background: linear-gradient(to bottom, var(--secondary-colour), var(--primary-colour)); */
+  /* background: var(--primary-colour); */
+  /* background: linear-gradient(to top, #f3c623, yellowgreen); */
+  /* background: #f3c623; */
+  /* background: linear-gradient(to bottom, #f3c623 20%, cornflowerblue 80%); */
+  background: cornflowerblue;
+  padding: 20px;
   text-align: center;
 }
 
@@ -15,4 +20,20 @@ header a {
 
 header a:visited {
   color: black;
+}
+
+.wrapper {
+  animation: fadeIn 3s forwards; /* 3 seconds fadeIn, then stay visible */
+  animation-iteration-count: 1; /* Run animation once */
+}
+
+.tagline {
+  color: white;
+  font-weight: normal;
+  font-style: italic;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

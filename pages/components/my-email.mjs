@@ -1,20 +1,88 @@
 import * as cherry_core from 'cherry-cljs/cljs.core.js';
 import { tag } from 'helpers';
+import { email_chunks } from 'config';
+var build_email = (function () {
+return cherry_core.apply.call(null, cherry_core.str, email_chunks);
+});
+var build_mailto = (function (subject) {
+return cherry_core.str.call(null, "mailto:", build_email.call(null), "?subject=", encodeURIComponent(subject));
+});
+var insert_default = (function (root, subject) {
+const email1 = build_email.call(null);
+const mailto2 = build_mailto.call(null, subject);
+return root.appendChild(tag.call(null, cherry_core.keyword("a"), cherry_core.array_map(cherry_core.keyword("href"), mailto2), email1));
+});
+var update_in_slot = (function (subject, slot_children) {
+const mailto1 = build_mailto.call(null, subject);
+let seq__12 = cherry_core.seq.call(null, slot_children);
+let chunk__23 = null;
+let count__34 = 0;
+let i__45 = 0;
+while(true){
+if ((i__45) < (count__34)) {
+const node6 = cherry_core._nth.call(null, chunk__23, i__45);
+if (cherry_core.truth_.call(null, (() => {
+const and__23453__auto__7 = cherry_core.instance_QMARK_.call(null, HTMLElement, node6);
+if (cherry_core.truth_.call(null, and__23453__auto__7)) {
+return cherry_core._EQ_.call(null, node6.tagName, "A");} else {
+return and__23453__auto__7;}
+})())) {
+node6.href = mailto1;
+};
+let G__8 = seq__12;
+let G__9 = chunk__23;
+let G__10 = count__34;
+let G__11 = cherry_core.unchecked_inc.call(null, i__45);
+seq__12 = G__8;
+chunk__23 = G__9;
+count__34 = G__10;
+i__45 = G__11;
+continue;
+} else {
+const temp__23022__auto__12 = cherry_core.seq.call(null, seq__12);
+if (cherry_core.truth_.call(null, temp__23022__auto__12)) {
+const seq__113 = temp__23022__auto__12;
+if (cherry_core.truth_.call(null, cherry_core.chunked_seq_QMARK_.call(null, seq__113))) {
+const c__23272__auto__14 = cherry_core.chunk_first.call(null, seq__113);
+let G__15 = cherry_core.chunk_rest.call(null, seq__113);
+let G__16 = c__23272__auto__14;
+let G__17 = cherry_core.count.call(null, c__23272__auto__14);
+let G__18 = 0;
+seq__12 = G__15;
+chunk__23 = G__16;
+count__34 = G__17;
+i__45 = G__18;
+continue;
+} else {
+const node19 = cherry_core.first.call(null, seq__113);
+if (cherry_core.truth_.call(null, (() => {
+const and__23453__auto__20 = cherry_core.instance_QMARK_.call(null, HTMLElement, node19);
+if (cherry_core.truth_.call(null, and__23453__auto__20)) {
+return cherry_core._EQ_.call(null, node19.tagName, "A");} else {
+return and__23453__auto__20;}
+})())) {
+node19.href = mailto1;
+};
+let G__21 = cherry_core.next.call(null, seq__113);
+let G__22 = null;
+let G__23 = 0;
+let G__24 = 0;
+seq__12 = G__21;
+chunk__23 = G__22;
+count__34 = G__23;
+i__45 = G__24;
+continue;
+}}};break;
+}
+
+});
 class MyEmail extends HTMLElement {
   constructor() {
 super();const self__ = this;
 const this$ = this;
 this$.attachShadow(({ "mode": "open" }));
 this$.shadowRoot.appendChild(tag.call(null, cherry_core.keyword("slot")))  }
-build_email() { 
-const this$ = this;
-const self__ = this;return cherry_core.str.call(null, "jakub.stastny.pt", "+", "web", "@", "gmail.com");
-}
-build_mailto(subject) { 
-const this$ = this;
-const self__ = this;return cherry_core.str.call(null, "mailto:", this$.build_email(), "?subject=", encodeURIComponent(subject));
-}
-insert_default() { 
+connectedCallback() { 
 const this$ = this;
 const self__ = this;const subject1 = (() => {
 const or__23438__auto__2 = this$.getAttribute("subject");
@@ -22,89 +90,12 @@ if (cherry_core.truth_.call(null, or__23438__auto__2)) {
 return or__23438__auto__2;} else {
 return "";}
 })();
-const email3 = this$.build_email();
-const mailto4 = this$.build_mailto(subject1);
-return this$.shadowRoot.appendChild(tag.call(null, cherry_core.keyword("a"), cherry_core.array_map(cherry_core.keyword("href"), mailto4), email3));
-}
-update_in_slot(slot_children) { 
-const this$ = this;
-const self__ = this;const subject5 = (() => {
-const or__23438__auto__6 = this$.getAttribute("subject");
-if (cherry_core.truth_.call(null, or__23438__auto__6)) {
-return or__23438__auto__6;} else {
-return "";}
-})();
-const mailto7 = this$.build_mailto(subject5);
-let seq__18 = cherry_core.seq.call(null, slot_children);
-let chunk__29 = null;
-let count__310 = 0;
-let i__411 = 0;
-while(true){
-if ((i__411) < (count__310)) {
-const node12 = cherry_core._nth.call(null, chunk__29, i__411);
-if (cherry_core.truth_.call(null, (() => {
-const and__23453__auto__13 = cherry_core.instance_QMARK_.call(null, HTMLElement, node12);
-if (cherry_core.truth_.call(null, and__23453__auto__13)) {
-return cherry_core._EQ_.call(null, node12.tagName, "A");} else {
-return and__23453__auto__13;}
-})())) {
-node12.href = mailto7;
-};
-let G__14 = seq__18;
-let G__15 = chunk__29;
-let G__16 = count__310;
-let G__17 = cherry_core.unchecked_inc.call(null, i__411);
-seq__18 = G__14;
-chunk__29 = G__15;
-count__310 = G__16;
-i__411 = G__17;
-continue;
-} else {
-const temp__23022__auto__18 = cherry_core.seq.call(null, seq__18);
-if (cherry_core.truth_.call(null, temp__23022__auto__18)) {
-const seq__119 = temp__23022__auto__18;
-if (cherry_core.truth_.call(null, cherry_core.chunked_seq_QMARK_.call(null, seq__119))) {
-const c__23272__auto__20 = cherry_core.chunk_first.call(null, seq__119);
-let G__21 = cherry_core.chunk_rest.call(null, seq__119);
-let G__22 = c__23272__auto__20;
-let G__23 = cherry_core.count.call(null, c__23272__auto__20);
-let G__24 = 0;
-seq__18 = G__21;
-chunk__29 = G__22;
-count__310 = G__23;
-i__411 = G__24;
-continue;
-} else {
-const node25 = cherry_core.first.call(null, seq__119);
-if (cherry_core.truth_.call(null, (() => {
-const and__23453__auto__26 = cherry_core.instance_QMARK_.call(null, HTMLElement, node25);
-if (cherry_core.truth_.call(null, and__23453__auto__26)) {
-return cherry_core._EQ_.call(null, node25.tagName, "A");} else {
-return and__23453__auto__26;}
-})())) {
-node25.href = mailto7;
-};
-let G__27 = cherry_core.next.call(null, seq__119);
-let G__28 = null;
-let G__29 = 0;
-let G__30 = 0;
-seq__18 = G__27;
-chunk__29 = G__28;
-count__310 = G__29;
-i__411 = G__30;
-continue;
-}}};break;
-}
-
-}
-connectedCallback() { 
-const this$ = this;
-const self__ = this;const slot31 = this$.shadowRoot.querySelector("slot");
-const slot_children32 = slot31.assignedNodes();
-if (cherry_core.truth_.call(null, cherry_core.empty_QMARK_.call(null, slot_children32))) {
-return this$.insert_default(slot_children32);} else {
-return this$.update_in_slot(slot_children32);}
+const slot3 = this$.shadowRoot.querySelector("slot");
+const slot_children4 = slot3.assignedNodes();
+if (cherry_core.truth_.call(null, cherry_core.empty_QMARK_.call(null, slot_children4))) {
+return insert_default.call(null, this$.shadowRoot, subject1);} else {
+return update_in_slot.call(null, subject1, slot_children4);}
 }};
 customElements.define("my-email", MyEmail);
 
-export { MyEmail }
+export { build_email, build_mailto, insert_default, update_in_slot, MyEmail }
