@@ -1,0 +1,25 @@
+{:path "/services" :title "Services" :content
+ [:main
+  [:section#services-intro {:style "text-align: center; padding: 30px 20px;"}
+   [:h1 "Services"]
+   [:p {:style "margin-top: 20px;"} "Supporting your spiritual journey with personalised guidance, astrology readings, and healing practices."]]
+
+  [:section#spiritual-guidance {:style "text-align: center; padding: 60px 20px; background-color: #f3f4f6;"}
+   [:h2 "Spiritual guidance"]
+   [:p {:style "margin-top: 20px;"} "Engage in donation-based sessions focused on helping you find clarity and peace through conversation and spiritual insight."]
+   [:div {:style "margin-top: 20px;"}
+    [:a {:href "/services/spiritual-guidance" :style "padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;"} "Tell me more"]]]
+
+  [:section#astrology-reading {:style "text-align: center; padding: 60px 20px; background-color: #ffffff;"}
+   [:h2 "Intuitive astrology reading"]
+   [:p {:style "margin-top: 20px;"} "Deepen your self-understanding with a detailed astrology reading. Discover the insights your birth chart holds."]
+   [:p {:style "margin-top: 10px;"} "Price $100, duration 1 hour."]
+   [:div {:style "margin-top: 20px;"}
+    [:a {:href "/services/intuitive-astrology-reading" :style "padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;"} "Tell me more"]]]
+
+  [:section#energy-healing {:style "text-align: center; padding: 60px 20px; background-color: #f3f4f6;"}
+   [:h2 "Remote energy healing"]
+   [:p {:style "margin-top: 20px;"} "Experience powerful energy healing from a distance. Balance your energies and promote well-being."]
+   [:p {:style "margin-top: 10px;"} "Price $100, duration 1 hour."]
+   [:div {:style "margin-top: 20px;"}
+    [:a {:href "/services/remote-energy-healing" :style "padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;"} "Tell me more"]]]]}

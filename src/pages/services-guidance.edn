@@ -1,0 +1,10 @@
+{:path "/services/spiritual-guidance" :title "Spiritual guidance" :content
+ [:main
+  [:h1 "Spiritual guidance"]
+  [:p.price "I offer spiritual guidance on donation basis. If you need me, I'm here for you."]
+  [:p "From the age of 9, I found myself deeply obsessed with psychology, driven by an innate curiosity about the human mind. But what I discovered within myself went far beyond conventional understanding. I possess a profound insight into the minds of others—an ability that transcends mere intuition and taps into something far beyond this world."]
+  [:p "This insight allows me to sense the unsaid, to perceive the undercurrents of thought and emotion that lie hidden beneath the surface. When necessary, I can also glimpse possible timelines—potential futures and the influences that shape them. Though the term “seeing the future” might make me cringe, it comes close to describing what I do."]
+  [:p "What I offer is more than psychotherapy; it is something I call “just-knowing” or “direct knowing.” It’s a form of guidance that goes straight to the heart of the matter, bypassing the complexities and providing clarity, direction, and deep understanding."]
+  [:p "If you seek a connection that reaches beyond the ordinary, where the answers come from a place of deep, otherworldly knowing, I am here to guide you."]
+  [:my-email {:subject "I'd like a session"}
+   [:a {:style "padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;"} "Book a session"]]]}

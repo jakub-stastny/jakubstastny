@@ -1,0 +1,13 @@
+{:path "/services/intuitive-astrology-reading" :title "Intuitive astrology reading" :content
+ [:main
+  [:h2 "Intuitive astrology reading"]
+  [:p [:strong "Price: "] "$100, " [:strong "duration: "] "1 hour."]
+  [:p "Astrology has always amazed me with its precision and depth, especially Vedic astrology, which I’ve found to be the most accurate in revealing the intricacies of our lives. Over time, I’ve refined my approach, combining the wisdom of Vedic astrology with selected elements from Western astrology—such as the influence of outer planets and Chiron—and the insights from Human Design."]
+
+  [:h2 "How it works"]
+  [:p "To begin, you’ll need to provide me with your date of birth, the exact time of birth, and the place of birth. Along with this, please share what you wish to explore during the reading—be it love, career, or any other area of your life. A clear question will help guide the session."]
+  [:p "Once I receive your details, I’ll confirm their reception and send you the payment information. After payment is received, we’ll schedule a time for your online session."]
+  [:p "Please understand that astrology isn’t about predicting the future in a deterministic way. You have free will. My role is to help you understand the cosmic waves that are approaching so you can navigate them with ease and confidence."]
+
+  [:my-email {:subject "I'd like a session"}
+   [:a {:style "padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;"} "Book a session"]]]}

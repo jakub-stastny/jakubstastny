@@ -12,17 +12,12 @@
     :router "/lib/router.mjs"}})
 
 (def ga-initiation-code
-  "
-  if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments) }
+  (str
+   "if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {"
+   "window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments) };"
+   "gtag('js', new Date()); gtag('config', 'G-KQSJ36RMR3') }"))
 
-    gtag('js', new Date());
-    gtag('config', 'G-KQSJ36RMR3');
-  }
-")
-
-(defn page [{:keys [title content]}]
+(defn template [title content]
   (str
    (h/html (h/raw "<!DOCTYPE html>")
            [:html {:lang "en"}
@@ -47,6 +42,12 @@
               [:main content]
               [:my-footer]]]])))
 
-(let [data (edn/read-string (slurp "src/pages/index.edn"))]
-  (println (page data))
-  (spit "pages/index.html" (page data)))
+(defn page [{:keys [path title content]}]
+  (let [path-fix-index (if (str/ends-with? path "/") (str path "index") path)
+        html-path (str "pages" path-fix-index ".html")]
+    (println (str "~ Building " html-path "."))
+    (spit html-path (template title content))))
+
+(doseq [file (fs/glob "src/pages" "*.edn")]
+  (let [path (str file) data (edn/read-string (slurp path))]
+    (page data)))
