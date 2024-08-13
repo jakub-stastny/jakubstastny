@@ -34,11 +34,15 @@
    :reddit-link "https://www.reddit.com/user/jakubstastny"
    :zenhabits-uncopyright "https://zenhabits.net/uncopyright"})
 
-(def router (merge routes external-links))
+(def router
+  (merge
+   (reduce-kv (fn [acc k v] (assoc acc k (:path v))) {} routes)
+   external-links))
 
 (defn replace-href-keywords [node]
   (if (and (map? node) (:href node) (keyword? (:href node)))
-    (update node :href router) node))
+    (update node :href router)
+    node))
 
 (defn run-filters [content]
   (walk/postwalk replace-href-keywords content))

@@ -1,4 +1,4 @@
-{:path "/services/remote-energy-healing" :title "About me" :content
+{:path "/services/remote-energy-healing" :title "Remote energy healing" :content
  [:main
   [:h1 "Remote energy healing"]
   [:p [:strong "Price: "] "$100, " [:strong "duration: "] "1 hour."]
