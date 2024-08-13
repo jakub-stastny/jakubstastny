@@ -9,9 +9,8 @@
 
 ;; Compile everything at start.
 (process/shell "./bin/build-html")
+(process/shell "./bin/build-css")
 (process/shell "./bin/compile")
-(doseq [path (fs/glob "src/components" "**/*.css")]
-  (fs/copy path (str "pages/css/" (fs/file-name path)) {:replace-existing true}))
 
 (defn matches-ext? [path ext]
   (and (fs/exists? path)
@@ -38,9 +37,7 @@
 
   (when (matches-ext? path "css")
     (try
-      (let [target (str "pages/css/" (fs/file-name path))]
-        (fs/copy path target {:replace-existing true})
-        (println "~ CSS" target))
+      (process/shell "./bin/build-css" path)
       (catch Exception (prn error)))))
 
 (defn no-emacs-file [handler]

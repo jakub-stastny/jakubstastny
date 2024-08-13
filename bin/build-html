@@ -93,9 +93,7 @@
       (page data))))
 
 (defn process-default []
-  (doseq [file (fs/glob "src/pages" "*.edn")]
-    (let [path (str file) data (edn/read-string (slurp path))]
-      (page data))))
+  (process-args (map str (fs/glob "src/pages" "*.edn"))))
 
 (if (seq *command-line-args*)
   (process-args *command-line-args*)
