@@ -8,6 +8,7 @@
 (require '[pod.babashka.fswatcher :as fw])
 
 ;; Compile everything at start.
+(process/shell "./bin/build-html")
 (process/shell (str "npx cherry compile " (str/join " " (fs/glob "pages" "**/*.cljs"))))
 
 (defn cljs-file? [path]
