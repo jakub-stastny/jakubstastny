@@ -7,6 +7,9 @@
 (pods/load-pod 'org.babashka/fswatcher "0.0.5")
 (require '[pod.babashka.fswatcher :as fw])
 
+;; Compile everything at start.
+(process/shell (str "npx cherry compile " (str/join " " (fs/glob "pages" "**/*.cljs"))))
+
 (defn cljs-file? [path]
   (and (fs/exists? path)
        (fs/regular-file? path)
