@@ -1,0 +1,52 @@
+#!/usr/bin/env bb
+
+(require '[hiccup2.core :as h])
+(require '[cheshire.core :refer [generate-string]])
+
+(def import-map
+  {:imports
+   {;;:cherry-cljs "/assets/cherry-cljs"
+    "cherry-cljs/cljs.core.js" "/assets/cherry-cljs/cljs.core.js"
+    :helpers "/lib/helpers.mjs"
+    :config "/lib/config.mjs"
+    :router "/lib/router.mjs"}})
+
+(def ga-initiation-code
+  "
+  if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments) }
+
+    gtag('js', new Date());
+    gtag('config', 'G-KQSJ36RMR3');
+  }
+")
+
+(defn page [{:keys [title content]}]
+  (str
+   (h/html (h/raw "<!DOCTYPE html>")
+           [:html {:lang "en"}
+            [:head
+             [:title title]
+             [:meta {:charset "utf-8"}]
+             [:meta {:name "viewport" :content "width=device-width, initial-scale=1.0"}]
+             [:script {:type "importmap"} (h/raw (generate-string import-map))]
+             [:link {:rel "stylesheet" :href "/css/layout.css"}]
+             [:link {:rel "stylesheet" :href "/css/styles.css"}]
+             [:script {:type "module" :src "/components/my-header.mjs"}]
+             [:script {:type "module" :src "/components/my-nav.mjs"}]
+             [:script {:type "module" :src "/components/my-footer.mjs"}]
+             ;; Google Analytics 4 (gtag.js)
+             [:script {:async true :src "https://www.googletagmanager.com/gtag/js?id=G-KQSJ36RMR3"}]
+             [:script (h/raw ga-initiation-code)]]
+
+            [:body
+             [:div.main
+              [:my-header]
+              [:my-nav]
+              [:main content]
+              [:my-footer]]]])))
+
+(let [data (edn/read-string (slurp "src/pages/index.edn"))]
+  (println (page data))
+  (spit "pages/index.html" (page data)))

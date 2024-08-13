@@ -1,70 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Root</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html><html lang="en"><head><title>Main page</title><meta charset="utf-8" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script type="importmap">{"imports":{"cherry-cljs/cljs.core.js":"/assets/cherry-cljs/cljs.core.js","helpers":"/lib/helpers.mjs","config":"/lib/config.mjs","router":"/lib/router.mjs"}}</script><link href="/css/layout.css" rel="stylesheet" /><link href="/css/styles.css" rel="stylesheet" /><script src="/components/my-header.mjs" type="module"></script><script src="/components/my-nav.mjs" type="module"></script><script src="/components/my-footer.mjs" type="module"></script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-KQSJ36RMR3"></script><script>
+  if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments) }
 
-    <script type="importmap">
-      {
-        "imports": {
-          "cherry-cljs/cljs.core.js": "/assets/cherry-cljs/cljs.core.js",
-          "helpers": "/lib/helpers.mjs",
-          "config": "/lib/config.mjs",
-          "router": "/lib/router.mjs"
-        }
-      }
-    </script>
-
-    <link rel="stylesheet" href="/css/layout.css">
-    <link rel="stylesheet" href="/css/styles.css">
-    <script type="module" src="/components/my-header.mjs"></script>
-    <script type="module" src="/components/my-nav.mjs"></script>
-    <script type="module" src="/components/my-footer.mjs"></script>
-
-    <!-- Google Analytics 4 (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KQSJ36RMR3"></script>
-    <script>
-      if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments) }
-
-        gtag('js', new Date());
-        gtag('config', 'G-KQSJ36RMR3');
-      }
-    </script>
-  </head>
-
-  <body>
-    <div class="main">
-      <my-header></my-header>
-      <my-nav></my-nav>
-
-      <main>
-        <section id="hero" style="text-align: center; padding: 80px 20px; background-color: #ffffff;">
-          <h1>Guiding You to Inner Peace and Clarity</h1>
-          <p style="margin-top: 20px;">Personalised spiritual guidance, rooted in practical wisdom and real-life experience.</p>
-                </section>
-
-                <section id="introduction" style="text-align: center; padding: 60px 20px; background-color: #f3f4f6;">
-          <h2>Services</h2>
-          <p>I’m Jakub Stastny, a spiritual guide dedicated to helping others find balance and purpose in their lives. My approach is practical and grounded, designed to help you navigate your journey with confidence and peace.</p>
-          <p style="margin-top: 20px;"><a href="/about" style="color: #007bff; text-decoration: underline;">Read My Story</a></p>
-                </section>
-
-                <section id="services" style="text-align: center; padding: 50px 20px; background-color: #f8f9fa;">
-          <h2>Services</h2>
-          <div style="max-width: 800px; margin: 0 auto;">
-            <p>Whether you’re seeking clarity through talk therapy, insight through astrology, or healing through energy work, I’m here to support you on your spiritual journey.</p>
-            <div style="margin-top: 20px;">
-              <a href="/services" style="padding: 10px 20px; margin-right: 10px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;">Explore Services</a>
-              <a href="/contact" style="padding: 10px 20px; background-color: #28a745; color: #fff; text-decoration: none; border-radius: 5px;">Get in Touch</a>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      <my-footer></my-footer>
-    </div>
-  </body>
-</html>
+    gtag('js', new Date());
+    gtag('config', 'G-KQSJ36RMR3');
+  }
+</script></head><body><div class="main"><my-header></my-header><my-nav></my-nav><main><main><section id="hero" style="text-align: center; padding: 80px 20px; background-color: #ffffff;"><h1>Guiding you to inner peace and clarity</h1><p style="margin-top: 20px;">Personalised spiritual guidance, rooted in practical wisdom and real-life experience.</p></section><section id="introduction" style="text-align: center; padding: 60px 20px; background-color: #f3f4f6;"><h2>Services</h2><p>I’m Jakub Stastny, a spiritual guide dedicated to helping others find balance and purpose in their lives. My approach is practical and grounded, designed to help you navigate your journey with confidence and peace.</p><p style="margin-top: 20px;"><a href="/about" style="color: #007bff; text-decoration: underline;">Read my story</a></p></section><section id="services" style="text-align: center; padding: 50px 20px; background-color: #f8f9fa;"><h2>Services</h2><div style="max-width: 800px; margin: 0 auto;"><p>Whether you’re seeking clarity through talk therapy, insight through astrology, or healing through energy work, I’m here to support you on your spiritual journey.</p><div style="margin-top: 20px;"><p style="margin-top: 20px;"><a href="/services" style="padding: 10px 20px; margin-right: 10px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;">Explore services</a><a href="/contact" style="padding: 10px 20px; background-color: #28a745; color: #fff; text-decoration: none; border-radius: 5px;">Get in touch</a></p></div></div></section></main></main><my-footer></my-footer></div></body></html>

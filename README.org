@@ -18,9 +18,6 @@ Source code of [[https://jakubstastny.guru?utm_source=gh][jakubstastny.guru]] wr
 *** TODO Final contact page
 
 *** TODO Final services page
-With a page for each service, such as /services/energy-healing etc.
-How it works: you send me your DoB and request a reading. I will confirm, you will send me money and we talk.
-Do I want to read the whole chart? I prefer with a question, astrology isn't my main focus.
 
 *** TODO Newsletter
 
