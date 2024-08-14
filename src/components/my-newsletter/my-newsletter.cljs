@@ -4,7 +4,7 @@
 
 (defn render [root]
   (.appendChild root (tag :link {:rel "stylesheet" :href "/css/styles.css"}))
-  (.appendChild root (tag :link {:rel "stylesheet" :href "/css/newsletter.css"}))
+  (.appendChild root (tag :link {:rel "stylesheet" :href "/css/my-newsletter.css"}))
   (.appendChild root (tag :script {:src "https://assets.mailerlite.com/js/universal.js" :async true}))
   (.appendChild root (tag :div {:class "ml-embedded" :data-form "GUqqOq"})))
 
