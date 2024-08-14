@@ -7,9 +7,9 @@
   {:imports
    { ;;:cherry-cljs "/assets/cherry-cljs"
     "cherry-cljs/cljs.core.js" "/assets/cherry-cljs/cljs.core.js"
-    :helpers "/helpers.mjs"
-    :config "/config.mjs"
-    :router "/router.mjs"}})
+    :helpers "/js/helpers.mjs"
+    :config "/js/config.mjs"
+    :router "/js/router.mjs"}})
 
 (def ga-initiation-code
   (str

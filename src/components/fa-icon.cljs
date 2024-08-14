@@ -12,7 +12,7 @@
   (^:async connectedCallback [this]
    (let [name (.getAttribute this "name")
          qualified-name (if (.includes name "/") name (str "solid/" name))
-         path (str "/assets/fa/svgs/" qualified-name ".svg")
+         path (str "/svg/" qualified-name ".svg")
          response (js/await (js/fetch path))
          svg (js/await (.text response))
          colour (.getAttribute this "colour")]

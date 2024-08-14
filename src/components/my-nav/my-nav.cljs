@@ -8,7 +8,7 @@
 
 (defn render [root]
   (.appendChild root (tag :link {:rel "stylesheet" :href "/css/styles.css"}))
-  (.appendChild root (tag :link {:rel "stylesheet" :href "/css/nav.css"}))
+  (.appendChild root (tag :link {:rel "stylesheet" :href "/css/my-nav.css"}))
 
   (let [main (item-link (get! router :index))
         about (item-link (get! router :about))

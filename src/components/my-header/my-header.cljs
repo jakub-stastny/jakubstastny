@@ -4,7 +4,7 @@
 
 (defn render [root]
   (.appendChild root (tag :link {:rel "stylesheet" :href "/css/styles.css"}))
-  (.appendChild root (tag :link {:rel "stylesheet" :href "/css/header.css"}))
+  (.appendChild root (tag :link {:rel "stylesheet" :href "/css/my-header.css"}))
   (.appendChild root (tag :header
                         (tag :div {:class "wrapper"}
                              [(tag :h1 (no-self-referring-link "Jakub Šťastný" "/"))

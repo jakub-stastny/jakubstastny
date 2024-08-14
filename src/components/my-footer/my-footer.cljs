@@ -17,10 +17,10 @@
         reddit (tag :li (social-icon "reddit" reddit-link))
 
         social-icons (tag :ul {:class "footer-icons"} [youtube envelope reddit])]
-    (.appendChild root (tag :script {:type "module" :src "/components/fa-icon.mjs"}))
-    (.appendChild root (tag :script {:type "module" :src "/components/my-email.mjs"}))
+    (.appendChild root (tag :script {:type "module" :src "/js/fa-icon.mjs"}))
+    (.appendChild root (tag :script {:type "module" :src "/js/my-email.mjs"}))
     (.appendChild root (tag :link {:rel "stylesheet" :href "/css/styles.css"}))
-    (.appendChild root (tag :link {:rel "stylesheet" :href "/css/footer.css"}))
+    (.appendChild root (tag :link {:rel "stylesheet" :href "/css/my-footer.css"}))
     (.appendChild root (tag :footer social-icons))))
 
 (defclass MyFooter
