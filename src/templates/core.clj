@@ -5,8 +5,8 @@
 
 (def import-map
   {:imports
-   { ;;:cherry-cljs "/assets/cherry-cljs"
-    "cherry-cljs/cljs.core.js" "/assets/cherry-cljs/cljs.core.js"
+   { ;;:cherry-cljs "/vendor/cherry-cljs"
+    "cherry-cljs/cljs.core.js" "/vendor/cherry-cljs/cljs.core.js"
     :helpers "/js/helpers.mjs"
     :config "/js/config.mjs"
     :router "/js/router.mjs"}})
