@@ -11,10 +11,6 @@ Source code of [[https://jakubstastny.guru?utm_source=gh][jakubstastny.guru]] wr
 
 * Tasks
 ** MVP version
-*** TODO Deal with Cherry in a different way
-Copy it over
-pages/assets/cherry-cljs
-
 *** TODO Newsletter
 
 *** TODO Sponsorships
