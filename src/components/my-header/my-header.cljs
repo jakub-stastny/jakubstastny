@@ -6,7 +6,7 @@
   (.appendChild root (tag :link {:rel "stylesheet" :href "/css/styles.css"}))
   (.appendChild root (tag :link {:rel "stylesheet" :href "/css/my-header.css"}))
   (.appendChild root (tag :header
-                        (tag :div {:class "wrapper"}
+                        (tag :div {:class "wrapper" :style "opacity: 0;"}
                              [(tag :h1 (no-self-referring-link "Jakub Šťastný" "/"))
                               (tag :h2 {:class "tagline"} "Guiding you to wholeness")]))))
 
