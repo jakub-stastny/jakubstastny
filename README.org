@@ -14,6 +14,9 @@ The compiled code that is actually deployed is in the [[https://github.com/jakub
 ** V1
 *** TODO Newsletter
 
+*** TODO Design
+- Do something in Procreate. It should show my personality. Aquarius MC.
+
 *** TODO WebComponents README
 - Also polish the components, namely fa-icon.
 

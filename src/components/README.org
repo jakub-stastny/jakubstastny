@@ -40,6 +40,7 @@ We need to make sure the import map points the browser to the right path:
 #+end_src
 
 ** Writing web components
+https://github.com/squint-cljs/squint/blob/main/doc/defclass.md
 #+begin_src clojure
   (defclass MyNav
     (extends HTMLElement)
@@ -78,3 +79,9 @@ See fa-icon.cljs
    Object
   (^:async connectedCallback [this] {}
 #+end_src
+
+* Links
+- [[https://github.com/squint-cljs/cherry][Cherry README]]
+- [[https://github.com/shvets-sergey/web-components-squint/][@shvets-sergey/web-components-squint]]
+- [[https://github.com/squint-cljs/cherry/issues/97][Cherry issue #97]] Support EcmaScript classes
+- [[https://www.dropbox.com/scl/fi/olxy06pbcx686foxj19ad/dcd2022-cljs-reimagined.pdf?rlkey=cero5n3xd41hwxdoaye2qmy5d&e=2&dl=0][ClojureScript reimaged slides]] Dutch Clojure Days 2022
