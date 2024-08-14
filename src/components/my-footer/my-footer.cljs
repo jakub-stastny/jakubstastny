@@ -8,7 +8,7 @@
        (tag :fa-icon {:name (str "brands/" name)
                       :colour (css-var (str name "-colour"))})))
 
-(defn- -render [root]
+(defn- render [root]
   (let [fa-envelope
         (tag :fa-icon {:name "envelope" :colour (css-var "envelope-colour")})
 
