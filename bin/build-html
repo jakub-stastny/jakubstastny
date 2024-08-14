@@ -27,7 +27,7 @@
           base-name (fs/file-name source-path)
           target-path (str html-dir "/svg/" parent-dir "/" base-name)]
       (println (str "~ SVG " target-path))
-      (fs/copy source-path target-path))))
+      (fs/copy source-path target-path {:replace-existing true}))))
 
 (defn write-robots-txt []
   (println (str "~ Building " html-dir "/robots.txt."))
