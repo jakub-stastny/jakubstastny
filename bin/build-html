@@ -1,7 +1,7 @@
 #!/usr/bin/env bb -cp src
 
 (require '[babashka.fs :as fs]
-         '[templates.core :refer [template]])
+         '[templates.core :refer [template routes]])
 
 (def html-dir "pages")
 
@@ -16,6 +16,20 @@
     (ensure-parent-dir html-path)
     (spit html-path (template title content))))
 
+;; # Disable everything by default.
+;; User-agent: *
+;; Disallow: /
+
+;; # Allow list.
+;; Allow: /$
+;; Allow: /about$
+(defn write-robots-txt []
+  (println "~ Writing robots.txt.")
+  (let [paths (map :path (vals routes))
+        lines (concat ["User-agent: *" "Disallow: /"]
+                      (map #(str "Allow: " % "$") paths))]
+    (spit (str html-dir "/robots.txt") (str/join "\n" lines))))
+
 (defn process-args [args]
   (fs/create-dirs html-dir)
   (doseq [path args]
@@ -23,6 +37,7 @@
       (page data))))
 
 (defn process-default []
+  (write-robots-txt)
   (process-args
    (filter #(not (str/includes? % "#"))
            (map str (fs/glob "src/pages" "*.edn")))))
