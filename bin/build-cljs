@@ -24,9 +24,12 @@
 (defn copy-cherry []
   (println "~ Copying Cherry JS libs.")
   (fs/delete-tree vendor-dir)
-  (fs/create-dirs vendor-dir)
-  (fs/copy "node_modules/cherry-cljs/cljs.core.js" vendor-dir)
-  (fs/copy-tree "node_modules/cherry-cljs/lib" (str vendor-dir "/lib")))
+  (let [target-dir (str vendor-dir "/cherry-cljs")]
+    (fs/create-dirs target-dir)
+    (fs/copy "node_modules/cherry-cljs/lib/cljs.core.js" target-dir)
+    ;; (fs/copy "node_modules/cherry-cljs/lib/clojure.set.js" target-dir)
+    ;; (fs/copy "node_modules/cherry-cljs/lib/clojure.walk.js" target-dir)
+    (fs/copy "node_modules/cherry-cljs/lib/clojure.string.js" target-dir)))
 
 (defn process-args [args]
   (fs/create-dirs js-dir)
