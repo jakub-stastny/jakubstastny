@@ -1,13 +1,10 @@
-# Disable everything by default.
 User-agent: *
 Disallow: /
-
-# Allow list.
 Allow: /$
 Allow: /about$
-Allow: /services$
-Allow: /contact$
-Allow: /uncopyright$
 Allow: /services/spiritual-guidance$
 Allow: /services/intuitive-astrology-reading$
 Allow: /services/remote-energy-healing$
+Allow: /services$
+Allow: /contact$
+Allow: /uncopyright$
