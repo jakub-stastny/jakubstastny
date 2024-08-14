@@ -1,0 +1,49 @@
+/* CSS reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Variables */
+:root {
+  --primary-colour: #f3c623;
+  --secondary-colour: #eef5e3;
+  --link-colour: blue;
+  --reddit-colour: #EB5528;
+  --youtube-colour: #EA3323;
+  --envelope-colour: steelblue;
+}
+
+/* Styling */
+html {
+  font-family: sans-serif;
+}
+
+main {
+  padding: 50px;
+  background: var(--secondary-colour);
+  font-family: serif;
+}
+
+a { text-decoration: none; }
+a:visited { color: var(--link-colour); }
+
+h1 { margin-bottom: 1ex; }
+p { margin-bottom: 1ex; line-height: 1.4 }
+
+blockquote {
+  /* margin-left: 1em; */
+  padding: 0.7em 1.2em;
+  background: aliceblue;
+  font-style: italic;
+}
+
+.price {
+  font-style: italic;
+}

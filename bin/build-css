@@ -1,13 +1,31 @@
 #!/usr/bin/env bb
 
+(def globs ["stylesheets/*.css" "components/**/*.css"])
+
+;; This simple approach works well for basic minification by reducing
+;; the file size. However, it doesn’t handle advanced optimizations
+;; like merging duplicate rules, resolving shorthand properties, or
+;; removing unnecessary units (e.g., 0px to 0), which more sophisticated
+;; minifiers do.
+(defn minify-css [css]
+  (-> css
+      (str/replace #"/\*.*?\*/" "")
+      (str/replace #"\s+" " ")
+      (str/replace #"\s*([{}:;,])\s*" "$1")
+      (str/trim)))
+
 (defn process-args [args]
   (doseq [source-path args]
     (let [target-path (str "pages/css/" (fs/file-name source-path))]
       (println (str "~ CSS " source-path " -> " target-path))
-      (fs/copy source-path target-path {:replace-existing true}))))
+      (spit target-path (minify-css (slurp source-path))))))
 
 (defn process-default []
-  (process-args (map str (fs/glob "src/components" "**/*.css"))))
+  (doseq [glob globs]
+    (process-args
+     ;; Filter out Emacs files.
+     (filter #(not (str/includes? % "#"))
+             (map str (fs/glob "src" glob))))))
 
 (if (seq *command-line-args*)
   (process-args *command-line-args*)

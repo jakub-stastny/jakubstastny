@@ -7,48 +7,35 @@
 (pods/load-pod 'org.babashka/fswatcher "0.0.5")
 (require '[pod.babashka.fswatcher :as fw])
 
+(defn matches-ext? [path & exts]
+  (some #(.endsWith path %) exts))
+
+(defn make-handler [command]
+  (fn [path]
+    (try
+      ;; TODO: Don't print the whole error, rather just time stamp and OK/Err.
+      (process/shell (str command " " path))
+      (catch Exception (prn error)))))
+
+(def cljs-handler (make-handler "./bin/compile"))
+(def html-handler (make-handler "./bin/build-html"))
+(def css-handler (make-handler "./bin/build-css"))
+
+(defn handler [{:keys [path]}]
+  ;; Filter out Emacs files.
+  (when (not (str/includes? path "#"))
+    (cond
+      (.endsWith path ".css") (css-handler path)
+      (.endsWith path ".edn") (html-handler path)
+      (.endsWith path ".cljs") (cljs-handler path))))
+
 ;; Compile everything at start.
 (process/shell "./bin/build-html")
 (process/shell "./bin/build-css")
 (process/shell "./bin/compile")
 
-(defn matches-ext? [path ext]
-  (and (fs/exists? path)
-       (fs/regular-file? path)
-       (.endsWith path ext)))
+(fw/watch "src" handler {:recursive true})
 
-(defn cljs-handler [{:keys [path]}]
-  (when (matches-ext? path "cljs")
-    (try
-      ;; TODO: Don't print the whole error, rather just time stamp and OK/Err.
-      (process/shell str "./bin/compile " path)
-      (catch Exception (prn error)))))
-
-(defn html-handler [{:keys [path]}]
-  (when (matches-ext? path "cljs")
-    (try
-      ;; TODO: Don't print the whole error, rather just time stamp and OK/Err.
-      (process/shell "./bin/build-html" path)
-      (catch Exception (prn error)))))
-
-(defn components-handler [{:keys [path] :as event}]
-  (when (matches-ext? path "cljs")
-    (cljs-handler event))
-
-  (when (matches-ext? path "css")
-    (try
-      (process/shell "./bin/build-css" path)
-      (catch Exception (prn error)))))
-
-(defn no-emacs-file [handler]
-  (fn [{:keys [path] :as event}]
-    (when (not (str/includes? path "#"))
-      (handler event))))
-
-(def cljs-watcher (fw/watch "pages" (no-emacs-file cljs-handler) {:recursive true}))
-(def html-watcher (fw/watch "src/pages" (no-emacs-file html-handler) {:recursive true}))
-(def components-watcher (fw/watch "src/components" (no-emacs-file components-handler) {:recursive true}))
-
-println "~ Watching for changes in CLJS files."
+println "~ Watching for changes."
 
 @(promise)
