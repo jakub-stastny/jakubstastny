@@ -4,6 +4,7 @@
          '[templates.core :refer [template routes]])
 
 (def html-dir "pages")
+(def svgs ["solid/envelope.svg" "brands/youtube.svg" "brands/reddit.svg"])
 
 (defn ensure-parent-dir [file-path]
   (when (str/includes? (subs file-path 6) "/")
@@ -16,15 +17,20 @@
     (ensure-parent-dir html-path)
     (spit html-path (template title content))))
 
-;; # Disable everything by default.
-;; User-agent: *
-;; Disallow: /
+;; It'd be best to automate, however in my-footer there's dynamic code.
+(defn copy-svgs []
+  (fs/create-dirs (str html-dir "/svg/solid"))
+  (fs/create-dirs (str html-dir "/svg/regular"))
+  (fs/create-dirs (str html-dir "/svg/brands"))
+  (doseq [source-path (map #(str "src/svgs/" %) svgs)]
+    (let [parent-dir (fs/file-name (fs/parent source-path))
+          base-name (fs/file-name source-path)
+          target-path (str html-dir "/svg/" parent-dir "/" base-name)]
+      (println (str "~ SVG " target-path))
+      (fs/copy source-path target-path))))
 
-;; # Allow list.
-;; Allow: /$
-;; Allow: /about$
 (defn write-robots-txt []
-  (println "~ Writing robots.txt.")
+  (println (str "~ Building " html-dir "/robots.txt."))
   (let [paths (map :path (vals routes))
         lines (concat ["User-agent: *" "Disallow: /"]
                       (map #(str "Allow: " % "$") paths))]
@@ -38,6 +44,7 @@
 
 (defn process-default []
   (write-robots-txt)
+  (copy-svgs)
   (process-args
    (filter #(not (str/includes? % "#"))
            (map str (fs/glob "src/pages" "*.edn")))))

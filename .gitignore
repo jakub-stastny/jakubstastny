@@ -8,5 +8,6 @@ pages/**/*.html
 pages/robots.txt
 pages/js
 pages/css
+pages/svg
 
 src/**/*.mjs
