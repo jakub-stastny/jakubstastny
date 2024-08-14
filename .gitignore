@@ -3,11 +3,6 @@ node_modules
 .#*
 \#*#
 
-pages/**/*.mjs
-pages/**/*.html
-pages/robots.txt
-pages/js
-pages/css
-pages/svg
+pages/
 
 src/**/*.mjs
