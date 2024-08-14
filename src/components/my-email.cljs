@@ -3,17 +3,17 @@
             [helpers :refer [tag]]
             [config :refer [email-chunks]]))
 
-(defn build-email [] (apply str email-chunks))
+(defn- build-email [] (apply str email-chunks))
 
-(defn build-mailto [subject]
+(defn- build-mailto [subject]
   (str "mailto:" (build-email) "?subject=" (js/encodeURIComponent subject)))
 
-(defn insert-default [root subject]
+(defn- insert-default [root subject]
   (let [email (build-email)
         mailto (build-mailto subject)]
     (.appendChild root (tag :a {:href mailto} email))))
 
-(defn update-in-slot [subject slot-children]
+(defn- update-in-slot [subject slot-children]
   (let [mailto (build-mailto subject)]
     (doseq [node slot-children]
       (when (and (instance? js/HTMLElement node)
