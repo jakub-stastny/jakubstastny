@@ -1,1 +1,0 @@
-@media (max-width:768px){:host{background:midnightblue;color:white;}:host ul{justify-content:center;}:host ul{list-style:none;padding:0;margin:0;display:flex;}:host ul li{margin-right:10px;}:host ul li:not(:last-child)::after{content:"|";margin-left:10px;}}@media (min-width:768px){:host{background:var(--secondary-colour);color:white;}:host ul{}:host ul ul{padding-left:1em;}}

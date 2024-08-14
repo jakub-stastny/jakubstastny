@@ -16,7 +16,7 @@ echo "\n~ Building CSS"
 ./bin/build-css
 
 echo "\n~ Compiling CLJS"
-./bin/compile
+./bin/build-cljs
 
 cp -R pages pages-copy
 

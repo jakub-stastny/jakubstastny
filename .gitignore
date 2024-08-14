@@ -2,5 +2,10 @@
 node_modules
 .#*
 \#*#
+
 pages/**/*.mjs
 pages/**/*.html
+pages/js
+pages/css
+
+src/**/*.mjs

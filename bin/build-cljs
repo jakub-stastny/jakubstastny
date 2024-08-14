@@ -1,0 +1,41 @@
+#!/usr/bin/env bb
+
+(require '[babashka.process :as process]
+         '[babashka.fs :as fs])
+
+(def js-dir "pages/js")
+
+(defn minify-js [code]
+  (-> code
+      ;; Remove single-line comments
+      (str/replace #"(//.*)$" "")
+
+      ;; Remove multi-line comments
+      (str/replace #"/\*[^*]*\*+(?:[^/*][^*]*\*+)*/" "")
+
+      ;; Replace multiple spaces or newlines with a single space
+      (str/replace #"\s+" " ")
+
+      ;; Remove spaces around JS syntax characters
+      (str/replace #"\s*([{};,:()])\s*" "$1")
+      (str/trim)))
+
+(defn process-args [args]
+  (fs/create-dirs js-dir)
+  (doseq [source-cljs-path args]
+    (let [source-mjs-path (str/replace source-cljs-path #"\.cljs$" ".mjs")
+          target-path (str js-dir "/" (fs/file-name source-mjs-path))]
+      (process/shell "npx" "cherry" "compile" source-cljs-path)
+      (println (str "~ JS " source-cljs-path " -> " target-path))
+      (spit target-path (minify-js (slurp source-mjs-path))))))
+
+(defn process-default []
+  (fs/delete-tree js-dir)
+  (process-args
+   ;; Filter out Emacs files.
+   (filter #(not (str/includes? % "#"))
+           (map str (fs/glob "src" "**/*.cljs")))))
+
+(if (seq *command-line-args*)
+  (process-args *command-line-args*)
+  (process-default))

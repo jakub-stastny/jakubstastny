@@ -1,80 +1,9 @@
-#!/usr/bin/env bb
+#!/usr/bin/env bb -cp src
 
-(require '[hiccup2.core :as h])
-(require '[cheshire.core :refer [generate-string]])
-(require '[clojure.walk :as walk])
+(require '[babashka.fs :as fs]
+         '[templates.core :refer [template]])
 
-(def import-map
-  {:imports
-   {;;:cherry-cljs "/assets/cherry-cljs"
-    "cherry-cljs/cljs.core.js" "/assets/cherry-cljs/cljs.core.js"
-    :helpers "/lib/helpers.mjs"
-    :config "/lib/config.mjs"
-    :router "/lib/router.mjs"}})
-
-(def ga-initiation-code
-  (str
-   "if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {"
-   "window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments) };"
-   "gtag('js', new Date()); gtag('config', 'G-KQSJ36RMR3') }"))
-
-(def routes
-  {:index {:path "/" :title "Main page"}
-   :about {:path "/about" :title "About me"}
-   :services-guidance {:path "/services/spiritual-guidance" :title "Spiritual guidance"}
-   :services-reading {:path "/services/intuitive-astrology-reading" :title "Intuitive astrology reading"}
-   :services-healing {:path "/services/remote-energy-healing" :title "Remote energy healing"}
-   :services {:path "/services" :title "Services"}
-   :contact {:path "/contact" :title "Contact"}
-   :uncopyright {:path "/uncopyright" :title "Uncopyright"}})
-
-(def external-links
-  {:gh-project-link "https://github.com/jakub-stastny/jakubstastny"
-   :youtube-link "https://www.youtube.com/@jakub-stastny"
-   :reddit-link "https://www.reddit.com/user/jakubstastny"
-   :zenhabits-uncopyright "https://zenhabits.net/uncopyright"})
-
-(def router
-  (merge
-   (reduce-kv (fn [acc k v] (assoc acc k (:path v))) {} routes)
-   external-links))
-
-(defn replace-href-keywords [node]
-  (if (and (map? node) (:href node) (keyword? (:href node)))
-    (update node :href router)
-    node))
-
-(defn run-filters [content]
-  (walk/postwalk replace-href-keywords content))
-
-(defn template [title content]
-  (str
-   (h/html (h/raw "<!DOCTYPE html>")
-           [:html {:lang "en"}
-            [:head
-             [:title title]
-             [:meta {:charset "utf-8"}]
-             [:meta {:name "viewport" :content "width=device-width, initial-scale=1.0"}]
-             [:script {:type "importmap"} (h/raw (generate-string import-map))]
-             [:link {:rel "stylesheet" :href "/css/layout.css"}]
-             [:link {:rel "stylesheet" :href "/css/styles.css"}]
-
-             ;; TODO: Only load what given page needs.
-             [:script {:type "module" :src "/components/my-header.mjs"}]
-             [:script {:type "module" :src "/components/my-nav.mjs"}]
-             [:script {:type "module" :src "/components/my-footer.mjs"}]
-             [:script {:type "module" :src "/components/my-newsletter.mjs"}]
-
-             ;; Google Analytics 4 (gtag.js)
-             [:script {:async true :src "https://www.googletagmanager.com/gtag/js?id=G-KQSJ36RMR3"}]
-             [:script (h/raw ga-initiation-code)]]
-
-            [:body
-             [:div.main
-              [:my-header]
-              [:my-nav]
-              [:main (run-filters content)]
-              [:my-footer]]]])))
+(def html-dir "pages")
 
 (defn ensure-parent-dir [file-path]
   (when (str/includes? (subs file-path 6) "/")
@@ -82,12 +11,13 @@
 
 (defn page [{:keys [path title content]}]
   (let [path-fix-index (if (str/ends-with? path "/") (str path "index") path)
-        html-path (str "pages" path-fix-index ".html")]
+        html-path (str html-dir path-fix-index ".html")]
     (println (str "~ Building " html-path "."))
     (ensure-parent-dir html-path)
     (spit html-path (template title content))))
 
 (defn process-args [args]
+  (fs/create-dirs html-dir)
   (doseq [path args]
     (let [data (edn/read-string (slurp path))]
       (page data))))

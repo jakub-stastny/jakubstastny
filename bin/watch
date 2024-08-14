@@ -17,7 +17,7 @@
       (process/shell (str command " " path))
       (catch Exception (prn error)))))
 
-(def cljs-handler (make-handler "./bin/compile"))
+(def cljs-handler (make-handler "./bin/build-cljs"))
 (def html-handler (make-handler "./bin/build-html"))
 (def css-handler (make-handler "./bin/build-css"))
 
@@ -32,7 +32,7 @@
 ;; Compile everything at start.
 (process/shell "./bin/build-html")
 (process/shell "./bin/build-css")
-(process/shell "./bin/compile")
+(process/shell "./bin/build-cljs")
 
 (fw/watch "src" handler {:recursive true})
 
