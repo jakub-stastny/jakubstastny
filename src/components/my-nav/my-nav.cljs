@@ -3,10 +3,10 @@
             [helpers :refer [tag no-self-referring-link get!]]
             [router :refer [router]]))
 
-(defn item-link [router-entry]
+(defn- item-link [router-entry]
   (no-self-referring-link (get! router-entry :title) (get! router-entry :path)))
 
-(defn render [root]
+(defn- render [root]
   (.appendChild root (tag :link {:rel "stylesheet" :href "/css/styles.css"}))
   (.appendChild root (tag :link {:rel "stylesheet" :href "/css/my-nav.css"}))
 

@@ -3,12 +3,12 @@
             [helpers :refer [tag css-var]]
             [config :refer [youtube-link reddit-link]]))
 
-(defn social-icon [name link]
+(defn- social-icon [name link]
   (tag :a {:href link :target "_blank" :rel "noopener"}
        (tag :fa-icon {:name (str "brands/" name)
                       :colour (css-var (str name "-colour"))})))
 
-(defn render [root]
+(defn- -render [root]
   (let [fa-envelope
         (tag :fa-icon {:name "envelope" :colour (css-var "envelope-colour")})
 

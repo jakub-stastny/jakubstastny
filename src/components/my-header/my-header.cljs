@@ -2,7 +2,7 @@
   (:require [cherry.core :refer [defclass]]
             [helpers :refer [tag no-self-referring-link]]))
 
-(defn render [root]
+(defn- render [root]
   (.appendChild root (tag :link {:rel "stylesheet" :href "/css/styles.css"}))
   (.appendChild root (tag :link {:rel "stylesheet" :href "/css/my-header.css"}))
   (.appendChild root (tag :header
