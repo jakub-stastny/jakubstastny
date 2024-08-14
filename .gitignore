@@ -1,12 +1,3 @@
-*
-!.gitignore
-!README.org
-!pages/
-!pages/**/*.html
-!pages/**/*.css
-!pages/**/*.mjs
-!pages/**/*.jpg
-!pages/**/*.png
-
-# Add favicons in use with git add -f.
-# !pages/**/*.svg
+.DS_Store
+src/
+node_modules/
