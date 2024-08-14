@@ -5,10 +5,6 @@ if ! git diff-index --quiet HEAD --; then
   exit 1
 fi
 
-echo "~ Updating Cherry"
-rm -rf pages/assets/cherry-cljs/*
-cp -R node_modules/cherry-cljs/{cljs.core.js,lib} pages/assets/cherry-cljs
-
 echo "\n~ Building HTML"
 ./bin/build-html
 
