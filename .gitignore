@@ -3,6 +3,6 @@ node_modules
 .#*
 \#*#
 
-pages/
+/pages/
 
 src/**/*.mjs

@@ -28,7 +28,7 @@
    :uncopyright {:path "/uncopyright" :title "Uncopyright"}})
 
 (def external-links
-  {:gh-project-link "https://github.com/jakub-stastny/jakubstastny"
+  {:gh-project-link "https://github.com/jakub-stastny/oso"
    :youtube-link "https://www.youtube.com/@jakub-stastny"
    :reddit-link "https://www.reddit.com/user/jakubstastny"
    :zenhabits-uncopyright "https://zenhabits.net/uncopyright"})
