@@ -2,27 +2,22 @@
   (:require [clojure.string :as str]
             [clojure.edn :as edn]
             [babashka.fs :as fs]
+            [config :refer [html-dir svgs page-glob svg-dirs]]
+            [utils :as utils]
             [templates.core :refer [template routes]]))
-
-(def html-dir "pages")
-(def svgs ["solid/envelope.svg" "brands/youtube.svg" "brands/reddit.svg"])
-
-(defn ensure-parent-dir [file-path]
-  (when (str/includes? (subs file-path 6) "/")
-    (fs/create-dirs (str/join "/" (butlast (str/split file-path #"/"))))))
 
 (defn page [{:keys [path title content]}]
   (let [path-fix-index (if (str/ends-with? path "/") (str path "index") path)
         html-path (str html-dir path-fix-index ".html")]
     (println (str "~ Building " html-path "."))
-    (ensure-parent-dir html-path)
+    (utils/ensure-parent-dir html-path)
     (spit html-path (template title content))))
 
 ;; It'd be best to automate, however in my-footer there's dynamic code.
 (defn copy-svgs []
-  (fs/create-dirs (str html-dir "/svg/solid"))
-  (fs/create-dirs (str html-dir "/svg/regular"))
-  (fs/create-dirs (str html-dir "/svg/brands"))
+  (doseq [svg-dir svg-dirs]
+    (fs/create-dirs svg-dir))
+
   (doseq [source-path (map #(str "src/svgs/" %) svgs)]
     (let [parent-dir (fs/file-name (fs/parent source-path))
           base-name (fs/file-name source-path)
@@ -48,8 +43,7 @@
   (copy-svgs)
   (process-args
    (filter #(not (str/includes? % "#"))
-           (map str (fs/glob "src/pages" "*.edn")))))
+           (map str (fs/glob "src" page-glob)))))
 
 (defn -main [& args]
-  (if (seq args)
-    (process-args args) (process-default)))
+  (utils/gen-main args process-args process-default))

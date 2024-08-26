@@ -1,10 +1,9 @@
 (ns build-cljs
   (:require [clojure.string :as str]
             [babashka.fs :as fs]
-            [babashka.process :as process]))
-
-(def js-dir "pages/js")
-(def vendor-dir "pages/vendor")
+            [babashka.process :as process]
+            [utils :as utils]
+            [config :refer [js-dir vendor-dir]]))
 
 (defn minify-js [code]
   (-> code
@@ -49,5 +48,4 @@
            (map str (fs/glob "src" "**/*.cljs")))))
 
 (defn -main [& args]
-  (if (seq args)
-    (process-args args) (process-default)))
+  (utils/gen-main args process-args process-default))
