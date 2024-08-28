@@ -45,5 +45,4 @@
    (filter #(not (str/includes? % "#"))
            (map str (fs/glob "src" config/page-glob)))))
 
-(defn -main [& args]
-  (utils/gen-main args process-args process-default))
+(utils/generate-main-fn process-args process-default)
