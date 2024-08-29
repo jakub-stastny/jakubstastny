@@ -50,7 +50,6 @@
   ([title link]
    (no-self-referring-link title link {}))
   ([title link opts]
-   (js/console.log title link (clj->js opts)) ;;;;
    (if (= js/window.location.pathname link)
      (tag :span opts title)
      (tag :a (merge {:href link} opts) title))))
