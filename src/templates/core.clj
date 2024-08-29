@@ -43,14 +43,8 @@
     (update node :href router)
     node))
 
-(defn dbg [label res]
-  (prn label res)
-  res)
-
 (defn run-filters [content]
-  ;; (walk/postwalk replace-href-keywords content)
-  content
-  )
+  (walk/postwalk replace-href-keywords content))
 
 (defn template [title content]
   (str
