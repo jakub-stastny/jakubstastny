@@ -13,6 +13,8 @@
     opts)))
 
 (defn- render [root]
+  ;; (.appendChild root #html [:link {:rel "stylesheet" :href "/css/styles.css"}])
+  ;; (.appendChild root #html [:link {:rel "stylesheet" :href "/css/my-nav.css"}])
   (.appendChild root (tag :link {:rel "stylesheet" :href "/css/styles.css"}))
   (.appendChild root (tag :link {:rel "stylesheet" :href "/css/my-nav.css"}))
 

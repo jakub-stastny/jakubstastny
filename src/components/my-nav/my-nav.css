@@ -34,6 +34,21 @@
   :host {
     background: var(--secondary-colour);
     color: white;
+  }
+
+  :host ul {
+    list-style: none;
+  }
+
+  :host ul li {
+    padding-bottom: 0.4ex;
+  }
+
+  nav > ul > li > a, nav > ul > li > span {
+    font-weight: bold;
+  }
+
+  nav {
     padding: 1em;
   }
 
@@ -50,6 +65,6 @@
     pointer-events: none;
     cursor: default;
     text-decoration: none;
-    color: inherit;
+    color: black;
   }
 }
