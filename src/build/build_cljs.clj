@@ -18,8 +18,6 @@
   (fs/delete-tree config/js-dir)
   (utils/copy-cherry)
   (process-args
-   ;; Filter out Emacs files.
-   (filter #(not (str/includes? % "#"))
-           (map str (fs/glob "src" "**/*.cljs")))))
+     (remove utils/emacs-file? (map str (fs/glob "src" config/cljs-glob)))))
 
 (utils/generate-main-fn process-args process-default)

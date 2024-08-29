@@ -2,6 +2,7 @@
 
 (def js-dir "pages/js")
 (def vendor-dir "pages/vendor")
+(def cljs-glob "**/*.cljs")
 
 (def css-dir "pages/css")
 (def css-globs ["stylesheets/*.css" "components/**/*.css"])

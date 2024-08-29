@@ -15,8 +15,6 @@
   (fs/delete-tree config/css-dir)
   (doseq [glob config/css-globs]
     (process-args
-     ;; Filter out Emacs files.
-     (filter #(not (str/includes? % "#"))
-             (map str (fs/glob "src" glob))))))
+     (remove utils/emacs-file? (map str (fs/glob "src" glob))))))
 
 (utils/generate-main-fn process-args process-default)

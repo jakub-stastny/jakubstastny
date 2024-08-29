@@ -44,6 +44,9 @@
   (when (str/includes? (subs file-path 6) "/")
     (fs/create-dirs (str/join "/" (butlast (str/split file-path #"/"))))))
 
+(defn emacs-file? [path]
+  (str/includes? path "#"))
+
 (defmacro generate-main-fn [fn-args fn-default]
   `(defn ~'-main [& ~'args]
      (if (seq ~'args) (~fn-args ~'args) (~fn-default))))

@@ -42,7 +42,7 @@
   (write-robots-txt)
   (copy-svgs)
   (process-args
-   (filter #(not (str/includes? % "#"))
+   (remove utils/emacs-file?
            (map str (fs/glob "src" config/page-glob)))))
 
 (utils/generate-main-fn process-args process-default)
