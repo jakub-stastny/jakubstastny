@@ -13,7 +13,7 @@ html, body {
 /* Variables */
 :root {
   --primary-colour: #f3c623;
-  --secondary-colour: #eef5e3;
+  --secondary-colour: #ffffe6;
   --link-colour: blue;
   --reddit-colour: #EB5528;
   --youtube-colour: #EA3323;
@@ -29,6 +29,13 @@ main {
   padding: 50px;
   background: var(--secondary-colour);
   font-family: serif;
+}
+
+/* Large screen */
+@media (min-width: 768px) {
+  main {
+    padding-right: 200px;
+  }
 }
 
 a { text-decoration: none; }
