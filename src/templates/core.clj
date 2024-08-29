@@ -43,8 +43,14 @@
     (update node :href router)
     node))
 
+(defn dbg [label res]
+  (prn label res)
+  res)
+
 (defn run-filters [content]
-  (walk/postwalk replace-href-keywords content))
+  ;; (walk/postwalk replace-href-keywords content)
+  content
+  )
 
 (defn template [title content]
   (str
@@ -72,5 +78,5 @@
              [:div.main
               [:my-header]
               [:my-nav]
-              [:main (run-filters content)]
+              (into [:main] (run-filters content))
               [:my-footer]]]])))

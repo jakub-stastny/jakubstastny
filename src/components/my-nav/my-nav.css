@@ -34,6 +34,7 @@
   :host {
     background: var(--secondary-colour);
     color: white;
+    padding: 1em;
   }
 
   :host {
@@ -46,9 +47,9 @@
   }
 
   a.mobile {
-    pointer-events: none; /* Disables click events */
-    cursor: default;      /* Changes the cursor to the default pointer */
-    text-decoration: none; /* Optionally remove underline */
-    color: inherit;       /* Optionally inherit the text color */
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none;
+    color: inherit;
   }
 }

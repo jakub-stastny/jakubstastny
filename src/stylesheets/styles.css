@@ -34,7 +34,7 @@ main {
 a { text-decoration: none; }
 a:visited { color: var(--link-colour); }
 
-h1 { margin-bottom: 1ex; }
+h1 { margin-bottom: 1ex; text-align: center; }
 p { margin-bottom: 1ex; line-height: 1.4 }
 
 blockquote {

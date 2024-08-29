@@ -1,6 +1,5 @@
 {:path "/" :title "Main page" :content
- [:main
-  [:section#hero {:style "text-align: center; padding: 80px 20px; background-color: #ffffff;"}
+ [[:section#hero {:style "text-align: center; padding: 80px 20px; background-color: #ffffff;"}
    [:h1 "Guiding you to inner peace and clarity"]
    [:p {:style "margin-top: 20px;"} "Personalised spiritual guidance, rooted in practical wisdom and real-life experience."]]
 
