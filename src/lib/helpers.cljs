@@ -46,10 +46,14 @@
      (set-content element content)
      element)))
 
-(defn no-self-referring-link [title link]
-  (if (= js/window.location.pathname link)
-    (tag :span title)
-    (tag :a {:href link} title)))
+(defn no-self-referring-link
+  ([title link]
+   (no-self-referring-link title link {}))
+  ([title link opts]
+   (js/console.log title link (clj->js opts)) ;;;;
+   (if (= js/window.location.pathname link)
+     (tag :span opts title)
+     (tag :a (merge {:href link} opts) title))))
 
 ;; TODO: add css-var! that fails if no CSS var was found or empty.
 (defn css-var [name]

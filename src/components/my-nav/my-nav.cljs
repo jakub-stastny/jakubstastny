@@ -3,8 +3,14 @@
             [helpers :refer [tag no-self-referring-link get!]]
             [router :refer [router]]))
 
-(defn- item-link [router-entry]
-  (no-self-referring-link (get! router-entry :title) (get! router-entry :path)))
+(defn- item-link
+  ([router-entry]
+   (item-link router-entry {}))
+  ([router-entry opts]
+   (no-self-referring-link
+    (get! router-entry :title)
+    (get! router-entry :path)
+    opts)))
 
 (defn- render [root]
   (.appendChild root (tag :link {:rel "stylesheet" :href "/css/styles.css"}))
@@ -15,8 +21,8 @@
         spiritual-guidance (item-link (get! router :services-guidance))
         astro-reading (item-link (get! router :services-reading))
         remote-healing (item-link (get! router :services-healing))
-        services [(item-link (get! router :services))
-                  (tag :ul
+        services [(item-link (get! router :services) {:class "mobile"})
+                  (tag :ul {:class "large-screen"}
                        [(tag :li spiritual-guidance)
                         (tag :li astro-reading)
                         (tag :li remote-healing)])]

@@ -24,6 +24,10 @@
     content: "|";
     margin-left: 10px; /* Adjust spacing as needed */
   }
+
+  ul.large-screen {
+    display: none;
+  }
 }
 
 /* Large screen */
@@ -38,5 +42,12 @@
 
   :host ul ul {
     padding-left: 1em;
+  }
+
+  a.mobile {
+    pointer-events: none; /* Disables click events */
+    cursor: default;      /* Changes the cursor to the default pointer */
+    text-decoration: none; /* Optionally remove underline */
+    color: inherit;       /* Optionally inherit the text color */
   }
 }
