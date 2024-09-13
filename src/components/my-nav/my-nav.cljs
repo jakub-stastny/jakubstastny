@@ -1,6 +1,6 @@
 (ns my-nav
   (:require [cherry.core :refer [defclass]]
-            [helpers :refer [tag no-self-referring-link get!]]
+            [helpers :refer [no-self-referring-link get!]]
             [router :refer [router]]))
 
 (defn- item-link
@@ -12,30 +12,23 @@
     (get! router-entry :path)
     opts)))
 
-(defn- render [root]
-  ;; (.appendChild root #html [:link {:rel "stylesheet" :href "/css/styles.css"}])
-  ;; (.appendChild root #html [:link {:rel "stylesheet" :href "/css/my-nav.css"}])
-  (.appendChild root (tag :link {:rel "stylesheet" :href "/css/styles.css"}))
-  (.appendChild root (tag :link {:rel "stylesheet" :href "/css/my-nav.css"}))
-
+(defn render []
   (let [main (item-link (get! router :index))
         about (item-link (get! router :about))
         spiritual-guidance (item-link (get! router :services-guidance))
         astro-reading (item-link (get! router :services-reading))
         remote-healing (item-link (get! router :services-healing))
         services [(item-link (get! router :services) {:class "mobile"})
-                  (tag :ul {:class "large-screen"}
-                       [(tag :li spiritual-guidance)
-                        (tag :li astro-reading)
-                        (tag :li remote-healing)])]
+                  #html [:ul {:class "large-screen"}
+                         [:li spiritual-guidance]
+                         [:li astro-reading]
+                         [:li remote-healing]]]
         contact (item-link (get! router :contact))]
-    (.appendChild root
-                  (tag :nav
-                       (tag :ul
-                            [(tag :li main)
-                             (tag :li about)
-                             (tag :li services)
-                             (tag :li contact)])))))
+    #html [:<>
+           [:link {:rel "stylesheet" :href "/css/styles.css"}]
+           [:link {:rel "stylesheet" :href "/css/my-nav.css"}]
+           [:nav
+            [:ul [:li main] [:li about] [:li services] [:li contact]]]]))
 
 (defclass MyNav
   (extends HTMLElement)
@@ -45,7 +38,6 @@
                (.attachShadow this #js {"mode" "open"}))
 
   Object
-  (connectedCallback [this]
-                     (render (.-shadowRoot this))))
+  (connectedCallback [this] (set! (.-innerHTML this) (render))))
 
 (js/customElements.define "my-nav" MyNav)

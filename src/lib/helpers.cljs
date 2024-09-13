@@ -51,8 +51,8 @@
    (no-self-referring-link title link {}))
   ([title link opts]
    (if (= js/window.location.pathname link)
-     (tag :span opts title)
-     (tag :a (merge {:href link} opts) title))))
+     #html [:span opts title]
+     #html [:a (merge {:href link} opts) title])))
 
 ;; TODO: add css-var! that fails if no CSS var was found or empty.
 (defn css-var [name]

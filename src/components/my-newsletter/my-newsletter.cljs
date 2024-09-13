@@ -1,12 +1,12 @@
 (ns my-newsletter
-  (:require [cherry.core :refer [defclass]]
-            [helpers :refer [tag]]))
+  (:require [cherry.core :refer [defclass]]))
 
-(defn- render [root]
-  (.appendChild root (tag :link {:rel "stylesheet" :href "/css/styles.css"}))
-  (.appendChild root (tag :link {:rel "stylesheet" :href "/css/my-newsletter.css"}))
-  (.appendChild root (tag :script {:src "https://assets.mailerlite.com/js/universal.js" :async true}))
-  (.appendChild root (tag :div {:class "ml-embedded" :data-form "GUqqOq"})))
+(defn render []
+  #html [:<>
+         [:link {:rel "stylesheet" :href "/css/styles.css"}]
+         [:link {:rel "stylesheet" :href "/css/my-newsletter.css"}]
+         [:script {:src "https://assets.mailerlite.com/js/universal.js" :async true}]
+         [:div {:class "ml-embedded" :data-form "GUqqOq"}]])
 
 (defn- ml-fn [& args]
   (js/console.log "MailerLite" (clj->js args))
@@ -32,7 +32,7 @@
 
   Object
   (connectedCallback [this]
-                     (render (.-shadowRoot this))
+                     (set! (.-innerHTML this) (render))
                      (initialize-mailer-lite)))
 
 (js/customElements.define "my-newsletter" MyNewsletter)
