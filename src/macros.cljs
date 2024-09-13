@@ -38,14 +38,13 @@
        (~'extends js/HTMLElement)
        (~'constructor [~'this]
         (~'super)
-        (js/console.log "HERE")
         ;; you can't emit a JS object from a macro
         ;; (.attachShadow ~'this #js {"mode" "open"})
         (.attachShadow ~'this (js-obj "mode" "open"))
         )
        ~'Object
        (~'connectedCallback [~'this]
-         (~render-fn (.-shadowRoot ~'this))))
+        (~'set! (.-innerHTML ~'this) (~render-fn))))
      (js/customElements.define ~element-name ~class-name)))
 
 ;; (defmacro component [class-name tag-name render-fn]
@@ -55,7 +54,6 @@
 
 ;;        (constructor [this]
 ;;          (super)
-;;          (js/console.log "HERE")
 ;;          (.attachShadow this #js {"mode" "open"}))
 
 ;;        Object
