@@ -58,6 +58,15 @@ https://github.com/squint-cljs/squint/blob/main/doc/defclass.md
   (js/customElements.define "my-nav" MyNav)
 #+end_src
 
+
+*** TODO Change to hiccup syntax
+- https://github.com/squint-cljs/cherry/issues/138
+
+**** TODO Change ~render~ to return string only
+
+***** TODO Make copying SVG dynamic
+Call ~render~ function of all the components and find <fa-icon name> in it.
+
 *** TODO constructor and connectedCallback
 
 #+begin_src clojure

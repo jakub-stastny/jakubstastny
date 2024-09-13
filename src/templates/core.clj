@@ -1,12 +1,13 @@
 (ns templates.core
   (:require [hiccup2.core :as h]
-            [cheshire.core :refer [generate-string]]
+            [cheshire.core :as json]
             [clojure.walk :as walk]))
 
 (def import-map
   {:imports
    { ;;:cherry-cljs "/vendor/cherry-cljs"
     "cherry-cljs/cljs.core.js" "/vendor/cherry-cljs/cljs.core.js"
+    "squint-cljs/src/squint/html.js" "/vendor/squint-cljs/html.js"
     :helpers "/js/helpers.mjs"
     :config "/js/config.mjs"
     :router "/js/router.mjs"}})
@@ -54,7 +55,7 @@
              [:title title]
              [:meta {:charset "utf-8"}]
              [:meta {:name "viewport" :content "width=device-width, initial-scale=1.0"}]
-             [:script {:type "importmap"} (h/raw (generate-string import-map))]
+             [:script {:type "importmap"} (h/raw (json/generate-string import-map))]
              [:link {:rel "stylesheet" :href "/css/layout.css"}]
              [:link {:rel "stylesheet" :href "/css/styles.css"}]
 

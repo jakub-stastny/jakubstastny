@@ -38,7 +38,12 @@
     (fs/copy "node_modules/cherry-cljs/lib/cljs.core.js" target-dir)
     ;; (fs/copy "node_modules/cherry-cljs/lib/clojure.set.js" target-dir)
     ;; (fs/copy "node_modules/cherry-cljs/lib/clojure.walk.js" target-dir)
-    (fs/copy "node_modules/cherry-cljs/lib/clojure.string.js" target-dir)))
+    (fs/copy "node_modules/cherry-cljs/lib/clojure.string.js" target-dir))
+
+  (let [target-dir (str config/vendor-dir "/squint-cljs")]
+    (fs/create-dirs target-dir)
+    (fs/copy "node_modules/squint-cljs/src/squint/core.js" target-dir)
+    (fs/copy "node_modules/squint-cljs/src/squint/html.js" target-dir)))
 
 (defn ensure-parent-dir [file-path]
   (when (str/includes? (subs file-path 6) "/")

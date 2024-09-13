@@ -1,7 +1,9 @@
 (ns my-footer
   (:require [cherry.core :refer [defclass]]
             [helpers :refer [tag css-var]]
-            [config :refer [youtube-link reddit-link]]))
+            [config :refer [youtube-link reddit-link]])
+  ;; (:require-macros [macros :refer [create-class]])
+  )
 
 (defn- social-icon [name link]
   (tag :a {:href link :target "_blank" :rel "noopener"}
@@ -23,15 +25,6 @@
     (.appendChild root (tag :link {:rel "stylesheet" :href "/css/my-footer.css"}))
     (.appendChild root (tag :footer social-icons))))
 
-(defclass MyFooter
-  (extends HTMLElement)
+;; (component "my-footer" render)
 
-  (constructor [this]
-               (super)
-               (.attachShadow this #js {"mode" "open"}))
-
-  Object
-  (connectedCallback [this]
-                     (render (.-shadowRoot this))))
-
-(js/customElements.define "my-footer" MyFooter)
+;; (create-class MyTestClass)

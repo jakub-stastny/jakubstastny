@@ -6,12 +6,15 @@ The compiled code that is actually deployed is in the [[https://github.com/jakub
 * Development
 #+begin_src shell
   ./bin/serve   # Serve locally.
-  ./bin/watch   # Watch for changes, compile.
+  ./bin/watch   # Watch for changes, compile (runs bin/build-cljs, build-css & build-html).
   ./bin/release # Compile & push to the rel branch.
 #+end_src
 
 * Tasks
 ** V1
+*** TODO Consider CSS generation
+- Babashka Toolbox mentions https://github.com/paraseba/cssgen and https://github.com/cdaddr/gaka (Clj).
+
 *** TODO Newsletter
 
 *** TODO Design
