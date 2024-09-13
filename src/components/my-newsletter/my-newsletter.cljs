@@ -1,5 +1,6 @@
 (ns my-newsletter
-  (:require [cherry.core :refer [defclass]]))
+  (:require [cherry.core :refer [defclass]])
+  (:require-macros [macros :refer [component]]))
 
 (defn render []
   #html [:<>
@@ -36,3 +37,5 @@
                      (initialize-mailer-lite)))
 
 (js/customElements.define "my-newsletter" MyNewsletter)
+
+;; (component MyNewsletter "my-newsletter" render)

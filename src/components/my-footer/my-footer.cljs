@@ -1,6 +1,5 @@
 (ns my-footer
-  (:require [cherry.core :refer [defclass]]
-            [helpers :refer [css-var]]
+  (:require [helpers :refer [css-var]]
             [config :refer [youtube-link reddit-link]])
   (:require-macros [macros :refer [component]]))
 

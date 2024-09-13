@@ -1,9 +1,8 @@
 (ns fa-icon
-  (:require [cherry.core :refer [defclass]]
-            [helpers :refer [tag]]))
+  (:require [cherry.core :refer [defclass]]))
 
-;; This approach didn't work with <a href="/contact"><fa-icon.
-;; (.appendChild this (tag :object {:type "image/svg+xml" :data path :style "height: 14pt"}))
+;; This approach didn't work with <a href="/contact"><fa-icon:
+;; <object type="image/svg+xml" data={path} :style "height: 14pt">
 (defclass FaIcon
   (extends HTMLElement)
   (constructor [this] (super))

@@ -1,7 +1,7 @@
 (ns my-nav
-  (:require [cherry.core :refer [defclass]]
-            [helpers :refer [no-self-referring-link get!]]
-            [router :refer [router]]))
+  (:require [helpers :refer [no-self-referring-link get!]]
+            [router :refer [router]])
+  (:require-macros [macros :refer [component]]))
 
 (defn- item-link
   ([router-entry]
@@ -30,14 +30,4 @@
            [:nav
             [:ul [:li main] [:li about] [:li services] [:li contact]]]]))
 
-(defclass MyNav
-  (extends HTMLElement)
-
-  (constructor [this]
-               (super)
-               (.attachShadow this #js {"mode" "open"}))
-
-  Object
-  (connectedCallback [this] (set! (.-innerHTML this) (render))))
-
-(js/customElements.define "my-nav" MyNav)
+(component MyNav "my-nav" render)

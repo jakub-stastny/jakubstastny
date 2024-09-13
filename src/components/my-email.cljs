@@ -1,6 +1,7 @@
 (ns my-footer
   (:require [cherry.core :refer [defclass]]
-            [config :refer [email-chunks]]))
+            [config :refer [email-chunks]])
+  (:require-macros [macros :refer [component]]))
 
 (defn- build-email [] (apply str email-chunks))
 
@@ -44,3 +45,5 @@
                          (update-in-slot subject slot-children)))))
 
 (js/customElements.define "my-email" MyEmail)
+
+;; (component MyEmail "my-email" render)

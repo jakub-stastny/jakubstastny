@@ -29,22 +29,22 @@
     :else
     (js/console.log "[set-content] Invalid attribute type" content)))
 
-(defn tag
-  ([tag-name]
-   (js/document.createElement (name tag-name)))
+;; (defn tag
+;;   ([tag-name]
+;;    (js/document.createElement (name tag-name)))
 
-  ([tag-name arg]
-   (let [element (js/document.createElement (name tag-name))]
-     (if (map? arg)
-       (set-attrs element arg)
-       (set-content element arg))
-     element))
+;;   ([tag-name arg]
+;;    (let [element (js/document.createElement (name tag-name))]
+;;      (if (map? arg)
+;;        (set-attrs element arg)
+;;        (set-content element arg))
+;;      element))
 
-  ([tag-name attrs content]
-   (let [element (js/document.createElement (name tag-name))]
-     (set-attrs element attrs)
-     (set-content element content)
-     element)))
+;;   ([tag-name attrs content]
+;;    (let [element (js/document.createElement (name tag-name))]
+;;      (set-attrs element attrs)
+;;      (set-content element content)
+;;      element)))
 
 (defn no-self-referring-link
   ([title link]

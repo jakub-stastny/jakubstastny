@@ -1,6 +1,6 @@
 (ns my-header
-  (:require [cherry.core :refer [defclass]]
-            [helpers :refer [no-self-referring-link]]))
+  (:require [helpers :refer [no-self-referring-link]])
+  (:require-macros [macros :refer [component]]))
 
 (defn render []
   #html [:<>
@@ -11,14 +11,4 @@
           [:h1 (no-self-referring-link "Know thy Self" "/")]
           [:h2 {:class "tagline"} "Guiding you to wholeness"]]])
 
-(defclass MyHeader
-  (extends HTMLElement)
-
-  (constructor [this]
-               (super)
-               (.attachShadow this #js {"mode" "open"}))
-
-  Object
-  (connectedCallback [this] (set! (.-innerHTML this) (render))))
-
-(js/customElements.define "my-header" MyHeader)
+(component MyHeader "my-header" render)

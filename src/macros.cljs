@@ -1,11 +1,7 @@
 (ns macros)
 
-(defmacro create-class [class-name]
-  `(cherry.core/defclass ~class-name))
-
 ;; (defmacro create-class [class-name & args]
 ;;   `(cherry.core/defclass ~class-name ~@args))
-
 
 ;; (defclass MyFooter
 ;;   (extends HTMLElement)
@@ -31,20 +27,25 @@
 ;;        (~'connectedCallback [~'this]
 ;;          (~render-fn (.-shadowRoot ~'this))))))
 
-;(def ^:private mode #js {"mode" "open"})
+(defn connected-callback [component render-fn]
+  (js/console.log component render-fn)
+  ;;(~'set! (.-innerHTML ~'this) (~render-fn))
+  )
+
 (defmacro component [class-name element-name render-fn]
   `(do
      (cherry.core/defclass ~class-name
        (~'extends js/HTMLElement)
        (~'constructor [~'this]
         (~'super)
-        ;; you can't emit a JS object from a macro
-        ;; (.attachShadow ~'this #js {"mode" "open"})
-        (.attachShadow ~'this (js-obj "mode" "open"))
-        )
+        ;; You can't emit a JS object (#js {...}) from a macro.
+        (.attachShadow ~'this (js-obj "mode" "open")))
+
        ~'Object
        (~'connectedCallback [~'this]
-        (~'set! (.-innerHTML ~'this) (~render-fn))))
+        ;; (~'connected-callback ~'this ~render-fn)
+        (~'set! (.-innerHTML (.-shadowRoot ~'this)) (~render-fn))))
+
      (js/customElements.define ~element-name ~class-name)))
 
 ;; (defmacro component [class-name tag-name render-fn]
