@@ -4,6 +4,9 @@
 (def vendor-dir "pages/vendor")
 (def cljs-glob "**/*.cljs")
 
+(def serverless-dir "netlify/functions")
+(def serverless-src "src/serverless")
+
 (def css-dir "pages/css")
 (def css-globs ["stylesheets/*.css" "components/**/*.css"])
 
