@@ -20,7 +20,7 @@ cp -R netlify netlify-copy
 echo "\n~ Switching to rel"
 git checkout rel
 
-rm -rf pages
+rm -rf pages netlify
 mv pages-copy pages
 mv netlify-copy netlify
 
