@@ -66,3 +66,11 @@
     (get m k)
     (throw (ex-info (str "Key '" k "' not found in the map")
                     {:map m :key k}))))
+
+;; const parser = new DOMParser();
+;; const doc = parser.parseFromString(htmlString, 'text/html');
+;; return doc.body.firstChild;
+(defn hiccup-to-node [html-string]
+  (let [parser (new js/DOMParser)
+        document (.parseFromString parser html-string "text/html")]
+    (.. document -body -firstChild)))

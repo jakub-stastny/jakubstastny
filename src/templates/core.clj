@@ -60,6 +60,9 @@
              [:link {:rel "stylesheet" :href "/css/styles.css"}]
 
              ;; TODO: Only load what given page needs.
+             [:script {:type "module" :src "/js/fa-icon.mjs"}]
+             [:script {:type "module" :src "/js/my-email.mjs"}]
+
              [:script {:type "module" :src "/js/my-header.mjs"}]
              [:script {:type "module" :src "/js/my-nav.mjs"}]
              [:script {:type "module" :src "/js/my-footer.mjs"}]

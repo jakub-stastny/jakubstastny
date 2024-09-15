@@ -1,6 +1,7 @@
 (ns my-footer
   (:require [cherry.core :refer [defclass]]
-            [config :refer [email-chunks]])
+            [config :refer [email-chunks]]
+            [helpers :refer [hiccup-to-node]])
   (:require-macros [macros :refer [component]]))
 
 (defn- build-email [] (apply str email-chunks))
@@ -11,7 +12,7 @@
 (defn- insert-default [root subject]
   (let [email (build-email)
         mailto (build-mailto subject)]
-    (.appendChild root #html [:a {:href mailto} email])))
+    (.appendChild root (hiccup-to-node #html [:a {:href mailto} email]))))
 
 (defn- update-in-slot [subject slot-children]
   (let [mailto (build-mailto subject)]
@@ -33,7 +34,7 @@
   (constructor [this]
                (super)
                (.attachShadow this #js {"mode" "open"})
-               (.appendChild (.-shadowRoot this) #html [:slot]))
+               (.appendChild (.-shadowRoot this) (js/document.createElement "slot")))
 
   Object
   (connectedCallback [this]
@@ -45,5 +46,3 @@
                          (update-in-slot subject slot-children)))))
 
 (js/customElements.define "my-email" MyEmail)
-
-;; (component MyEmail "my-email" render)

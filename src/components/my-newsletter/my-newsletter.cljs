@@ -27,9 +27,8 @@
 (defclass MyNewsletter
   (extends HTMLElement)
 
-  (constructor [this]
-               (super)
-               (.attachShadow this #js {"mode" "open"}))
+  ;; No shadow root -> the script tag will work.
+  (constructor [this] (super))
 
   Object
   (connectedCallback [this]

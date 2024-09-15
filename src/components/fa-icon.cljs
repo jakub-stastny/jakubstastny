@@ -5,9 +5,6 @@
 ;; <object type="image/svg+xml" data={path} style="height: 14pt">
 ;; The result wasn't navigable as a link.
 
-;; FIXME: This is never loaded.
-(js/console.log "FU")
-
 (defclass FaIcon
   (extends HTMLElement)
   (constructor [this] (super))
@@ -20,7 +17,6 @@
          response (js/await (js/fetch path))
          svg (js/await (.text response))
          colour (.getAttribute this "colour")]
-     (js/console.log "FA")
      (set! (.-innerHTML this) svg)
 
      ;; This is a bit silly. Maybe wrap in a div and set the style of the div.
