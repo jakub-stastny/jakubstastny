@@ -54,7 +54,6 @@
      #html [:span {:& opts} title]
      #html [:a {:& (merge opts {:href link})} title])))
 
-
 ;; TODO: add css-var! that fails if no CSS var was found or empty.
 (defn css-var [name]
   (let [css-var-name (str "--" name)
@@ -73,4 +72,6 @@
 (defn hiccup-to-node [html-string]
   (let [parser (new js/DOMParser)
         document (.parseFromString parser html-string "text/html")]
-    (.. document -body -firstChild)))
+    (if (= (.. document -body -childElementCount) 1)
+      (.. document -body -firstChild)
+      (throw (new Error (str "Not exactly 1 child element in:" html-string))))))
