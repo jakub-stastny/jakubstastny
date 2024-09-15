@@ -24,7 +24,7 @@ rm -rf pages
 mv pages-copy pages
 mv netlify-copy netlify
 
-git add pages
+git add pages netlify
 git commit -m "Automated commit from $(date '+%d/%m/%Y at %H:%M')"
 
 git checkout master
