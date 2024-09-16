@@ -1,4 +1,6 @@
-(ns functions.subscribe (:require [promesa :as p]))
+;; https://app.netlify.com/sites/jakubstastny/logs/functions/subscribe
+
+(ns functions.subscribe)
 
 ;; TODO: validation error if doesn't parse.
 (defn- parse-json [body]
@@ -21,10 +23,9 @@
 
 (defn handler [event context]
   (js/console.log "handler" event context)
-  (p/do
-    (let [method (.-httpMethod event)]
-      (js/console.log "HTTP method" method)
-      (cond
-        (= method "POST") (handle-post event context)
-        (= method "HEAD") (response 200 "")
-        :else             (response 405 "Method not allowed")))))
+  (let [method (.-httpMethod event)]
+    (js/console.log "HTTP method" method)
+    (cond
+      (= method "POST") (handle-post event context)
+      (= method "HEAD") (response 200 "")
+      :else             (response 405 "Method not allowed"))))
