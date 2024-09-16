@@ -17,7 +17,7 @@ echo "\n~ Compiling CLJS"
 echo "\n~ Compiling serverless functions"
 ./bin/build-serverless
 
-package_json_contents=$(<src/serverless/package.json)
+package_json_contents=$(<package.json)
 
 cp -R pages pages-copy
 cp -R netlify netlify-copy
