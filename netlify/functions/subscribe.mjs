@@ -27,10 +27,12 @@ const response3 = (await axios.post(endpoint, cherry_core.clj__GT_js.call(null, 
 console.log("Subscription successful:", response3.data);
 return response.call(null, 200, cherry_core.str.call(null, response.data));}
 catch(error4){
-const status5 = error4.response.status;
+const status5 = 400;
 const response_data6 = error4.response.data;
 console.error("Subscription failed with status code:", status5);
 console.error("Response data:", response_data6);
+console.log(error4);
+console.log(error4.response);
 return response.call(null, response.error.status, response.error.data);}
 
 })());
