@@ -1,4 +1,5 @@
 ;; https://app.netlify.com/sites/jakubstastny/logs/functions/subscribe
+;; https://developers.mailerlite.com/docs/subscribers.html#create-upsert-subscriber
 
 (ns netlify.functions.subscribe
   (:require [axios :as all-axios]))

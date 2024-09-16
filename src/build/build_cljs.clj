@@ -5,22 +5,25 @@
             [utils :as utils]
             [config :as config]))
 
-(defn process-fn [source-cljs-path]
-  (println (str "~ FN " source-cljs-path " -> " config/fn-dir))
-  (process/shell "npx" "cherry" "compile" source-cljs-path "--output-dir" config/fn-dir))
+;; Cherry has --output-dir option, but it recreates all the dirs, we need flat.
+(defn- process-fn [source-cljs-path source-mjs-path]
+  (let [target-path (str config/fn-dir "/" (fs/file-name source-mjs-path))]
+    (println (str "~ FN " source-cljs-path " -> " config/fn-dir))
+    (process/shell "npx" "cherry" "compile" source-cljs-path)
+    (fs/move source-mjs-path target-path {:replace-existing true})))
 
-(defn process-js [source-cljs-path]
-  (let [source-mjs-path (str/replace source-cljs-path #"\.cljs$" ".mjs")
-        target-path (str config/js-dir "/" (fs/file-name source-mjs-path))]
+(defn- process-js [source-cljs-path source-mjs-path]
+  (let [target-path (str config/js-dir "/" (fs/file-name source-mjs-path))]
     (println (str "~ JS " source-cljs-path " -> " target-path))
     (process/shell "npx" "cherry" "compile" source-cljs-path)
     (spit target-path (utils/minify-js (slurp source-mjs-path)))))
 
 (defn process-args [args]
   (doseq [source-cljs-path args]
-    (if (str/starts-with? source-cljs-path "src/serverless/")
-      (process-fn source-cljs-path)
-      (process-js source-cljs-path))))
+    (let [source-mjs-path (str/replace source-cljs-path #"\.cljs$" ".mjs")]
+      (if (str/starts-with? source-cljs-path "src/serverless/")
+        (process-fn source-cljs-path source-mjs-path)
+        (process-js source-cljs-path source-mjs-path)))))
 
 (defn process-default []
   (utils/recreate-dir config/js-dir)
