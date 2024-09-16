@@ -17,18 +17,31 @@ return cherry_core.vector(error1, null);}
 var response = (function (status, body) {
 return ({ "statusCode": status, "body": cherry_core.str.call(null, JSON.stringify(({ "message": body }), null, 2), "\n") });
 });
-var subscribe = (function (email) {
+var subscribe = (async function (email) {
 console.log(cherry_core.str.call(null, "Subscribing ", email, "."));
+return (await (async () => {
+try{
 const data1 = cherry_core.array_map(cherry_core.keyword("email"), email, cherry_core.keyword("groups"), cherry_core.vector(group_id));
 const options2 = cherry_core.array_map(cherry_core.keyword("headers"), headers);
-console.log(data1);
-console.log(options2);
-return console.log("then").then(axios.post(endpoint, cherry_core.clj__GT_js.call(null, data1), cherry_core.clj__GT_js.call(null, options2)), (function (response) {
-console.log("Subscription successful:", response.data);
-return response.call(null, 200, cherry_core.str.call(null, response.data));
+const response3 = (await axios.post(endpoint, cherry_core.clj__GT_js.call(null, data1), cherry_core.clj__GT_js.call(null, options2)));
+console.log("Subscription successful:", response3.data);
+return response.call(null, 200, cherry_core.str.call(null, response.data));}
+catch(error4){
+const status5 = error4.response.status;
+const response_data6 = error4.response.data;
+console.error("Subscription failed with status code:", status5);
+console.error("Response data:", response_data6);
+return response.call(null, response.error.status, response.error.data);}
+
+})());
+});
+var subscribe = (async function (email) {
+console.log(cherry_core.clj__GT_js.call(null, data));
+console.log(cherry_core.clj__GT_js.call(null, options));
+return console.log("then").then(axios.post(endpoint, cherry_core.clj__GT_js.call(null, data), cherry_core.clj__GT_js.call(null, options)), (function (response) {
+return console.log("Subscription successful:", response.data);
 }), (function (error) {
 console.error("Subscription failed:", _error.response);
-response.call(null, response.error.status, response.error.data);
 return response.call(null);
 }));
 });
