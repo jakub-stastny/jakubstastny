@@ -10,7 +10,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "cherry-cljs": "^0.3.22",
-    "promesa": "^0.1.1"
+    "axios": "^1.7.7",
+    "cherry-cljs": "^0.3.22"
   }
 }

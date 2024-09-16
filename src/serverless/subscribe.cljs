@@ -1,8 +1,11 @@
 ;; https://app.netlify.com/sites/jakubstastny/logs/functions/subscribe
 
-(ns functions.subscribe)
+(ns netlify.functions.subscribe
+  (:require [axios :as axios]))
 
-;; TODO: validation error if doesn't parse.
+(def api-token (.. process -env -MAILER_LITE_API_TOKEN))
+(def group-id "129574750637787099")
+
 (defn- parse-json [body]
   (try
     [nil (js->clj (js/JSON.parse body) :keywordize-keys true)]
@@ -11,14 +14,31 @@
       [error nil])))
 
 (defn- response [status body]
-  #js {:statusCode status :body (js/JSON.stringify #js {:message body} nil 2)})
+  #js {:statusCode status :body (str (js/JSON.stringify #js {:message body} nil 2) "\n")})
+
+(defn subscribe [email]
+  (let [data {:email email
+              :groups [group-id]}
+        options {:headers {"Content-Type" "application/json"
+                           "X-MailerLite-ApiKey" api-key}}]
+    (.then
+     (.post axios "https://api.mailerlite.com/api/v2/subscribers"
+            (clj->js data)
+            (clj->js options))
+     (fn [response]
+       (js/console.log "Subscription successful:" (.-data response))
+       (response 200 (str (.-data response))))
+     (fn [error]
+       (js/console.error "Subscription failed:" (.-response -error -data))
+       (response (.. response -error -status) (.. response -error -data))
+       (response)))))
 
 (defn- handle-post [event context]
   (let [[error data] (parse-json (.-body event))]
     (js/console.log "handle-post" error (clj->js data))
     (cond
       error                   (response 400 (ex-info error))
-      (contains? data :email) (response 200 "OK")
+      (contains? data :email) (response 200 (subscribe (:email data)))
       :else                   (response 400 "Validation error: key 'email' is missing."))))
 
 (defn- dbg [event context fun]
@@ -31,8 +51,6 @@
   (dbg event context
        (fn [event context]
          (let [method (.-httpMethod event)]
-           (js/console.log "HTTP method" method)
-           (cond
-             (= method "POST") (handle-post event context)
-             (= method "HEAD") (response 200 "")
-             :else (response 405 "Method not allowed"))))))
+           (cond (= method "POST") (handle-post event context)
+             (= method "HEAD")     (response 200 "")
+             :else                 (response 405 "Method not allowed"))))))
