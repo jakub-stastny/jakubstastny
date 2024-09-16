@@ -25,8 +25,14 @@ if (cherry_core.truth_.call(null, cherry_core.keyword("else"))) {
 return response.call(null, 400, "Validation error: key 'email' is missing.");} else {
 return null;}}}
 });
+var dbg = (function (event, context, fun) {
+const result1 = fun.call(null, event, context);
+console.log("Response", result1);
+return result1;
+});
 var handler = (function (event, context) {
 console.log("handler", event, context);
+return dbg.call(null, event, context, (function (event, context) {
 const method1 = event.httpMethod;
 console.log("HTTP method", method1);
 if (cherry_core.truth_.call(null, cherry_core._EQ_.call(null, method1, "POST"))) {
@@ -36,6 +42,7 @@ return response.call(null, 200, "");} else {
 if (cherry_core.truth_.call(null, cherry_core.keyword("else"))) {
 return response.call(null, 405, "Method not allowed");} else {
 return null;}}}
+}));
 });
 
-export { parse_json, response, handle_post, handler }
+export { parse_json, response, handle_post, dbg, handler }
