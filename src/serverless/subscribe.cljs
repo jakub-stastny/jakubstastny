@@ -25,6 +25,8 @@
           _ (js/console.log "data" (clj->js data))
           options {:headers headers}
           _ (js/console.log "options" (clj->js options))
+          _ (js/console.log "axios" axios)
+          _ (js/console.log "axios" (.-post axios))
           response (js/await (.post axios endpoint (clj->js data) (clj->js options)))]
       (js/console.log "S" response)
       ;; (js/console.log "Subscription successful:" (.-data response)))
