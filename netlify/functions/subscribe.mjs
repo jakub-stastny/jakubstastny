@@ -35,16 +35,6 @@ return response.call(null, response.error.status, response.error.data);}
 
 })());
 });
-var subscribe = (async function (email) {
-console.log(cherry_core.clj__GT_js.call(null, data));
-console.log(cherry_core.clj__GT_js.call(null, options));
-return console.log("then").then(axios.post(endpoint, cherry_core.clj__GT_js.call(null, data), cherry_core.clj__GT_js.call(null, options)), (function (response) {
-return console.log("Subscription successful:", response.data);
-}), (function (error) {
-console.error("Subscription failed:", _error.response);
-return response.call(null);
-}));
-});
 var handle_post = (function (event, context) {
 const vec__11 = parse_json.call(null, event.body);
 const error2 = cherry_core.nth.call(null, vec__11, 0, null);
