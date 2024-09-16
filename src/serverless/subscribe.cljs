@@ -3,7 +3,7 @@
 (ns netlify.functions.subscribe
   (:require [axios :as axios]))
 
-(def api-token (.. process -env -MAILER_LITE_API_TOKEN))
+(def api-key (.. process -env -MAILER_LITE_API_TOKEN))
 (def group-id "129574750637787099")
 
 (defn- parse-json [body]
@@ -17,6 +17,7 @@
   #js {:statusCode status :body (str (js/JSON.stringify #js {:message body} nil 2) "\n")})
 
 (defn subscribe [email]
+  (js/console.log (str "Subscribing " email "."))
   (let [data {:email email
               :groups [group-id]}
         options {:headers {"Content-Type" "application/json"
