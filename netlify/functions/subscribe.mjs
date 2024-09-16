@@ -33,7 +33,7 @@ console.error("Subscription failed with status code:", status5);
 console.error("Response data:", response_data6);
 console.log(error4);
 console.log(error4.response);
-return response.call(null, response.error.status, response.error.data);}
+return response.call(null, status5, "");}
 
 })());
 });
