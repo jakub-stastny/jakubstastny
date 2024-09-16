@@ -25,9 +25,11 @@ try{
 const data1 = cherry_core.array_map(cherry_core.keyword("email"), email, cherry_core.keyword("groups"), cherry_core.vector(group_id));
 const options2 = cherry_core.array_map(cherry_core.keyword("headers"), headers);
 const response3 = (await axios.post(endpoint, cherry_core.clj__GT_js.call(null, data1), cherry_core.clj__GT_js.call(null, options2)));
-return console.log("S", response3);}
+console.log("RESPONSE");
+return console.log(response3);}
 catch(error4){
-return console.log("E", error4);}
+console.log("ERROR");
+return console.log(error4);}
 
 })());
 });
