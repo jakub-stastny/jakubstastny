@@ -16,7 +16,7 @@ var handle_post = (function (event, context) {
 const vec__11 = parse_json.call(null, event.body);
 const error2 = cherry_core.nth.call(null, vec__11, 0, null);
 const data3 = cherry_core.nth.call(null, vec__11, 1, null);
-console.log("handle-post", error2, data3);
+console.log("handle-post", error2, cherry_core.clj__GT_js.call(null, data3));
 if (cherry_core.truth_.call(null, error2)) {
 return response.call(null, 400, cherry_core.ex_info.call(null, error2));} else {
 if (cherry_core.truth_.call(null, cherry_core.contains_QMARK_.call(null, data3, cherry_core.keyword("email")))) {
@@ -31,7 +31,7 @@ console.log("Response", result1);
 return result1;
 });
 var handler = (function (event, context) {
-console.log("handler", event, context);
+console.log("handler");
 return dbg.call(null, event, context, (function (event, context) {
 const method1 = event.httpMethod;
 console.log("HTTP method", method1);
