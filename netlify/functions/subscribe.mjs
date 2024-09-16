@@ -10,7 +10,7 @@ return cherry_core.vector(error1, null);}
 })();
 });
 var response = (function (status, body) {
-return ({ "statusCode": status, "body": body });
+return ({ "statusCode": status, "body": JSON.stringify(({ "message": body }), null, 2) });
 });
 var handle_post = (function (event, context) {
 const vec__11 = parse_json.call(null, event.body);
@@ -30,7 +30,7 @@ const result1 = fun.call(null, event, context);
 console.log("Response", result1);
 return result1;
 });
-var handler = (function (event, context) {
+var handler = (async function (event, context) {
 console.log("handler");
 return dbg.call(null, event, context, (function (event, context) {
 const method1 = event.httpMethod;
