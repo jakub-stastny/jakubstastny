@@ -1,8 +1,9 @@
 import * as cherry_core from 'cherry-cljs/cljs.core.js';
-import 'axios';
+import * as all_axios from 'axios';
+var axios = all_axios.default;
 var api_key = process.env.MAILER_LITE_API_TOKEN;
 var group_id = "129574750637787099";
-var headers = cherry_core.array_map("Content-Type", "application/json", "X-MailerLite-ApiKey", api_key);
+var headers = cherry_core.vector("Content-Type", "application/json", "X-MailerLite-ApiKey", api_key);
 var endpoint = "https://api.mailerlite.com/api/v2/subscribers";
 var parse_json = (function (body) {
 return (() => {
@@ -66,4 +67,4 @@ return null;}}}
 }));
 });
 
-export { api_key, handler, dbg, group_id, parse_json, endpoint, response, handle_post, subscribe, headers }
+export { api_key, handler, dbg, axios, group_id, parse_json, endpoint, response, handle_post, subscribe, headers }
