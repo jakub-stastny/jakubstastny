@@ -35,7 +35,7 @@
         (js/console.log error)
         ;; (js/console.log (.-response error))
         ;; (response (.. response -error -status) (.. response -error -data))
-        (response status "")))))
+        (response 400 "")))))
 
 (defn- handle-post [event context]
   (let [[error data] (parse-json (.-body event))]
