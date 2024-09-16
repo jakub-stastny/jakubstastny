@@ -18,20 +18,32 @@
 (defn- response [status body]
   #js {:statusCode status :body (str (js/JSON.stringify #js {:message body} nil 2) "\n")})
 
-(defn subscribe [email]
+(defn ^:async subscribe [email]
   (js/console.log (str "Subscribing " email "."))
-  (let [data {:email email :groups [group-id]} options {:headers headers}]
-    (js/console.log data)
-    (js/console.log options)
+  (try
+    (let [data {:email email :groups [group-id]}
+          options {:headers headers}
+          response (js/await (.post axios endpoint (clj->js data) (clj->js options)))]
+      (js/console.log "Subscription successful:" (.-data response)))
+      (response 200 (str (.-data response)))
+    (catch js/Error error
+      (let [status (.. error -response -status)
+            response-data (.. error -response -data)]
+        (js/console.error "Subscription failed with status code:" status)
+        (js/console.error "Response data:" response-data)
+        (response (.. response -error -status) (.. response -error -data))))))
+
+(defn ^:async subscribe [email]
+  (let []
+    (js/console.log (clj->js data))
+    (js/console.log (clj->js options))
     (.then
      (js/console.log "then")
      (.post axios endpoint (clj->js data) (clj->js options))
      (fn [response]
-       (js/console.log "Subscription successful:" (.-data response))
-       (response 200 (str (.-data response))))
+       (js/console.log "Subscription successful:" (.-data response)))
      (fn [error]
        (js/console.error "Subscription failed:" (.-response -error -data))
-       (response (.. response -error -status) (.. response -error -data))
        (response)))))
 
 (defn- handle-post [event context]
