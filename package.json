@@ -1,5 +1,16 @@
 {
+  "name": "jakubstastny",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
   "dependencies": {
-    "cherry-cljs": "^0.3.22"
+    "cherry-cljs": "^0.3.22",
+    "promesa": "^0.1.1"
   }
 }
