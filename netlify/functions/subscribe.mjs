@@ -1,5 +1,5 @@
 import * as cherry_core from 'cherry-cljs/cljs.core.js';
-import * as axios from 'axios';
+import 'axios';
 var api_key = process.env.MAILER_LITE_API_TOKEN;
 var group_id = "129574750637787099";
 var headers = cherry_core.array_map("Content-Type", "application/json", "X-MailerLite-ApiKey", api_key);
