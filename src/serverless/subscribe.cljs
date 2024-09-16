@@ -24,18 +24,21 @@
     (let [data {:email email :groups [group-id]}
           options {:headers headers}
           response (js/await (.post axios endpoint (clj->js data) (clj->js options)))]
-      (js/console.log "Subscription successful:" (.-data response)))
-      (response 200 (str (.-data response)))
-    (catch js/Error error
-      (let [ ;;status (.. error -response -status)
-            ;; response-data (.. error -response -data)
-            ]
-        ;; (js/console.error "Subscription failed with status code:" status)
-        ;; (js/console.error "Response data:" response-data)
-        (js/console.log error)
-        ;; (js/console.log (.-response error))
-        ;; (response (.. response -error -status) (.. response -error -data))
-        (response 400 "")))))
+      (js/console.log "S" response)
+      ;; (js/console.log "Subscription successful:" (.-data response)))
+      ;; (response 200 (str (.-data response)))
+      (catch js/Error error
+        (js/console.log "E" error)
+        ;; (let [ ;;status (.. error -response -status)
+        ;;       ;; response-data (.. error -response -data)
+        ;;       ]
+        ;;   ;; (js/console.error "Subscription failed with status code:" status)
+        ;;   ;; (js/console.error "Response data:" response-data)
+        ;;   (js/console.log error)
+        ;;   ;; (js/console.log (.-response error))
+        ;;   ;; (response (.. response -error -status) (.. response -error -data))
+        ;;   (response 400 ""))
+        )))
 
 (defn- handle-post [event context]
   (let [[error data] (parse-json (.-body event))]
