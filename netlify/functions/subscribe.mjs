@@ -1,4 +1,7 @@
 import * as cherry_core from 'cherry-cljs/cljs.core.js';
+import * as axios from 'axios';
+var api_token = process.env.MAILER_LITE_API_TOKEN;
+var group_id = "129574750637787099";
 var parse_json = (function (body) {
 return (() => {
 try{
@@ -10,7 +13,19 @@ return cherry_core.vector(error1, null);}
 })();
 });
 var response = (function (status, body) {
-return ({ "statusCode": status, "body": JSON.stringify(({ "message": body }), null, 2) });
+return ({ "statusCode": status, "body": cherry_core.str.call(null, JSON.stringify(({ "message": body }), null, 2), "\n") });
+});
+var subscribe = (function (email) {
+const data1 = cherry_core.array_map(cherry_core.keyword("email"), email, cherry_core.keyword("groups"), cherry_core.vector(group_id));
+const options2 = cherry_core.array_map(cherry_core.keyword("headers"), cherry_core.array_map("Content-Type", "application/json", "X-MailerLite-ApiKey", api_key));
+return axios.post("https://api.mailerlite.com/api/v2/subscribers", cherry_core.clj__GT_js.call(null, data1), cherry_core.clj__GT_js.call(null, options2)).then((function (response) {
+console.log("Subscription successful:", response.data);
+return response.call(null, 200, cherry_core.str.call(null, response.data));
+}), (function (error) {
+console.error("Subscription failed:", _error.response);
+response.call(null, response.error.status, response.error.data);
+return response.call(null);
+}));
 });
 var handle_post = (function (event, context) {
 const vec__11 = parse_json.call(null, event.body);
@@ -20,7 +35,7 @@ console.log("handle-post", error2, cherry_core.clj__GT_js.call(null, data3));
 if (cherry_core.truth_.call(null, error2)) {
 return response.call(null, 400, cherry_core.ex_info.call(null, error2));} else {
 if (cherry_core.truth_.call(null, cherry_core.contains_QMARK_.call(null, data3, cherry_core.keyword("email")))) {
-return response.call(null, 200, "OK");} else {
+return response.call(null, 200, subscribe.call(null, cherry_core.keyword("email").call(null, data3)));} else {
 if (cherry_core.truth_.call(null, cherry_core.keyword("else"))) {
 return response.call(null, 400, "Validation error: key 'email' is missing.");} else {
 return null;}}}
@@ -34,7 +49,6 @@ var handler = (async function (event, context) {
 console.log("handler");
 return dbg.call(null, event, context, (function (event, context) {
 const method1 = event.httpMethod;
-console.log("HTTP method", method1);
 if (cherry_core.truth_.call(null, cherry_core._EQ_.call(null, method1, "POST"))) {
 return handle_post.call(null, event, context);} else {
 if (cherry_core.truth_.call(null, cherry_core._EQ_.call(null, method1, "HEAD"))) {
@@ -45,4 +59,4 @@ return null;}}}
 }));
 });
 
-export { parse_json, response, handle_post, dbg, handler }
+export { api_token, group_id, parse_json, response, subscribe, handle_post, dbg, handler }
