@@ -23,15 +23,11 @@ console.log(cherry_core.str.call(null, "Subscribing ", email, "."));
 return (await (async () => {
 try{
 const data1 = cherry_core.array_map(cherry_core.keyword("email"), email, cherry_core.keyword("groups"), cherry_core.vector(group_id));
-const _2 = console.log("data", cherry_core.clj__GT_js.call(null, data1));
-const options3 = cherry_core.array_map(cherry_core.keyword("headers"), headers);
-const _4 = console.log("options", cherry_core.clj__GT_js.call(null, options3));
-const _5 = console.log("axios", axios);
-const _6 = console.log("axios", axios.post);
-const response7 = (await axios.post(endpoint, cherry_core.clj__GT_js.call(null, data1), cherry_core.clj__GT_js.call(null, options3)));
-return console.log("S", response7);}
-catch(error8){
-return console.log("E", error8);}
+const options2 = cherry_core.array_map(cherry_core.keyword("headers"), headers);
+const response3 = (await axios.post(endpoint, cherry_core.clj__GT_js.call(null, data1), cherry_core.clj__GT_js.call(null, options2)));
+return console.log("S", response3);}
+catch(error4){
+return console.log("E", error4);}
 
 })());
 });
