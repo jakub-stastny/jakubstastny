@@ -27,10 +27,13 @@
       (js/console.log "Subscription successful:" (.-data response)))
       (response 200 (str (.-data response)))
     (catch js/Error error
-      (let [status (.. error -response -status)
+      (let [;;status (.. error -response -status)
+            status 400
             response-data (.. error -response -data)]
         (js/console.error "Subscription failed with status code:" status)
         (js/console.error "Response data:" response-data)
+        (js/console.log error)
+        (js/console.log (.-response error))
         (response (.. response -error -status) (.. response -error -data))))))
 
 (defn- handle-post [event context]
