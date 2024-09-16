@@ -15,7 +15,7 @@
 
 (defn- handle-post [event context]
   (let [[error data] (parse-json (.-body event))]
-    (js/console.log "handle-post" error data)
+    (js/console.log "handle-post" error (clj->js data))
     (cond
       error                   (response 400 (ex-info error))
       (contains? data :email) (response 200 "OK")
@@ -27,7 +27,7 @@
     result))
 
 (defn handler [event context]
-  (js/console.log "handler" event context)
+  (js/console.log "handler")
   (dbg event context
        (fn [event context]
          (let [method (.-httpMethod event)]
