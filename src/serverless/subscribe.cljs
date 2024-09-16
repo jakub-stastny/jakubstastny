@@ -21,11 +21,18 @@
       (contains? data :email) (response 200 "OK")
       :else                   (response 400 "Validation error: key 'email' is missing."))))
 
+(defn- dbg [event context fun]
+  (let [result (fun event context)]
+    (js/console.log "Response" result)
+    result))
+
 (defn handler [event context]
   (js/console.log "handler" event context)
-  (let [method (.-httpMethod event)]
-    (js/console.log "HTTP method" method)
-    (cond
-      (= method "POST") (handle-post event context)
-      (= method "HEAD") (response 200 "")
-      :else             (response 405 "Method not allowed"))))
+  (dbg event context
+       (fn [event context]
+         (let [method (.-httpMethod event)]
+           (js/console.log "HTTP method" method)
+           (cond
+             (= method "POST") (handle-post event context)
+             (= method "HEAD") (response 200 "")
+             :else (response 405 "Method not allowed"))))))
