@@ -1,5 +1,4 @@
 import * as cherry_core from 'cherry-cljs/cljs.core.js';
-import * as p from 'promesa';
 var parse_json = (function (body) {
 return (() => {
 try{
@@ -28,7 +27,6 @@ return null;}}}
 });
 var handler = (function (event, context) {
 console.log("handler", event, context);
-return p.do$.call(null, (() => {
 const method1 = event.httpMethod;
 console.log("HTTP method", method1);
 if (cherry_core.truth_.call(null, cherry_core._EQ_.call(null, method1, "POST"))) {
@@ -38,7 +36,6 @@ return response.call(null, 200, "");} else {
 if (cherry_core.truth_.call(null, cherry_core.keyword("else"))) {
 return response.call(null, 405, "Method not allowed");} else {
 return null;}}}
-})());
 });
 
 export { parse_json, response, handle_post, handler }
