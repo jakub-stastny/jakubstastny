@@ -11,7 +11,7 @@
       [error nil])))
 
 (defn- response [status body]
-  #js {:statusCode status :body body})
+  #js {:statusCode status :body (js/JSON.stringify #js {:message body} nil 2)})
 
 (defn- handle-post [event context]
   (let [[error data] (parse-json (.-body event))]
@@ -26,7 +26,7 @@
     (js/console.log "Response" result)
     result))
 
-(defn handler [event context]
+(defn ^:async handler [event context]
   (js/console.log "handler")
   (dbg event context
        (fn [event context]
