@@ -26,7 +26,8 @@
           response (js/await (.post axios endpoint (clj->js data) (clj->js options)))]
       (js/console.log "S" response)
       ;; (js/console.log "Subscription successful:" (.-data response)))
-      ;; (response 200 (str (.-data response)))
+      ;; (response 200 (str (.-data response))
+      )
       (catch js/Error error
         (js/console.log "E" error)
         ;; (let [ ;;status (.. error -response -status)
