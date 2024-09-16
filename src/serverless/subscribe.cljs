@@ -1,11 +1,13 @@
 ;; https://app.netlify.com/sites/jakubstastny/logs/functions/subscribe
 
 (ns netlify.functions.subscribe
-  (:require [axios :default axios]))
+  (:require [axios :as all-axios]))
+
+(def axios (.-default all-axios))
 
 (def api-key (.. process -env -MAILER_LITE_API_TOKEN))
 (def group-id "129574750637787099")
-(def headers {"Content-Type" "application/json" "X-MailerLite-ApiKey" api-key})
+(def headers ["Content-Type" "application/json" "X-MailerLite-ApiKey" api-key])
 (def endpoint "https://api.mailerlite.com/api/v2/subscribers")
 
 (defn- parse-json [body]
