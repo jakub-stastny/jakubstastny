@@ -28,7 +28,7 @@ console.log("Subscription successful:", response3.data);
 return response.call(null, 200, cherry_core.str.call(null, response.data));}
 catch(error4){
 console.log(error4);
-return response.call(null, status, "");}
+return response.call(null, 400, "");}
 
 })());
 });
