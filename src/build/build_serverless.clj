@@ -17,9 +17,7 @@
   (fs/delete-tree config/serverless-dir)
   (fs/create-dirs config/serverless-dir)
 
-  (let [package-json (str config/serverless-src "/package.json")
-        cljs-files (map str (fs/glob config/serverless-src "*.cljs"))]
-    (fs/copy package-json (str config/serverless-dir "/package.json") {:replace-existing true})
+  (let [cljs-files (map str (fs/glob config/serverless-src "*.cljs"))]
     (process-args (remove utils/emacs-file? cljs-files))))
 
 (utils/generate-main-fn process-args process-default)

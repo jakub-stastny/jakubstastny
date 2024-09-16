@@ -14,6 +14,8 @@ echo "\n~ Building CSS"
 echo "\n~ Compiling CLJS"
 ./bin/build-cljs
 
+package_json_contents=$(<src/serverless/package.json)
+
 cp -R pages pages-copy
 cp -R netlify netlify-copy
 
@@ -23,6 +25,8 @@ git checkout rel
 rm -rf pages netlify
 mv pages-copy pages
 mv netlify-copy netlify
+
+echo "$package_json_contents" > package.json
 
 git add pages netlify
 git commit -m "Automated commit from $(date '+%d/%m/%Y at %H:%M')"
