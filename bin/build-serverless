@@ -1,3 +1,0 @@
-#!/usr/bin/env zsh
-
-exec bb -cp src/build --main build-serverless "$@"

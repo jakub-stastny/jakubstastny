@@ -49,6 +49,9 @@
   (when (str/includes? (subs file-path 6) "/")
     (fs/create-dirs (str/join "/" (butlast (str/split file-path #"/"))))))
 
+(defn recreate-dir [path]
+  (fs/delete-tree path) (fs/create-dirs path))
+
 (defn emacs-file? [path]
   (str/includes? path "#"))
 

@@ -14,9 +14,6 @@ echo "\n~ Building CSS"
 echo "\n~ Compiling CLJS"
 ./bin/build-cljs
 
-echo "\n~ Compiling serverless functions"
-./bin/build-serverless
-
 package_json_contents=$(<package.json)
 
 cp -R pages pages-copy
