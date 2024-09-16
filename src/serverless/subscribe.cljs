@@ -26,12 +26,14 @@
     (let [data {:email email :groups [group-id]}
           options {:headers headers}
           response (js/await (.post axios endpoint (clj->js data) (clj->js options)))]
-      (js/console.log "S" response)
+      (js/console.log "RESPONSE")
+      (js/console.log response)
       ;; (js/console.log "Subscription successful:" (.-data response)))
       ;; (response 200 (str (.-data response))
       )
       (catch js/Error error
-        (js/console.log "E" error)
+        (js/console.log "ERROR")
+        (js/console.log error)
         ;; (let [ ;;status (.. error -response -status)
         ;;       ;; response-data (.. error -response -data)
         ;;       ]
