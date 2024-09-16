@@ -5,10 +5,19 @@
 
 (def axios (.-default all-axios))
 
-(def api-key (.. process -env -MAILER_LITE_API_TOKEN))
+(def api-token (.. process -env -MAILER_LITE_API_TOKEN))
 (def group-id "129574750637787099")
-(def headers ["Content-Type" "application/json" "X-MailerLite-ApiKey" api-key])
-(def endpoint "https://api.mailerlite.com/api/v2/subscribers")
+(def headers
+  {"Content-Type" "application/json"
+   "Accept" "application/json"
+   "Authorization" (str "Bearer " api-token)})
+
+(defn endpoint [path]
+  (str "https://connect.mailerlite.com/api" path))
+
+(when-not api-token
+  (js/console.error "Please set MAILER_LITE_API_TOKEN.")
+  (js/process.exit 1))
 
 (defn- parse-json [body]
   (try
@@ -17,16 +26,19 @@
       (js/console.log "ERROR" error)
       [error nil])))
 
+(defn- to-json [message]
+  (str (js/JSON.stringify #js {:message message} nil 2) "\n"))
+
 (defn- response [status body]
-  #js {:statusCode status :body (str (js/JSON.stringify #js {:message body} nil 2) "\n")})
+  #js {:statusCode status :body (to-json body)})
 
 (defn ^:async subscribe [email]
   (js/console.log (str "Subscribing " email "."))
   (try
     (let [data {:email email :groups [group-id]}
           options {:headers headers}
-          response (js/await (.post axios endpoint (clj->js data) (clj->js options)))]
-      (js/console.log "RESPONSE")
+          response (js/await (.post axios (endpoint "/subscribers") (clj->js data) (clj->js options)))]
+      (js/console.log "RESPONSE") ;; NEVER gets here
       (js/console.log response)
       ;; (js/console.log "Subscription successful:" (.-data response)))
       ;; (response 200 (str (.-data response))
@@ -66,3 +78,5 @@
            (cond (= method "POST") (handle-post event context)
              (= method "HEAD")     (response 200 "")
              :else                 (response 405 "Method not allowed"))))))
+
+;; (subscribe "joe@gmail.com")
