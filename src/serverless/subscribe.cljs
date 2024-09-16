@@ -33,19 +33,6 @@
         (js/console.error "Response data:" response-data)
         (response (.. response -error -status) (.. response -error -data))))))
 
-(defn ^:async subscribe [email]
-  (let []
-    (js/console.log (clj->js data))
-    (js/console.log (clj->js options))
-    (.then
-     (js/console.log "then")
-     (.post axios endpoint (clj->js data) (clj->js options))
-     (fn [response]
-       (js/console.log "Subscription successful:" (.-data response)))
-     (fn [error]
-       (js/console.error "Subscription failed:" (.-response -error -data))
-       (response)))))
-
 (defn- handle-post [event context]
   (let [[error data] (parse-json (.-body event))]
     (js/console.log "handle-post" error (clj->js data))
