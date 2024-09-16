@@ -1,7 +1,7 @@
 ;; https://app.netlify.com/sites/jakubstastny/logs/functions/subscribe
 
 (ns netlify.functions.subscribe
-  (:require [axios :as axios]))
+  (:require [axios :default axios]))
 
 (def api-key (.. process -env -MAILER_LITE_API_TOKEN))
 (def group-id "129574750637787099")
