@@ -5,6 +5,8 @@
 
 (def api-key (.. process -env -MAILER_LITE_API_TOKEN))
 (def group-id "129574750637787099")
+(def headers {"Content-Type" "application/json" "X-MailerLite-ApiKey" api-key})
+(def endpoint "https://api.mailerlite.com/api/v2/subscribers")
 
 (defn- parse-json [body]
   (try
@@ -18,14 +20,12 @@
 
 (defn subscribe [email]
   (js/console.log (str "Subscribing " email "."))
-  (let [data {:email email
-              :groups [group-id]}
-        options {:headers {"Content-Type" "application/json"
-                           "X-MailerLite-ApiKey" api-key}}]
+  (let [data {:email email :groups [group-id]} options {:headers headers}]
+    (js/console.log data)
+    (js/console.log options)
     (.then
-     (.post axios "https://api.mailerlite.com/api/v2/subscribers"
-            (clj->js data)
-            (clj->js options))
+     (js/console.log "then")
+     (.post axios endpoint (clj->js data) (clj->js options))
      (fn [response]
        (js/console.log "Subscription successful:" (.-data response))
        (response 200 (str (.-data response))))
