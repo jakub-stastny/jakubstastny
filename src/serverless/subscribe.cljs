@@ -22,7 +22,9 @@
   (js/console.log (str "Subscribing " email "."))
   (try
     (let [data {:email email :groups [group-id]}
+          _ (js/console.log "data" (clj->js data))
           options {:headers headers}
+          _ (js/console.log "options" (clj->js options))
           response (js/await (.post axios endpoint (clj->js data) (clj->js options)))]
       (js/console.log "S" response)
       ;; (js/console.log "Subscription successful:" (.-data response)))
