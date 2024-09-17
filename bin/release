@@ -6,13 +6,13 @@ if ! git diff-index --quiet HEAD --; then
 fi
 
 echo "\n~ Building HTML"
-./bin/build-html
+./bin/build-html --release
 
 echo "\n~ Building CSS"
-./bin/build-css
+./bin/build-css --release
 
 echo "\n~ Compiling CLJS"
-./bin/build-cljs
+./bin/build-cljs --release
 
 package_json_contents=$(<package.json)
 

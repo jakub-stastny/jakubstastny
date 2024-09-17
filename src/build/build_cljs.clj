@@ -12,26 +12,27 @@
     (process/shell "npx" "cherry" "compile" source-cljs-path)
     (fs/move source-mjs-path target-path {:replace-existing true})))
 
-(defn- process-js [source-cljs-path source-mjs-path]
+(defn- process-js [source-cljs-path source-mjs-path flags]
   (let [target-path (str config/js-dir "/" (fs/file-name source-mjs-path))]
     (println (str "~ JS " source-cljs-path " -> " target-path))
     (process/shell "npx" "cherry" "compile" source-cljs-path)
-    (spit target-path (utils/minify-js (slurp source-mjs-path)))))
+    (let [minifier (if (contains? flags :release) utils/minify-js identity)]
+      (spit target-path (minifier (slurp source-mjs-path))))))
 
-(defn process-args [args]
-  (doseq [source-cljs-path args]
+(defn process-args [paths flags]
+  (doseq [source-cljs-path paths]
     (let [source-mjs-path (str/replace source-cljs-path #"\.cljs$" ".mjs")]
       (if (str/starts-with? source-cljs-path "src/serverless/")
         (process-fn source-cljs-path source-mjs-path)
-        (process-js source-cljs-path source-mjs-path)))))
+        (process-js source-cljs-path source-mjs-path flags)))))
 
-(defn process-default []
+(defn process-default [flags]
   (utils/recreate-dir config/js-dir)
   (utils/recreate-dir config/fn-dir)
 
   (utils/copy-cherry)
 
   (let [paths (map str (fs/glob "src" config/cljs-glob))]
-    (process-args (remove utils/emacs-file? paths))))
+    (process-args (remove utils/emacs-file? paths) flags)))
 
 (utils/generate-main-fn process-args process-default)

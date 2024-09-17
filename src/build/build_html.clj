@@ -32,17 +32,18 @@
                       (map #(str "Allow: " % "$") paths))]
     (spit (str config/html-dir "/robots.txt") (str/join "\n" lines))))
 
-(defn process-args [args]
+(defn process-args [args flags]
   (fs/create-dirs config/html-dir)
   (doseq [path args]
     (let [data (edn/read-string (slurp path))]
       (page data))))
 
-(defn process-default []
+(defn process-default [flags]
   (write-robots-txt)
   (copy-svgs)
   (process-args
    (remove utils/emacs-file?
-           (map str (fs/glob "src" config/page-glob)))))
+           (map str (fs/glob "src" config/page-glob)))
+   flags))
 
 (utils/generate-main-fn process-args process-default)

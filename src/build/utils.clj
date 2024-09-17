@@ -55,6 +55,12 @@
 (defn emacs-file? [path]
   (str/includes? path "#"))
 
+(defn process-args [args fn-args fn-default]
+  (let [group (group-by #(str/starts-with? % "--") args)
+        flags (into #{} (map #(keyword (str/replace-first % #"^--" "")) (group true)))
+        paths (group false)]
+    (if (seq paths) (fn-args paths flags) (fn-default flags))))
+
 (defmacro generate-main-fn [fn-args fn-default]
   `(defn ~'-main [& ~'args]
-     (if (seq ~'args) (~fn-args ~'args) (~fn-default))))
+     (~process-args ~'args ~fn-args ~fn-default)))
