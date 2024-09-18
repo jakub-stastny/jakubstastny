@@ -60,7 +60,6 @@
              [:link {:rel "stylesheet" :href "/css/styles.css"}]
 
              ;; TODO: Only load what given page needs.
-             [:script {:src "https://assets.mailerlite.com/js/universal.js" :async true}]
              [:script {:type "module" :src "/js/fa-icon.mjs"}]
              [:script {:type "module" :src "/js/my-email.mjs"}]
 

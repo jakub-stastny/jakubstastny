@@ -1,42 +1,29 @@
 (ns my-newsletter
-  (:require [cherry.core :refer [defclass]]))
+  (:require-macros [macros :refer [component]]))
+
+(defn- subscribe [email]
+  (js/console.log "EMAIL" email)
+  ;; TODO: POST to /.netlify/functions/subscribe
+  )
+
+(defn- submit-handler [event]
+  (.preventDefault event)
+  (let [form (.-target event)]
+    (subscribe (.. form -email -value))))
 
 (defn render []
   #html [:<>
          [:link {:rel "stylesheet" :href "/css/styles.css"}]
          [:link {:rel "stylesheet" :href "/css/my-newsletter.css"}]
-         [:script {:src "https://assets.mailerlite.com/js/universal.js" :async true}]
 
          [:h2 "Newsletter"]
-         [:div {:class "ml-embedded" :data-form "GUqqOq"}]])
+         [:form
+          [:div {:style "display: flex"}
+           [:input {:type "email" :name "email" :placeholder "you@email.com"}]
+           [:button {:type "submit"} "Subscribe"]]]])
 
-;; (defn- ml-fn [& args]
-;;   (js/console.log "MailerLite" (clj->js args))
-;;   (aset (.-ml js/window) "q"
-;;         (conj (or (.-q (.-ml js/window)) [])
-;;               args)))
+(defn setup [component shadow-root]
+  (let [form (.querySelector shadow-root "form")]
+    (.addEventListener form "submit" submit-handler)))
 
-;; (defn- initialize-mailer-lite []
-;;   (aset js/window "ml" ml-fn)
-;;   (ml-fn "account" "1062534"))
-
-;; https://dashboard.mailerlite.com/forms/129574726427214925/overview
-(defn- initialize-mailer-lite []
-  (js* "(function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
-    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
-    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
-    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
-    ml('account', '1062534')"))
-
-(defclass MyNewsletter
-  (extends HTMLElement)
-
-  ;; No shadow root -> the script tag will work.
-  (constructor [this] (super))
-
-  Object
-  (connectedCallback [this]
-                     (initialize-mailer-lite)
-                     (set! (.-innerHTML this) (render))))
-
-(js/customElements.define "my-newsletter" MyNewsletter)
+(component MyNewsletter "my-newsletter" render setup)
