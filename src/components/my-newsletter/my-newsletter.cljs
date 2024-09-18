@@ -21,11 +21,18 @@
         ;; TODO: Show error message.
         (js/console.error "Error:" e)))))
 
-(defn- submit-handler [event]
-  (.preventDefault event)
-  ;; TODO: Show a spinner, it looks like nothing's going on.
-  (let [form (.-target event)]
-    (subscribe (.. form -email -value))))
+(defn- generate-submit-handler [shadow-root]
+  ;; Cherry doesn't support async on anonymous fns.
+  (fn ^:async [event]
+    (.preventDefault event)
+    (let [form (.-target event)
+          spinner (.querySelector shadow-root "fa-icon")]
+      (prn spinner)
+      (set! (.-style.visibility spinner) "visible")
+      ;; (js/await (subscribe (.. form -email -value)))
+      (.then (subscribe (.. form -email -value))
+             (fn [_]
+               (set! (.-style.visibility spinner) "hidden"))))))
 
 (defn render []
   #html [:<>
@@ -41,6 +48,6 @@
 
 (defn setup [component shadow-root]
   (let [form (.querySelector shadow-root "form")]
-    (.addEventListener form "submit" submit-handler)))
+    (.addEventListener form "submit" (generate-submit-handler shadow-root))))
 
 (component MyNewsletter "my-newsletter" render setup)

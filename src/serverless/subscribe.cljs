@@ -77,10 +77,10 @@
   (dbg event context
        (fn [event context]
          (let [method (.-httpMethod event)]
-           (cond (= method "POST") (handle-post event context)
-             (= method "HEAD")     (response 201 "") ;; FIXME: This doesn't work, looks like GET.
-             (= method "OPTIONS")  (response 204 "" {"Allow" "HEAD, POST, OPTIONS"})
-             :else                 (response 405 "Method not allowed"))))))
+           (cond (= method "POST")    (handle-post event context)
+                 (= method "HEAD")    (response 201 "") ;; FIXME: This doesn't work, looks like GET.
+                 (= method "OPTIONS") (response 204 "" {"Allow" "HEAD, POST, OPTIONS"})
+                 :else                (response 405 "Method not allowed"))))))
 
 ;; Test if works when on macOS.
 (when (= (.platform os) "darwin")
