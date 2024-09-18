@@ -1,3 +1,4 @@
+;; TODO: A different picture of me or of something, maybe a drawing.
 {:path "/about" :title "About me" :content
  [[:h1 "About me"]
   [:p "From a young age, I was the black sheep—always different, always asking questions that others didn’t. This sense of being an outlier gave me the ability to see deeply into people and the world around me. When you’re not inside the box, you can truly see it for what it is."]

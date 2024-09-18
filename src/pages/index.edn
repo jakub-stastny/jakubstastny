@@ -18,9 +18,7 @@
     "It doesn't have to be like that. The ultimate answer to all life's challenges is Self-realisation. "
     "After seeing through the veil, nothing is same ever again. "
     "Obviously the challenges never go away, but after Self realisation there's a deep peace with anything that arises."]
-   [:div.buttons
-    [:a.button.blue {:href :services} "Tell me more"]
-    [:a.button.green {:href :contact} "Get in touch"]]]
+     [:p [:a {:href :self-realisation} "Learn more »"]]]
 
   [:div {:id "newsletter"}
    [:h2 "Subscribe to my newsletter!"]
