@@ -25,7 +25,7 @@ var to_json = (function (message) {
 return cherry_core.str.call(null, JSON.stringify(({ "message": message }), null, 2), "\n");
 });
 var response = (function (status, body) {
-return ({ "statusCode": status, "body": to_json.call(null, body) });
+return ({ "statusCode": status, "body": to_json.call(null, body), "headers": ({ "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Headers": "Content-Type", "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS" }) });
 });
 var subscribe = (async function (email) {
 console.log(cherry_core.str.call(null, "Subscribing ", email, "."));
