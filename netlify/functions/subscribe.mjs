@@ -52,16 +52,16 @@ return (await (async () => {
 try{
 const data1 = cherry_core.array_map(cherry_core.keyword("email"), email, cherry_core.keyword("groups"), cherry_core.vector(group_id));
 const options2 = cherry_core.array_map(cherry_core.keyword("headers"), headers);
-const response3 = (await axios.post(endpoint.call(null, "/subscribers"), cherry_core.clj__GT_js.call(null, data1), cherry_core.clj__GT_js.call(null, options2)));
-console.log("RESPONSE");
-return console.log(response3);}
+const api_response3 = (await axios.post(endpoint.call(null, "/subscribers"), cherry_core.clj__GT_js.call(null, data1), cherry_core.clj__GT_js.call(null, options2)));
+return response.call(null, 204, "");}
 catch(error4){
-console.log("ERROR");
-return console.log(error4);}
+console.log(cherry_core.str.call(null, "Error when subscribing ", email));
+console.log(error4);
+return response.call(null, 400, cherry_core.str.call(null, error4));}
 
 })());
 });
-var handle_post = (function (event, context) {
+var handle_post = (async function (event, context) {
 const vec__51 = parse_json.call(null, event.body);
 const error2 = cherry_core.nth.call(null, vec__51, 0, null);
 const data3 = cherry_core.nth.call(null, vec__51, 1, null);
@@ -69,7 +69,7 @@ console.log("handle-post", error2, cherry_core.clj__GT_js.call(null, data3));
 if (cherry_core.truth_.call(null, error2)) {
 return response.call(null, 400, cherry_core.ex_info.call(null, error2));} else {
 if (cherry_core.truth_.call(null, cherry_core.contains_QMARK_.call(null, data3, cherry_core.keyword("email")))) {
-return response.call(null, 201, subscribe.call(null, cherry_core.keyword("email").call(null, data3)));} else {
+return (await subscribe.call(null, cherry_core.keyword("email").call(null, data3)));} else {
 if (cherry_core.truth_.call(null, cherry_core.keyword("else"))) {
 return response.call(null, 400, "Validation error: key 'email' is missing.");} else {
 return null;}}}
