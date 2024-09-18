@@ -59,7 +59,7 @@
          [:link {:rel "stylesheet" :href "/css/styles.css"}]
          [:link {:rel "stylesheet" :href "/css/my-newsletter.css"}]
 
-         [:h2 "Newsletter"]
+         [:h2 "Subscribe to my newsletter"]
          [:fa-icon {:name "spinner" :style "display: none"}]
          [:div {:id "flash"}]
          ;; [:div {:id "flash" :class "success"} success-html]

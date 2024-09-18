@@ -9,7 +9,7 @@
    [:p {:style "margin-top: 20px;"}
     [:a {:href :about :style "color: #007bff; text-decoration: underline;"} "Read my story"]]]
 
-  [:my-newsletter]
+  [:div {:class "newsletter"} [:my-newsletter]]
 
   [:section#services {:style "text-align: center; padding: 50px 20px; background-color: #f8f9fa;"}
    [:h2 "Services"]
