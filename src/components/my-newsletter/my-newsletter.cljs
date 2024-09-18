@@ -8,22 +8,24 @@
 (def subscribe-endpoint (str custom-domain "/.netlify/functions/subscribe"))
 
 (defn- ^:async subscribe [email]
-  (js/console.log "EMAIL" email)
   (let [headers
         {:method "POST"
          :headers {"Content-Type" "application/json"}
          :body (js/JSON.stringify (clj->js {:email email}))}]
     (try
-      (prn :response headers)
       (let [response (js/await (js/fetch subscribe-endpoint (clj->js headers)))
-            _ (js/console.log response)
-            result (js/await (.json response))] ; Parse response as JSON
-        (js/console.log "Success:" result))
+            result (js/await (.json response))]
+        (prn response)
+        (prn result)
+        ;; TODO: Show success message.
+        )
       (catch js/Error e
+        ;; TODO: Show error message.
         (js/console.error "Error:" e)))))
 
 (defn- submit-handler [event]
   (.preventDefault event)
+  ;; TODO: Show a spinner, it looks like nothing's going on.
   (let [form (.-target event)]
     (subscribe (.. form -email -value))))
 
