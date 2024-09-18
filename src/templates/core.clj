@@ -47,7 +47,7 @@
 (defn run-filters [content]
   (walk/postwalk replace-href-keywords content))
 
-(defn template [title content]
+(defn template [title content css-path]
   (str
    (h/html (h/raw "<!DOCTYPE html>")
            [:html {:lang "en"}
@@ -58,6 +58,7 @@
              [:script {:type "importmap"} (h/raw (json/generate-string import-map))]
              [:link {:rel "stylesheet" :href "/css/layout.css"}]
              [:link {:rel "stylesheet" :href "/css/styles.css"}]
+             [:link {:rel "stylesheet" :href css-path}]
 
              ;; TODO: Only load what given page needs.
              [:script {:type "module" :src "/js/fa-icon.mjs"}]

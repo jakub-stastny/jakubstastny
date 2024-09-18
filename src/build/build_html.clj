@@ -8,10 +8,15 @@
 
 (defn page [{:keys [path title content]}]
   (let [path-fix-index (if (str/ends-with? path "/") (str path "index") path)
-        html-path (str config/html-dir path-fix-index ".html")]
+        html-path (str config/html-dir path-fix-index ".html")
+        css-base
+        (if (str/includes? (subs path 1) "/")
+          (get (str/split path #"/") 1)
+          (subs path-fix-index 1))
+        css-path (str "/css/" css-base ".css")]
     (println (str "~ Building " html-path "."))
     (utils/ensure-parent-dir html-path)
-    (spit html-path (template title content))))
+    (spit html-path (template title content css-path))))
 
 ;; It'd be best to automate, however in my-footer there's dynamic code.
 (defn copy-svgs []
