@@ -2,7 +2,8 @@
 ;; https://developers.mailerlite.com/docs/subscribers.html#create-upsert-subscriber
 
 (ns netlify.functions.subscribe
-  (:require [axios :as all-axios]))
+  (:require [os :as os]
+            [axios :as all-axios]))
 
 (def axios (.-default all-axios))
 
@@ -79,4 +80,6 @@
              (= method "OPTIONS")  (response 204 "" {"Allow" "HEAD, POST, OPTIONS"})
              :else                 (response 405 "Method not allowed"))))))
 
-;; (subscribe "joe@gmail.com")
+;; Test if works when on macOS.
+(when (= (.platform os) "darwin")
+  (subscribe "joe@gmail.com"))
