@@ -1,4 +1,5 @@
 import * as cherry_core from 'cherry-cljs/cljs.core.js';
+import * as os from 'os';
 import * as all_axios from 'axios';
 var axios = all_axios.default;
 var api_token = process.env.MAILER_LITE_API_TOKEN;
@@ -94,5 +95,7 @@ return response.call(null, 405, "Method not allowed");} else {
 return null;}}}}
 }));
 });
+if (cherry_core.truth_.call(null, cherry_core._EQ_.call(null, os.platform(), "darwin"))) {
+subscribe.call(null, "joe@gmail.com")};
 
 export { handler, dbg, axios, group_id, to_json, api_token, parse_json, endpoint, response, handle_post, subscribe, headers }
