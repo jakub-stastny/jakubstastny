@@ -31,7 +31,11 @@
   (str (js/JSON.stringify #js {:message message} nil 2) "\n"))
 
 (defn- response [status body]
-  #js {:statusCode status :body (to-json body)})
+  #js {:statusCode status
+       :body (to-json body)
+       :headers #js {"Access-Control-Allow-Origin" "*"
+                     "Access-Control-Allow-Headers" "Content-Type"
+                     "Access-Control-Allow-Methods" "GET, POST, PUT, DELETE, OPTIONS"}})
 
 (defn ^:async subscribe [email]
   (js/console.log (str "Subscribing " email "."))
