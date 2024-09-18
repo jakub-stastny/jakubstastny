@@ -48,32 +48,20 @@
   (try
     (let [data {:email email :groups [group-id]}
           options {:headers headers}
-          response (js/await (.post axios (endpoint "/subscribers") (clj->js data) (clj->js options)))]
-      (js/console.log "RESPONSE") ;; NEVER gets here
-      (js/console.log response)
-      ;; (js/console.log "Subscription successful:" (.-data response)))
-      ;; (response 204 (str (.-data response))
-      )
-      (catch js/Error error
-        (js/console.log "ERROR")
-        (js/console.log error)
-        ;; (let [ ;;status (.. error -response -status)
-        ;;       ;; response-data (.. error -response -data)
-        ;;       ]
-        ;;   ;; (js/console.error "Subscription failed with status code:" status)
-        ;;   ;; (js/console.error "Response data:" response-data)
-        ;;   (js/console.log error)
-        ;;   ;; (js/console.log (.-response error))
-        ;;   ;; (response (.. response -error -status) (.. response -error -data))
-        ;;   (response 400 ""))
-        )))
+          api-response (js/await (.post axios (endpoint "/subscribers") (clj->js data) (clj->js options)))]
+      ;; (js/console.log (.. api-response -data -data))
+      (response 204 ""))
+    (catch js/Error error
+      (js/console.log (str "Error when subscribing " email))
+      (js/console.log error)
+      (response 400 (str error)))))
 
-(defn- handle-post [event context]
+(defn- ^:async handle-post [event context]
   (let [[error data] (parse-json (.-body event))]
     (js/console.log "handle-post" error (clj->js data))
     (cond
       error                   (response 400 (ex-info error))
-      (contains? data :email) (response 201 (subscribe (:email data))) ;; TODO: This needs async/await.
+      (contains? data :email) (js/await (subscribe (:email data)))
       :else                   (response 400 "Validation error: key 'email' is missing."))))
 
 (defn- dbg [event context fun]
