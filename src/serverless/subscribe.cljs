@@ -45,6 +45,8 @@
           :headers (clj->js (merge cors-headers headers))})))
 
 (defn ^:async subscribe [email]
+  ;; Keep this here, so in case something goes wrong, we
+  ;; can still recover a (recent) email from Netlify logs.
   (js/console.log (str "Subscribing " email "."))
   (try
     (let [data {:email email :groups [group-id]}

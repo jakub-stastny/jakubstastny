@@ -2,6 +2,8 @@
   (:require [config :refer [custom-domain]])
   (:require-macros [macros :refer [component]]))
 
+(js/import "/js/fa-icon.mjs")
+
 (defn prn [& args]
   (apply js/console.log (map #(clj->js %) args)))
 
@@ -13,12 +15,8 @@
          :headers {"Content-Type" "application/json"}
          :body (js/JSON.stringify (clj->js {:email email}))}]
     (try
-      (let [response (js/await (js/fetch subscribe-endpoint (clj->js headers)))
-            result (js/await (.json response))]
-        (prn response)
-        (prn result)
+      (js/await (js/fetch subscribe-endpoint (clj->js headers)))
         ;; TODO: Show success message.
-        )
       (catch js/Error e
         ;; TODO: Show error message.
         (js/console.error "Error:" e)))))
@@ -35,6 +33,7 @@
          [:link {:rel "stylesheet" :href "/css/my-newsletter.css"}]
 
          [:h2 "Newsletter"]
+         [:fa-icon {:name "spinner" :style "visibility: hidden"}]
          [:form
           [:div {:style "display: flex"}
            [:input {:type "email" :name "email" :required true :placeholder "you@email.com"}]
