@@ -1,10 +1,12 @@
 User-agent: *
 Disallow: /
 Allow: /$
-Allow: /about$
-Allow: /services/spiritual-guidance$
-Allow: /services/intuitive-astrology-reading$
 Allow: /services/remote-energy-healing$
-Allow: /services$
-Allow: /contact$
 Allow: /uncopyright$
+Allow: /self-realisation$
+Allow: /donate$
+Allow: /contact$
+Allow: /services/intuitive-astrology-reading$
+Allow: /services/spiritual-guidance$
+Allow: /about$
+Allow: /services$
