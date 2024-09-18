@@ -1,3 +1,3 @@
 {:path "/self-realisation" :title "Self-realisation" :content
  [[:h2 "Self-realisation"]
-  [:p "..."]]}
+  [:p {:style "font-style: italic"} "I'm working on this page (as of September 2024), it'll be up hopefully soon."]]}
