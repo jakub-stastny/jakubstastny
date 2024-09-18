@@ -1,21 +1,36 @@
 {:path "/" :title "Main page" :content
- [[:section#hero {:style "text-align: center; padding: 80px 20px; background-color: #ffffff;"}
-   [:h1 "Guiding you to inner peace and clarity"]
-   [:p {:style "margin-top: 20px;"} "Personalised spiritual guidance, rooted in practical wisdom and real-life experience."]]
+ [[:section
+   [:h2 "Hi! Nice to meet you."]
+   [:div#intro
+    [:div
+     [:img.avatar {:src "https://gravatar.com/avatar/96b3f2b784832a6c0a957a34e63bf0ea?s=200" :width 200 :height 200}]]
+    [:div
+     [:p "I’m Jakub Šťastný, a spiritual guide and energy healer dedicated to helping others find balance and purpose in their lives."]
+     [:p
+      "After a lot of suffering, my sensibilities opened and I was finally able to see through the veil of reality. "
+      "I developed acute psychic sensibilities as well as an understanding of how to guide people through the awakening process."]
+     [:p [:a {:href :about} "Read my story »"]]]]]
 
-  [:section#introduction {:style "text-align: center; padding: 60px 20px; background-color: #f3f4f6;"}
-   [:h2 "Services"]
-   [:p "I’m Jakub Stastny, a spiritual guide dedicated to helping others find balance and purpose in their lives. My approach is practical and grounded, designed to help you navigate your journey with confidence and peace."]
-   [:p {:style "margin-top: 20px;"}
-    [:a {:href :about :style "color: #007bff; text-decoration: underline;"} "Read my story"]]]
+  [:section
+   [:h2 "Self-realisation: the answer to your prayers"]
+   [:p
+    "Life of most people is just so hard. The suffering is so real, the crises are so cripling and the worries seldom stop. "
+    "It doesn't have to be like that. The ultimate answer to all life's challenges is Self-realisation. "
+    "After seeing through the veil, nothing is same ever again. "
+    "Obviously the challenges never go away, but after Self realisation there's a deep peace with anything that arises."]
+   [:div.buttons
+    [:a.button.blue {:href :services} "Tell me more"]
+    [:a.button.green {:href :contact} "Get in touch"]]]
 
-  [:div {:class "newsletter"} [:my-newsletter]]
+  [:div {:id "newsletter"}
+   [:h2 "Subscribe to my newsletter!"]
+   [:p {:style "font-style: italic"} "Don't miss out on the latest tips. Be in the know."]
+   [:my-newsletter]]
 
-  [:section#services {:style "text-align: center; padding: 50px 20px; background-color: #f8f9fa;"}
-   [:h2 "Services"]
-   [:div {:style "max-width: 800px; margin: 0 auto;"}
+  [:section
+   [:h2 "How can I help you?"]
+   [:div
     [:p "Whether you’re seeking clarity through talk therapy, insight through astrology, or healing through energy work, I’m here to support you on your spiritual journey."]
-    [:div {:style "margin-top: 20px;"}
-     [:p {:style "margin-top: 20px;"}
-      [:a {:href :services :style "padding: 10px 20px; margin-right: 10px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;"} "Explore services"]
-      [:a {:href :contact :style "padding: 10px 20px; background-color: #28a745; color: #fff; text-decoration: none; border-radius: 5px;"} "Get in touch"]]]]]]}
+    [:div.buttons
+     [:a.button.blue {:href :services} "Explore services"]
+     [:a.button.green {:href :contact} "Get in touch"]]]]]}

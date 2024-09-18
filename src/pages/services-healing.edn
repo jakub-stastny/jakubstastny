@@ -1,3 +1,4 @@
+;; TODO: Find the photo from my poster.
 {:path "/services/remote-energy-healing" :title "Remote energy healing" :content
  [[:h1 "Remote energy healing"]
   [:p [:strong "Recommended donation: "] "$100, " [:strong "duration: "] "1 hour."]

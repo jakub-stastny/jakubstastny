@@ -25,6 +25,15 @@ html {
   font-family: sans-serif;
 }
 
+h1, h2 {
+  text-align: center;
+}
+
+.avatar {
+  margin: 12px;
+  border-radius: 17px;
+}
+
 main {
   padding: 50px;
   background: var(--secondary-colour);
@@ -55,3 +64,23 @@ blockquote {
 .price {
   font-style: italic;
 }
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+a.button {
+  padding: 10px 20px;
+  margin-right: 10px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+a.button, a.button:visited, a.button:hover, a.button:focus, a.button:active {
+  color: white;
+}
+
+.button.green { background: #28a745; }
+.button.blue { background: #007bff; }
