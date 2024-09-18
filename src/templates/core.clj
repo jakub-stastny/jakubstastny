@@ -27,6 +27,7 @@
    :services-healing {:path "/services/remote-energy-healing" :title "Remote energy healing"}
    :services {:path "/services" :title "Services"}
    :contact {:path "/contact" :title "Contact"}
+   :donate {:path "/donate" :title "Donate"}
    :uncopyright {:path "/uncopyright" :title "Uncopyright"}})
 
 (def external-links
