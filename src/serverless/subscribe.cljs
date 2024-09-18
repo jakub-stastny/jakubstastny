@@ -30,12 +30,18 @@
 (defn- to-json [message]
   (str (js/JSON.stringify #js {:message message} nil 2) "\n"))
 
-(defn- response [status body]
-  #js {:statusCode status
-       :body (to-json body)
-       :headers #js {"Access-Control-Allow-Origin" "*"
-                     "Access-Control-Allow-Headers" "Content-Type"
-                     "Access-Control-Allow-Methods" "GET, POST, PUT, DELETE, OPTIONS"}})
+(defn- response
+  ([status body]
+   (response status body {}))
+
+  ([status body headers]
+   (let [cors-headers
+         {"Access-Control-Allow-Origin" "*"
+          "Access-Control-Allow-Headers" "Content-Type"
+          "Access-Control-Allow-Methods" "HEAD, POST, OPTIONS"}]
+     #js {:statusCode status
+          :body (to-json body)
+          :headers (clj->js (merge cors-headers headers))})))
 
 (defn ^:async subscribe [email]
   (js/console.log (str "Subscribing " email "."))
@@ -46,7 +52,7 @@
       (js/console.log "RESPONSE") ;; NEVER gets here
       (js/console.log response)
       ;; (js/console.log "Subscription successful:" (.-data response)))
-      ;; (response 200 (str (.-data response))
+      ;; (response 204 (str (.-data response))
       )
       (catch js/Error error
         (js/console.log "ERROR")
@@ -67,7 +73,7 @@
     (js/console.log "handle-post" error (clj->js data))
     (cond
       error                   (response 400 (ex-info error))
-      (contains? data :email) (response 200 (subscribe (:email data)))
+      (contains? data :email) (response 201 (subscribe (:email data))) ;; TODO: This needs async/await.
       :else                   (response 400 "Validation error: key 'email' is missing."))))
 
 (defn- dbg [event context fun]
@@ -81,7 +87,8 @@
        (fn [event context]
          (let [method (.-httpMethod event)]
            (cond (= method "POST") (handle-post event context)
-             (= method "HEAD")     (response 200 "")
+             (= method "HEAD")     (response 201 "") ;; FIXME: This doesn't work, looks like GET.
+             (= method "OPTIONS")  (response 204 "" {"Allow" "HEAD, POST, OPTIONS"})
              :else                 (response 405 "Method not allowed"))))))
 
 ;; (subscribe "joe@gmail.com")
