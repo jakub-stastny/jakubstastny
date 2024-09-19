@@ -3,13 +3,13 @@
             [config :refer [youtube-link reddit-link]])
   (:require-macros [macros :refer [component]]))
 
+;; Dependencies
+;;
 ;; Script tags inside the shadow DOM are not executed in the same way
 ;; they would be if they were in the main document. When you include a
 ;; script tag inside the shadow root, it does not have the same global
 ;; scope as when it’s included in the main document. Therefore, the script
 ;; may not load or execute as expected within the shadow DOM context.
-;; (js* "import('/js/fa-icon.mjs')")
-;; (js* "import('/js/my-email.mjs')")
 (js/import "/js/fa-icon.mjs")
 (js/import "/js/my-email.mjs")
 
