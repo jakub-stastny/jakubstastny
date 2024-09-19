@@ -82,6 +82,10 @@
                  (= method "OPTIONS") (response 204 "" {"Allow" "HEAD, POST, OPTIONS"})
                  :else                (response 405 "Method not allowed"))))))
 
-;; Test if works when on macOS.
+;; On macOS you can subscribe users by running:
+;; npx cherry run src/serverless/subscribe.cljs joe@gmail.com
 (when (= (.platform os) "darwin")
-  (subscribe "joe@gmail.com"))
+  (let [args (drop 4 (js->clj (.-argv js/process)))]
+    (if (empty? args)
+      (subscribe "joe@gmail.com")
+      (doseq [email args] (subscribe email)))))
