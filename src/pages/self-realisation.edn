@@ -1,3 +1,29 @@
 {:path "/self-realisation" :title "Self-realisation" :content
  [[:h2 "Self-realisation"]
-  [:p {:style "font-style: italic"} "I'm working on this page (as of September 2024), it'll be up hopefully soon."]]}
+  [:p
+   "Self-realisation is the profound recognition of one’s true nature beyond the mind and body, "
+   "often described as the direct experience of Oneness or the ultimate truth of existence. "
+   "It is not merely an intellectual understanding but a deep, experiential awakening"
+   "to the fact that the individual self, or ego, is an illusion. "
+   "The essence of who you are is pure awareness, untouched by the ever-changing circumstances of life."]
+  [:h3 "How does Self-realisation change your life?"]
+  [:ul
+   [:li
+    [:strong "Peace and Stability:"]
+    "Once you realise your true nature, an abiding sense of inner peace naturally arises. This peace isn’t dependent on external situations. You become less reactive, less disturbed by life’s ups and downs, and can handle challenges with equanimity."]
+   [:li
+    [:strong "Freedom from Suffering:"]
+    "Much of our suffering comes from identifying with our thoughts, emotions, and past experiences. Self-realisation dissolves this attachment, leading to liberation from mental and emotional pain. You still feel emotions, but they no longer define you or control your actions."]
+   [:li
+    [:strong "Clarity and Purpose:"]
+    "With Self-realisation, you see life with clarity. You understand your purpose, not from a place of societal pressure or personal ambition, but from an alignment with your deeper essence. You flow with life, guided by intuition and a profound sense of knowing."]
+   [:li
+    [:strong "Compassion and Connection:"]
+    "When you realise your true nature, you see that the same essence exists in all beings. This naturally fosters compassion and a deep sense of connection with others. Relationships improve as they become grounded in love and understanding, rather than neediness or egoic desires."]
+   [:li
+    [:strong "Freedom from Fear:"]
+    "Fear, which stems from the ego’s need for survival, diminishes with Self-realisation. Knowing that your essence is eternal and beyond physical existence, you no longer fear death or loss in the same way."]
+   [:li
+    [:strong "Simplicity and Contentment:"]
+    "Self-realisation brings a natural contentment with life as it is. You are no longer driven by compulsive desires or the need to constantly achieve or acquire. Simplicity becomes the norm, and with it, a deep sense of fulfilment."]]
+  [:p "We are meant to be Self-realised. Living without it just feels like agony."]]}
