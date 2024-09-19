@@ -14,6 +14,10 @@ echo "\n~ Building CSS"
 echo "\n~ Compiling CLJS"
 ./bin/build-cljs --release
 
+echo "\n~ Copying over assets"
+rm -rf pages/assets
+cp -R src/assets pages/
+
 package_json_contents=$(<package.json)
 
 cp -R pages pages-copy

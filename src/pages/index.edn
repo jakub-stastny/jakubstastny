@@ -3,7 +3,8 @@
    [:h2 "Hi! Nice to meet you."]
    [:div#intro
     [:div
-     [:img.avatar {:src "https://gravatar.com/avatar/96b3f2b784832a6c0a957a34e63bf0ea?s=200" :width 200 :height 200}]]
+     ;; [:img.avatar {:src "https://gravatar.com/avatar/96b3f2b784832a6c0a957a34e63bf0ea?s=200" :width 200 :height 200}]
+     [:img.avatar {:src "/assets/jakub.jpg" :width 200 :height 200}]]
     [:div
      [:p "I’m Jakub Šťastný, a spiritual guide and energy healer dedicated to helping others find balance and purpose in their lives."]
      [:p
