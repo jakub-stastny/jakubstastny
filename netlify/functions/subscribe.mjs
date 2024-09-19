@@ -96,6 +96,55 @@ return null;}}}}
 }));
 });
 if (cherry_core.truth_.call(null, cherry_core._EQ_.call(null, os.platform(), "darwin"))) {
-subscribe.call(null, "joe@gmail.com")};
+const args1 = cherry_core.drop.call(null, 4, cherry_core.js__GT_clj.call(null, process.argv));
+if (cherry_core.truth_.call(null, cherry_core.empty_QMARK_.call(null, args1))) {
+subscribe.call(null, "joe@gmail.com")} else {
+let seq__82 = cherry_core.seq.call(null, args1);
+let chunk__93 = null;
+let count__104 = 0;
+let i__115 = 0;
+while(true){
+if ((i__115) < (count__104)) {
+const email6 = cherry_core._nth.call(null, chunk__93, i__115);
+subscribe.call(null, email6);
+let G__7 = seq__82;
+let G__8 = chunk__93;
+let G__9 = count__104;
+let G__10 = cherry_core.unchecked_inc.call(null, i__115);
+seq__82 = G__7;
+chunk__93 = G__8;
+count__104 = G__9;
+i__115 = G__10;
+continue;
+} else {
+const temp__23035__auto__11 = cherry_core.seq.call(null, seq__82);
+if (cherry_core.truth_.call(null, temp__23035__auto__11)) {
+const seq__812 = temp__23035__auto__11;
+if (cherry_core.truth_.call(null, cherry_core.chunked_seq_QMARK_.call(null, seq__812))) {
+const c__23267__auto__13 = cherry_core.chunk_first.call(null, seq__812);
+let G__14 = cherry_core.chunk_rest.call(null, seq__812);
+let G__15 = c__23267__auto__13;
+let G__16 = cherry_core.count.call(null, c__23267__auto__13);
+let G__17 = 0;
+seq__82 = G__14;
+chunk__93 = G__15;
+count__104 = G__16;
+i__115 = G__17;
+continue;
+} else {
+const email18 = cherry_core.first.call(null, seq__812);
+subscribe.call(null, email18);
+let G__19 = cherry_core.next.call(null, seq__812);
+let G__20 = null;
+let G__21 = 0;
+let G__22 = 0;
+seq__82 = G__19;
+chunk__93 = G__20;
+count__104 = G__21;
+i__115 = G__22;
+continue;
+}}};break;
+}
+}};
 
 export { handler, dbg, axios, group_id, to_json, api_token, parse_json, endpoint, response, handle_post, subscribe, headers }
