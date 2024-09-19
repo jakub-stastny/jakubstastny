@@ -18,6 +18,11 @@
    "window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments) };"
    "gtag('js', new Date()); gtag('config', 'G-KQSJ36RMR3') }"))
 
+;; This is somewhat problematic, duplication.
+;; The point is the key is used, but still.
+;;
+;; I think best would be to include the key in the actual EDN files and generate routes dynamically, thus:
+;; {:key :index :path "/" :title "Main page" :content ...}
 (def routes
   {:index {:path "/" :title "Main page"}
    :about {:path "/about" :title "About me"}
@@ -54,7 +59,7 @@
    (h/html (h/raw "<!DOCTYPE html>")
            [:html {:lang "en"}
             [:head
-             [:title title]
+             [:title (if title title "Jakub Šťastný spiritual guide")]
              [:meta {:charset "utf-8"}]
              [:meta {:name "viewport" :content "width=device-width, initial-scale=1.0"}]
              [:script {:type "importmap"} (h/raw (json/generate-string import-map))]

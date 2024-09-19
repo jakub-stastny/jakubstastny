@@ -26,4 +26,10 @@
    [:li
     [:strong "Simplicity and Contentment:"]
     "Self-realisation brings a natural contentment with life as it is. You are no longer driven by compulsive desires or the need to constantly achieve or acquire. Simplicity becomes the norm, and with it, a deep sense of fulfilment."]]
-  [:p "We are meant to be Self-realised. Living without it just feels like agony."]]}
+  [:p "We are meant to be Self-realised. Living without it just feels like agony."]
+
+  [:p "All of the services I offer are designed to help you realise the Self. Energy healing, apart from dealing with any actual illness you may have, will also elevate your vibrations and will allow you to see easier through the veil. Intuitive reading will allow you to get to know yourself better. And finally spiritual guidance is here to point your blind spots to you and witness what has to come out to the light in order for it to heal."]
+
+  [:div.buttons
+   [:a.button.blue {:href :services} "Explore services"]
+   [:a.button.green {:href :contact} "Get in touch"]]]}

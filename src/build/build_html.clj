@@ -6,6 +6,7 @@
             [utils :as utils]
             [templates.core :refer [template routes]]))
 
+;; The input is data from the EDN files in src/pages.
 (defn page [{:keys [path title content]}]
   (let [path-fix-index (if (str/ends-with? path "/") (str path "index") path)
         html-path (str config/html-dir path-fix-index ".html")
@@ -13,10 +14,11 @@
         (if (str/includes? (subs path 1) "/")
           (get (str/split path #"/") 1)
           (subs path-fix-index 1))
-        css-path (str "/css/" css-base ".css")]
+        css-path (str "/css/" css-base ".css")
+        title-fix-index (when-not (= path "/") title)]
     (println (str "~ Building " html-path "."))
     (utils/ensure-parent-dir html-path)
-    (spit html-path (template title content css-path))))
+    (spit html-path (template title-fix-index content css-path))))
 
 ;; It'd be best to automate, however in my-footer there's dynamic code.
 (defn copy-svgs []
@@ -40,8 +42,7 @@
 (defn process-args [args flags]
   (fs/create-dirs config/html-dir)
   (doseq [path args]
-    (let [data (edn/read-string (slurp path))]
-      (page data))))
+    (page (edn/read-string (slurp path)))))
 
 (defn process-default [flags]
   (write-robots-txt)
