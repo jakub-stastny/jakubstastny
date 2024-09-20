@@ -1,13 +1,20 @@
 (ns fa-icon
-  (:require [cherry.core :refer [defclass]]))
+  (:require [cherry.core :refer [defclass]]
+            [helpers :refer [hiccup-to-node]]))
 
 ;; This approach didn't work with <a href="/contact"><fa-icon:
 ;; <object type="image/svg+xml" data={path} style="height: 14pt">
 ;; The result wasn't navigable as a link.
 
+(defn render []
+  #html [:link {:rel "stylesheet" :href "/css/fa-icon.css"}])
+
 (defclass FaIcon
   (extends HTMLElement)
-  (constructor [this] (super))
+  (constructor [this]
+               (super)
+               (.attachShadow this #js {"mode" "open"})
+               (set! (.-innerHTML (.-shadowRoot this)) (render)))
 
   Object
   (^:async connectedCallback [this]
@@ -17,13 +24,11 @@
          response (js/await (js/fetch path))
          svg (js/await (.text response))
          colour (.getAttribute this "colour")]
-     (set! (.-innerHTML this) svg)
+     (let [svg-node (hiccup-to-node svg)]
+       (.appendChild (.-shadowRoot this) svg-node)
 
-     ;; This is a bit silly. Maybe wrap in a div and set the style of the div.
-     (js* "const svg = this.getElementsByTagName('svg')[0]")
-     (js* "svg.style.height = '14pt'")
-
-     (when colour
-       (js* "svg.children[0].setAttribute('fill', this.getAttribute('colour'))")))))
+       (when colour
+         (let [path-node (aget (.-children svg-node) 0)]
+           (.setAttribute path-node "fill" colour)))))))
 
 (js/customElements.define "fa-icon" FaIcon)

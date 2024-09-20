@@ -103,3 +103,7 @@ nav a:not(.button):hover, main a:not(.button):hover {
   /* text-decoration: underline dotted red; */
   border-bottom: 2px dotted purple;
 }
+
+fa-icon {
+  padding-right: 1ex;
+}
