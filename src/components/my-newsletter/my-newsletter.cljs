@@ -61,7 +61,7 @@
 
          [:div {:id "newsletter"}
           [:h2 "Subscribe to my newsletter!"]
-          [:p {:style "font-style: italic"} "Don't miss out on the latest tips. Be in the know."]
+          [:p {:id "tagline"} "Don't miss out on the latest tips. Be in the know."]
 
           [:fa-icon {:name "spinner" :style "display: none"}]
           [:div {:id "flash"}]

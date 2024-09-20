@@ -2,11 +2,18 @@
   margin: 40px 0 35px;
 }
 
-#newsletter {
-  margin: 40px 0 35px;
+#uncopyright {
+  color: lightslategrey;
 }
 
-#uncopyright {
-  margin-top: 50px;
-  color: lightslategrey;
+#uncopyright a:active {
+  border-bottom: 2px dotted palevioletred;
+}
+
+#uncopyright a:focus {
+  background: yellow;
+}
+
+#uncopyright a, #uncopyright a:visited {
+  color: cornflowerblue;
 }
