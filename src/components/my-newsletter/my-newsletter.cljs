@@ -59,14 +59,20 @@
          [:link {:rel "stylesheet" :href "/css/styles.css"}]
          [:link {:rel "stylesheet" :href "/css/my-newsletter.css"}]
 
-         [:fa-icon {:name "spinner" :style "display: none"}]
-         [:div {:id "flash"}]
-         ;; [:div {:id "flash" :class "success"} success-html]
-         ;; [:div {:id "flash" :class "error"} error-html]
-         [:form
-          [:div {:style "display: flex"}
-           [:input {:type "email" :name "email" :required true :placeholder "you@email.com"}]
-           [:button {:type "submit"} "Subscribe"]]]])
+         [:div {:id "newsletter"}
+          [:h2 "Subscribe to my newsletter!"]
+          [:p {:style "font-style: italic"} "Don't miss out on the latest tips. Be in the know."]
+
+          [:fa-icon {:name "spinner" :style "display: none"}]
+          [:div {:id "flash"}]
+          ;; Uncomment these to test success/error states.
+          ;; [:div {:id "flash" :class "success"} success-html]
+          ;; [:div {:id "flash" :class "error"} error-html]
+
+          [:form
+           [:div {:style "display: flex"}
+            [:input {:type "email" :name "email" :required true :placeholder "you@email.com"}]
+            [:button {:type "submit"} "Subscribe"]]]]])
 
 (defn setup [component shadow-root]
   (let [form (.querySelector shadow-root "form")]

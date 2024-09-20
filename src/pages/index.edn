@@ -21,10 +21,7 @@
     "Obviously the challenges never go away, but after Self realisation there's a deep peace with anything that arises."]
      [:p [:a {:href :self-realisation} "Learn more »"]]]
 
-  [:div {:id "newsletter"}
-   [:h2 "Subscribe to my newsletter!"]
-   [:p {:style "font-style: italic"} "Don't miss out on the latest tips. Be in the know."]
-   [:my-newsletter]]
+  [:div {:id "newsletter"} [:my-newsletter]]
 
   [:section
    [:h2 "How can I help you?"]

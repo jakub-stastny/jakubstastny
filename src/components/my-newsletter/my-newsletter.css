@@ -1,4 +1,10 @@
-h2 { text-align: center; }
+#newsletter {
+  text-align: center;
+  padding: 20px;
+  background: lightcyan;
+  border: 2px mediumseagreen solid;
+  border-radius: 7px;
+}
 
 input[type=email] {
   width: 100%;

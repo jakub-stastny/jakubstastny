@@ -17,8 +17,9 @@
      [:a.button.blue
       [:fa-icon {:name "envelope" :colour "white"}] "Email me"]]]]
 
-
   [:p {:style "text-align: center"} "Looking forward to connecting!"]
+
+  [:div {:id "newsletter"} [:my-newsletter]]
 
   [:div {:id "uncopyright"}
    [:h2 "Uncopyright"]
