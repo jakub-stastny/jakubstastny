@@ -1,6 +1,7 @@
 a, a:visited { text-decoration: none; }
 /* a:visited { color: var(--link-colour); } */
 a:visited { color: blue; }
+a:hover { color: seagreen; }
 
 /* Mobile */
 @media (max-width: 768px) {

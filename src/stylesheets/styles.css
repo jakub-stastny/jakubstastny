@@ -92,7 +92,7 @@ a.button.blue:hover { background: #0069d9; }
 a:active { color: red; }
 
 /* Selected by tab. */
-nav a:focus, main a:focus { background: yellow; }
+a:focus, a:focus { background: yellow; }
 
 nav a:not(.button):hover, main a:not(.button):hover {
   /* text-decoration: underline dotted red; */
