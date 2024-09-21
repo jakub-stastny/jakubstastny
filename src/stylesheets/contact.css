@@ -17,7 +17,8 @@ main section:first-of-type .tagline {
 }
 
 #uncopyright a:active {
-  color: red; /* Define again, a:active is low-specificity and #uncopyright a:hover is overriding it. */
+  color: red; /* Define again, a:active is low-specificity and
+                 #uncopyright a:hover is overriding it. */
   background: yellow;
 }
 
