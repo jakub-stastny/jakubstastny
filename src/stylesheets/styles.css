@@ -25,15 +25,16 @@ html {
   font-family: sans-serif;
 }
 
-main h1 { color: firebrick; }
+h1 { color: firebrick; }
 p { color: darkslateblue; }
 
-h1, h2 {
+man h1, h2 {
   text-align: center;
   font-family: sans-serif;
 }
 
-h2 { padding-bottom: 1ex; }
+h1 { margin: 0 0 1ex; }
+h2 { margin: 3ex 0 1.5ex; }
 
 section { margin-bottom: 4ex; }
 
@@ -58,16 +59,7 @@ main {
 a { text-decoration: none; }
 a:visited { color: var(--link-colour); }
 
-h1 { margin-bottom: 1ex; text-align: center; }
-p { margin-bottom: 1ex; line-height: 1.4 }
-
-blockquote {
-  /* margin-left: 1em; */
-  padding: 0.7em 1.2em;
-  border-radius: 10px;
-  background: aliceblue;
-  font-style: italic;
-}
+p { margin-bottom: 1.5ex; line-height: 1.4 }
 
 .price {
   font-style: italic;
@@ -90,8 +82,11 @@ a.button, a.button:visited, a.button:hover, a.button:focus, a.button:active {
   color: white;
 }
 
-.button.green { background: #28a745; }
-.button.blue { background: #007bff; }
+a.button.green { background: #28a745; }
+a.button.blue { background: #007bff; }
+
+a.button.green:hover { background: #218838; }
+a.button.blue:hover { background: #0069d9; }
 
 /* Link in the process of being clicked. */
 a:active { color: red; }
@@ -101,9 +96,16 @@ nav a:focus, main a:focus { background: yellow; }
 
 nav a:not(.button):hover, main a:not(.button):hover {
   /* text-decoration: underline dotted red; */
-  border-bottom: 2px dotted purple;
+  /* border-bottom: 2px dotted purple; */
+  color: mediumseagreen;
 }
 
+/* Set margin, not padding and height, not width. */
 fa-icon {
-  padding-right: 1ex;
+  margin-right: 1.5ex;
+}
+
+.tagline {
+  text-align: center;
+  font-style: italic;
 }

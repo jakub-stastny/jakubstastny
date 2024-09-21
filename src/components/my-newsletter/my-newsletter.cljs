@@ -56,7 +56,6 @@
 
 (defn render []
   #html [:<>
-         [:link {:rel "stylesheet" :href "/css/styles.css"}]
          [:link {:rel "stylesheet" :href "/css/my-newsletter.css"}]
 
          [:div {:id "newsletter"}
@@ -64,6 +63,7 @@
           [:p {:id "tagline"} "Don't miss out on the latest tips. Be in the know."]
 
           [:fa-icon {:name "spinner" :style "display: none"}]
+
           [:div {:id "flash"}]
           ;; Uncomment these to test success/error states.
           ;; [:div {:id "flash" :class "success"} success-html]

@@ -44,7 +44,7 @@
 
   Object
   (connectedCallback [this]
-                     (let [subject (or (.getAttribute this "subject") "")
+                     (let [subject (or (.getAttribute this "subject") "Hey. I found your website.")
                            children (.-children this)]
                        (if (empty? children)
                          (insert-default this subject)

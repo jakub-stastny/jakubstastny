@@ -14,11 +14,8 @@ header {
   text-align: center;
 }
 
-header a {
-  color: black;
-}
-
-header a:visited {
+a, a:visited {
+  text-decoration: none;
   color: black;
 }
 

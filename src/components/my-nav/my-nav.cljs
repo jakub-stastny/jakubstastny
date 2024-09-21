@@ -1,3 +1,10 @@
+;; Since this is defined as a web component with shadow DOM,
+;; its content isn't accessible to assistive technologies and
+;; web crawlers (think SEO).
+
+;; This is fine for now, but would the requirements change, making
+;; it a light component (one without shadow DOM) would do the trick.
+
 (ns my-nav
   (:require [helpers :refer [no-self-referring-link get!]]
             [router :refer [router]])
@@ -25,7 +32,6 @@
                          [:li remote-healing]]]
         contact (item-link (get! router :contact))]
     #html [:<>
-           [:link {:rel "stylesheet" :href "/css/styles.css"}]
            [:link {:rel "stylesheet" :href "/css/my-nav.css"}]
            [:nav
             [:ul [:li main] [:li about] [:li services] [:li contact]]]]))

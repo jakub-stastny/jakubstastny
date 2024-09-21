@@ -1,8 +1,8 @@
 #newsletter {
   text-align: center;
-  padding: 20px;
+  padding: 0 20px 30px 20px;
   background: lightcyan;
-  border: 2px mediumseagreen solid;
+  border: 3px mediumseagreen solid;
   border-radius: 7px;
 }
 

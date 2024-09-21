@@ -2,6 +2,10 @@
   margin: 40px 0 35px;
 }
 
+main section:first-of-type .tagline {
+  margin-top: 4ex;
+}
+
 #uncopyright, #uncopyright p {
   color: lightslategrey;
 }

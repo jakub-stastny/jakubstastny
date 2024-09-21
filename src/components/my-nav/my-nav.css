@@ -1,3 +1,7 @@
+a, a:visited { text-decoration: none; }
+/* a:visited { color: var(--link-colour); } */
+a:visited { color: blue; }
+
 /* Mobile */
 @media (max-width: 768px) {
   :host {
