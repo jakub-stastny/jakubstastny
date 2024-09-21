@@ -1,4 +1,4 @@
-{:path "/" :title "Main page" :content
+{:path "/" :title "Jakub Šťastný spiritual guide" :heading "Main page" :content
  [[:section
    [:h2 "Hi! Nice to meet you."]
    [:div#intro

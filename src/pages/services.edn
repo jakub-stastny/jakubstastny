@@ -1,4 +1,4 @@
-{:path "/services" :title "Services" :content
+{:path "/services" :title "Jakub's spiritual offering" :heading "Services" :content
  [[:section#services-intro {:style "text-align: center; padding: 30px 20px;"}
    [:h1 "Services"]
    [:p {:style "margin-top: 20px;"} "Supporting your spiritual journey with personalised guidance, astrology readings, and healing practices."]]
