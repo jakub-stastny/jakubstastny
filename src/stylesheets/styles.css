@@ -28,13 +28,13 @@ html {
 h1 { color: firebrick; }
 p { color: darkslateblue; }
 
-man h1, h2 {
+h1, h2 {
   text-align: center;
   font-family: sans-serif;
 }
 
-h1 { margin: 0 0 1ex; }
-h2 { margin: 3ex 0 1.5ex; }
+h1 { padding: 2.5ex 0 1ex; }
+h2 { padding: 3ex 0 1.5ex; }
 
 section { margin-bottom: 4ex; }
 
@@ -44,7 +44,7 @@ section { margin-bottom: 4ex; }
 }
 
 main {
-  padding: 50px;
+  padding: 0px 50px 50px 50px;
   background: var(--secondary-colour);
   font-family: serif;
 }

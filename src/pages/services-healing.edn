@@ -7,5 +7,10 @@
   [:p "I have spent countless hours working one-on-one with individuals, guiding them toward physical, emotional, and spiritual wellness. Now, with this remote offering, you can benefit from my years of experience and deep connection to healing energy, no matter where you are in the world."]
   [:p "Experience the profound effects of remote energy healing and let me assist you on your journey to health and rejuvenation, wherever you may be."]
 
-  [:my-email {:subject "I'd like a session"}
-   [:a {:style "padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;"} "Book a session"]]]}
+  [:div {:style "display: block; margin-top: 30px; margin-bottom: 70px;"}
+   [:my-email {:subject "I'd like a session"}
+    [:a {:style "padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;"} "Book a session"]]]
+
+  ;; TODO: Find the real picture, it's not in Photos/2021/Guate.
+  ;; This is from a screen capture of the flier.
+  [:img {:src "/assets/healing.jpg" :height 400 :style "display: block; margin: 0 auto;"}]]}
