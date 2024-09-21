@@ -1,1 +1,1 @@
-header{background:cornflowerblue;padding:20px;text-align:center;}header a{color:black;}header a:visited{color:black;}.wrapper{animation:fadeIn 3s forwards;animation-iteration-count:1;}.tagline{color:white;font-weight:normal;font-style:italic;}@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+header{background:cornflowerblue;padding:20px;text-align:center;}a,a:visited{text-decoration:none;color:black;}.wrapper{animation:fadeIn 3s forwards;animation-iteration-count:1;}.tagline{color:white;font-weight:normal;font-style:italic;}@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
