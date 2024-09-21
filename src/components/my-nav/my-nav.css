@@ -3,6 +3,10 @@ a, a:visited { text-decoration: none; }
 a:visited { color: blue; }
 a:hover { color: seagreen; }
 
+li {
+  white-space: nowrap;
+}
+
 /* Mobile */
 @media (max-width: 768px) {
   :host {
@@ -38,15 +42,16 @@ a:hover { color: seagreen; }
 @media (min-width: 768px) {
   :host {
     background: var(--secondary-colour);
-    color: white;
+    color: grey;
   }
 
   :host ul {
     list-style: none;
   }
 
-  :host ul li {
-    padding-bottom: 0.4ex;
+  #services, ul li {
+    padding-bottom: 1ex;
+    white-space: nowrap;
   }
 
   nav > ul > li > a, nav > ul > li > span {
@@ -54,12 +59,12 @@ a:hover { color: seagreen; }
   }
 
   nav {
-    padding: 1em;
+    margin: 8ex auto;
+    /* border-right: 1px solid; */
   }
 
   :host {
-    background: cornflowerblue;
-    color: white;
+    border-right: 1px;
   }
 
   :host ul ul {

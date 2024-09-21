@@ -19,7 +19,7 @@ html, body {
 /* Large screen */
 @media (min-width: 768px) {
   .main {
-    grid-template-columns: 200px 1fr; /* Navigation on the left, main content on the right */
+    grid-template-columns: 260px 1fr; /* Navigation on the left, main content on the right */
     grid-template-rows: auto 1fr auto;
     grid-template-areas:
       "header header"

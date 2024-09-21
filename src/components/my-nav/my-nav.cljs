@@ -25,7 +25,7 @@
         spiritual-guidance (item-link (get! router :services-guidance))
         astro-reading (item-link (get! router :services-reading))
         remote-healing (item-link (get! router :services-healing))
-        services [(item-link (get! router :services) {:class "mobile"})
+        services [#html [:div {:id "services"} (item-link (get! router :services) {:class "mobile"})]
                   #html [:ul {:class "large-screen"}
                          [:li spiritual-guidance]
                          [:li astro-reading]
