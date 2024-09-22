@@ -1,6 +1,1 @@
-svg {
-  padding-bottom: 4px;
-  width: 1em;
-  height: 1em;
-  vertical-align: middle;
-}
+:host{display:inline-block;width:1em;height:1em;vertical-align:bottom;}svg{height:100%;}
