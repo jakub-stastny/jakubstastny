@@ -54,12 +54,12 @@
 (defn run-filters [content]
   (walk/postwalk replace-href-keywords content))
 
-(defn template [title content css-path]
+(defn template [title heading content css-path]
   (str
    (h/html (h/raw "<!DOCTYPE html>")
            [:html {:lang "en"}
             [:head
-             [:title (if title title "Jakub Šťastný spiritual guide")]
+             [:title title]
              [:meta {:charset "utf-8"}]
              [:meta {:name "viewport" :content "width=device-width, initial-scale=1.0"}]
              [:script {:type "importmap"} (h/raw (json/generate-string import-map))]
