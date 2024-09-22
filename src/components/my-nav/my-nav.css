@@ -49,6 +49,10 @@ li {
     list-style: none;
   }
 
+  #services {
+    display: block;
+  }
+
   #services, ul li {
     padding-bottom: 1ex;
     white-space: nowrap;
