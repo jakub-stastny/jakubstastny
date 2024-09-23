@@ -1,1 +1,1 @@
-main{text-align:center;}
+main{text-align:center;}@media (min-width:1200px){.columns{display:flex;justify-content:space-between;align-items:center;}.columns > div:first-of-type{width:40%;}.columns > div:last-of-type{width:55%;}.columns > div > img{border:4px solid black;border-radius:2px;}}
