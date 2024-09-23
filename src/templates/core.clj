@@ -62,6 +62,7 @@
              [:script {:type "module" :src "/js/my-nav.mjs"}]
              [:script {:type "module" :src "/js/my-footer.mjs"}]
              [:script {:type "module" :src "/js/my-newsletter.mjs"}]
+             [:script {:type "module" :src "/js/service-info.mjs"}]
 
              ;; Google Analytics 4 (gtag.js)
              [:script {:async true :src "https://www.googletagmanager.com/gtag/js?id=G-KQSJ36RMR3"}]

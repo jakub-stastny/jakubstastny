@@ -9,7 +9,7 @@
   [:p "The eating bird is fully immersed in the merry-go-round of worldly life. Initially we all believe to be this eating and shitting bird, while really we are the observing bird (Self). When we realise that, we awaken."]
   [:p "Note the word " [:em "realise"] ". It refers to a lived experience, not an intellectual pursuit. You can't just read about it and bingo, I realised the Self. That's just not how it works. Actually not even “experience” is the right word for it, the best word for it is realisation."]
 
-  [:div {:id "term"}
+  [:div#term
    [:p "Self-realisation is also known as spiritual awakening, but given that spiritual awakening is a more vague term, I prefer to use the term Self-realisation, which specifically means to awaken to the witness-consciousness of the true Self and recognise mental and material phenomena as impermanent and in an ultimate sense, not real."]
    [:p "Spiritual awakening is oftentimes used to describe various kinds of awakening, namely psychic awakening. Self-realisation is nothing that adds into what you can do, such as awakening healing abilities like psychic awakening might do, rather it's " [:em "tearing the matrix"] ", understanding the reality. It is beyond words and cannot ever be explained, but many spiritual traditions provided sign posts to show the path to get there."]]
 

@@ -1,6 +1,7 @@
 {:key :services-reading :path "/services/intuitive-astrology-reading" :title "Intuitive astrology reading" :content
  [[:h2 "Intuitive astrology reading"]
-  [:p [:strong "Recommended donation: "] "$100, " [:strong "duration: "] "1 hour."]
+  [:service-info {:donation 100 :duration "1 hour"}]
+  ;; [:p [:strong "Recommended donation: "] "$100, " [:strong "duration: "] "1 hour."]
   [:p "Astrology has always amazed me with its precision and depth, especially Vedic astrology, which I’ve found to be the most accurate in revealing the intricacies of our lives. Over time, I’ve refined my approach, combining the wisdom of Vedic astrology with selected elements from Western astrology—such as the influence of outer planets and Chiron—and the insights from Human Design."]
 
   [:h2 "How it works"]

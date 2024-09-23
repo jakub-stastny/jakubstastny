@@ -32,7 +32,7 @@
                [:a [:fa-icon {:name "envelope" :colour (css-var "envelope-colour")}]]]]
          [:li (social-icon "reddit" reddit-link)]])
 
-(defn render []
+(defn render [_]
   #html [:<>
          [:link {:rel "stylesheet" :href "/css/my-footer.css"}]
          [:footer (render-footer)]])

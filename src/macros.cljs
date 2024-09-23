@@ -25,7 +25,7 @@
 
        ~'Object
        (~'connectedCallback [~'this]
-         (~'set! (.-innerHTML (.-shadowRoot ~'this)) (~render-fn))
+         (~'set! (.-innerHTML (.-shadowRoot ~'this)) (~render-fn ~'this))
          ~@(map (fn [setup-fn] `(~setup-fn ~'this (.-shadowRoot ~'this))) setup-fns)
          nil))
 

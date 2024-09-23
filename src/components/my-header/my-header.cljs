@@ -9,7 +9,7 @@
   (:require [helpers :refer [no-self-referring-link]])
   (:require-macros [macros :refer [component]]))
 
-(defn render []
+(defn render [_]
   #html [:<>
          [:link {:rel "stylesheet" :href "/css/my-header.css"}]
          [:header

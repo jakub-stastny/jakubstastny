@@ -54,7 +54,7 @@
                    (set! (.-innerHTML flash-div) error-html)))
                (set! (.-style.display spinner) "none"))))))
 
-(defn render []
+(defn render [_]
   #html [:<>
          [:link {:rel "stylesheet" :href "/css/my-newsletter.css"}]
 
