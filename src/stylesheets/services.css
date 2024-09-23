@@ -8,6 +8,7 @@ main {
   .columns {
     display: flex;
     justify-content: space-between; /* This creates space between the two columns */
+    align-items: center; /* Centers vertically */
   }
 
   .columns > div:first-of-type {

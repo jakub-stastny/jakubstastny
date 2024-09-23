@@ -2,11 +2,11 @@
 ;; This is from a screen capture of the flier.
 {:key :services-healing :path "/services/remote-energy-healing" :title "Remote energy healing" :content
  [[:h1 "Remote energy healing"]
-  [:h3 {:style "color: slategrey; margin-bottom: 35px;"} [:strong "Recommended donation: "] "$100, " [:strong "duration: "] "1 hour."]
+  [:p {:style "color: slategrey; margin-bottom: 35px; font-size: 14pt;"} [:strong "Recommended donation: "] "$100, " [:strong "duration: "] "1 hour."]
   [:div {:class "columns"}
    [:div
-    [:img {:src "/assets/healing.jpg" :height 400 :style "display: block; margin: 0 auto;"}]
-    [:p {:style "font-style: italic"} "Giving healing in Antigua Guatemala, 2021."]]
+    [:img {:src "/assets/healing.jpg" :height 400}]
+    [:p {:style "font-style: italic; color: black;"} "Giving healing in Antigua Guatemala, 2021."]]
 
    [:div
     [:p "From the very first time I felt the flow of energy and applied it to help another, the results were nothing short of remarkable. Witnessing the transformation—a face looking years younger after just one session—left me both amazed and deeply committed to exploring this path further."]
@@ -15,5 +15,12 @@
     [:p "Experience the profound effects of remote energy healing and let me assist you on your journey to health and rejuvenation, wherever you may be."]]]
 
   [:div {:style "display: block; margin-top: 50px; margin-bottom: 70px;"}
-   [:my-email {:subject "I'd like a session"}
+   [:my-email {:subject "Energy healing session"}
+    [:a {:style "padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;"} "Book a session"]]]
+
+  [:h2 "How does it help me with Self-realisation?"]
+  [:p "As I already said on the " {:a {:href :self-realisation} "Self-realisation"} " page,"]
+
+  [:div {:style "display: block; margin-top: 50px; margin-bottom: 70px;"}
+   [:my-email {:subject "Energy healing session"}
     [:a {:style "padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;"} "Book a session"]]]]}
