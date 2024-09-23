@@ -33,8 +33,8 @@
         services [#html [:span {:id "services"} (item-link (get! router :services) {:class "mobile"})]
                   #html [:ul {:class "large-screen"}
                          [:li spiritual-guidance]
-                         [:li astro-reading]
-                         [:li remote-healing]]]
+                         [:li remote-healing]
+                         [:li astro-reading]]]
         contact (item-link (get! router :contact))]
     #html [:<>
            [:link {:rel "stylesheet" :href "/css/my-nav.css"}]

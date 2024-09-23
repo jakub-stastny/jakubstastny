@@ -14,14 +14,14 @@
     [:p "I have spent countless hours working one-on-one with individuals, guiding them toward physical, emotional, and spiritual wellness. Now, with this remote offering, you can benefit from my years of experience and deep connection to healing energy, no matter where you are in the world."]
     [:p "Experience the profound effects of remote energy healing and let me assist you on your journey to health and rejuvenation, wherever you may be."]]]
 
-  [:div {:style "display: block; margin-top: 50px; margin-bottom: 70px;"}
+  [:div {:style "margin: 50px 0"}
    [:my-email {:subject "Energy healing session"}
-    [:a {:style "padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;"} "Book a session"]]]
+    [:a.button.green "Book a session"]]]
 
   [:h2 "How does it help me with Self-realisation?"]
   [:p "As I already said on the " [:a {:href :self-realisation} "Self-realisation"] " page, my deepest desire is to assist and guide those who seek to awaken. Energy healing will remove your energy blocks and elevate your vibration considerably, so you will be able to see your life with a better clarity."]
   [:p "That will last for about a day or two, depending on your spiritual hygiene, but it already helped by showing you how things could be and allow you to replicate that state later through your own efforts. If you take more than 1 session, there will be more lasting healing effects. I recommend people to take 3 sessions and then evaluate the results."]
 
-  [:div {:style "display: block; margin-top: 50px; margin-bottom: 70px;"}
+  [:div {:style "margin: 50px 0 70px"}
    [:my-email {:subject "Energy healing session"}
-    [:a {:style "padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;"} "Book a session"]]]]}
+    [:a.button.blue "Book a session"]]]]}

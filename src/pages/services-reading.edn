@@ -1,7 +1,6 @@
 {:key :services-reading :path "/services/intuitive-astrology-reading" :title "Intuitive astrology reading" :content
  [[:h2 "Intuitive astrology reading"]
   [:service-info {:donation 100 :duration "1 hour"}]
-  ;; [:p [:strong "Recommended donation: "] "$100, " [:strong "duration: "] "1 hour."]
   [:p "Astrology has always amazed me with its precision and depth, especially Vedic astrology, which I’ve found to be the most accurate in revealing the intricacies of our lives. Over time, I’ve refined my approach, combining the wisdom of Vedic astrology with selected elements from Western astrology—such as the influence of outer planets and Chiron—and the insights from Human Design."]
 
   [:h2 "How it works"]
@@ -9,5 +8,14 @@
   [:p "Once I receive your details, I’ll confirm their reception and send you the payment information. After payment is received, we’ll schedule a time for your online session."]
   [:p "Please understand that astrology isn’t about predicting the future in a deterministic way. You have free will. My role is to help you understand the cosmic waves that are approaching so you can navigate them with ease and confidence."]
 
-  [:my-email {:subject "I'd like a session"}
-   [:a {:style "padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;"} "Book a session"]]]}
+  [:div {:style "margin: 50px 0"}
+   [:my-email {:subject "Intuitive reading session"}
+    [:a.button.green "Book a session"]]]
+
+  [:h2 "How does it help me with Self-realisation?"]
+  [:p "As I already said on the " [:a {:href :self-realisation} "Self-realisation"] " page, my deepest desire is to assist and guide those who seek to awaken. ..."]
+  [:p "..."]
+
+  [:div {:style "margin: 50px 0 70px"}
+   [:my-email {:subject "Intuitive reading session"}
+    [:a.button.blue "Book a session"]]]]}
