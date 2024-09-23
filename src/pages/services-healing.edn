@@ -19,7 +19,8 @@
     [:a {:style "padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;"} "Book a session"]]]
 
   [:h2 "How does it help me with Self-realisation?"]
-  [:p "As I already said on the " [:a {:href :self-realisation} "Self-realisation"] " page,"]
+  [:p "As I already said on the " [:a {:href :self-realisation} "Self-realisation"] " page, my deepest desire is to assist and guide those who seek to awaken. Energy healing will remove your energy blocks and elevate your vibration considerable, so you will be able to see your life with a better clarity."]
+  [:p "That will last for about a day or two, depending on your spiritual hygiene, but it already helped by showing you how things could be and allow you to replicate that state later through your practice. If you take more than 1 session, there will be more lasting healing effects, I recommend people to take 3 sessions and after that, evaluate whether there's progress."]
 
   [:div {:style "display: block; margin-top: 50px; margin-bottom: 70px;"}
    [:my-email {:subject "Energy healing session"}
