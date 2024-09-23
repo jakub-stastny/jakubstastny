@@ -33,6 +33,7 @@
 (process/shell "./bin/build-html")
 (process/shell "./bin/build-css")
 (process/shell "./bin/build-cljs")
+(process/shell "./bin/build-router")
 (process/shell "rm" "-rf" "pages/assets")
 (process/shell "cp" "-R" "src/assets" "pages/")
 

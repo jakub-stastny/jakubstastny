@@ -6,21 +6,26 @@
 ;; it a light component (one without shadow DOM) would do the trick.
 
 (ns my-nav
-  (:require [helpers :refer [no-self-referring-link get!]]
-            [router :refer [router]])
-  (:require-macros [macros :refer [component]]))
+  (:require [cherry.core :refer [defclass]]
+            [helpers :refer [no-self-referring-link get!]]))
+
+(defn- ^:async fetch-router []
+  (let [response (js/await (js/fetch "/assets/router.json"))
+        data (js/await (.json response))]
+    (js->clj data :keywordize-keys true)))
 
 (defn- item-link
   ([router-entry]
    (item-link router-entry {}))
   ([router-entry opts]
    (no-self-referring-link
-    (get! router-entry :title)
+    (or (get router-entry :heading) (get router-entry :title))
     (get! router-entry :path)
     opts)))
 
-(defn render []
-  (let [main (item-link (get! router :index))
+(defn ^:async render []
+  (let [router (js/await (fetch-router))
+        main (item-link (get! router :index))
         about (item-link (get! router :about))
         spiritual-guidance (item-link (get! router :services-guidance))
         astro-reading (item-link (get! router :services-reading))
@@ -36,4 +41,15 @@
            [:nav
             [:ul [:li main] [:li about] [:li services] [:li contact]]]]))
 
-(component MyNav "my-nav" render)
+(defclass MyNav
+  (extends HTMLElement)
+  (constructor [this]
+               (super)
+               (.attachShadow this #js {"mode" "open"}))
+
+  Object
+  (^:async connectedCallback [this]
+   (let [html (js/await (render))]
+     (set! (.-innerHTML (.-shadowRoot this)) html))))
+
+(js/customElements.define "my-nav" MyNav)

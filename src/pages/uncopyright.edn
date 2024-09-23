@@ -1,4 +1,4 @@
-{:path "/uncopyright" :title "Uncopyright" :content
+{:key :uncopyright :path "/uncopyright" :title "Uncopyright" :content
  [[:h1 "Uncopyright"]
   [:p "By words of Leo Babauta of ZenHabits.net:"]
   [:blockquote

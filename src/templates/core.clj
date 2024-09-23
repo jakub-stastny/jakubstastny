@@ -23,6 +23,8 @@
 ;;
 ;; I think best would be to include the key in the actual EDN files and generate routes dynamically, thus:
 ;; {:key :index :path "/" :title "Main page" :content ...}
+;;
+;; FIXME: It's missing the newly-added :heading.
 (def routes
   {:index {:path "/" :title "Main page"}
    :about {:path "/about" :title "About me"}
