@@ -67,10 +67,17 @@
   `(defn ~'-main [& ~'args]
      (~process-args ~'args ~fn-args ~fn-default)))
 
+(defn- read-page [path]
+  (try
+    (edn/read-string (slurp path))
+    (catch Exception error
+      (println (str "Error parsing " path ": " (.getMessage error) "."))
+      (throw error))))
+
 (defn generate-routes []
   (let [paths (map str (fs/glob "src/pages" "*.edn"))]
     (reduce (fn [acc path]
-              (let [data (edn/read-string (slurp path))
+              (let [data (read-page path)
                     route {(data :key) (dissoc data :key :content)}]
                 (merge acc route)))
             {} paths)))

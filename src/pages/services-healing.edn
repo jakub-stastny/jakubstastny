@@ -19,7 +19,7 @@
     [:a {:style "padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;"} "Book a session"]]]
 
   [:h2 "How does it help me with Self-realisation?"]
-  [:p "As I already said on the " {:a {:href :self-realisation} "Self-realisation"} " page,"]
+  [:p "As I already said on the " [:a {:href :self-realisation} "Self-realisation"] " page,"]
 
   [:div {:style "display: block; margin-top: 50px; margin-bottom: 70px;"}
    [:my-email {:subject "Energy healing session"}
