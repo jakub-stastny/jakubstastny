@@ -1,6 +1,8 @@
 (ns utils
   (:require [clojure.string :as str]
+            [clojure.edn :as edn]
             [config :as config]
+            [cheshire.core :as json]
             [babashka.fs :as fs]))
 
 ;; This simple approach works well for basic minification by reducing
@@ -64,3 +66,14 @@
 (defmacro generate-main-fn [fn-args fn-default]
   `(defn ~'-main [& ~'args]
      (~process-args ~'args ~fn-args ~fn-default)))
+
+(defn generate-routes []
+  (let [paths (map str (fs/glob "src/pages" "*.edn"))]
+    (reduce (fn [acc path]
+              (let [data (edn/read-string (slurp path))
+                    route {(data :key) (dissoc data :key :content)}]
+                (merge acc route)))
+            {} paths)))
+
+(defn pretty-print-json [data]
+  (json/generate-string data {:pretty true}))

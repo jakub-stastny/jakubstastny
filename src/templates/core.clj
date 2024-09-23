@@ -1,7 +1,8 @@
 (ns templates.core
   (:require [hiccup2.core :as h]
             [cheshire.core :as json]
-            [clojure.walk :as walk]))
+            [clojure.walk :as walk]
+            [utils :as utils]))
 
 (def import-map
   {:imports
@@ -18,25 +19,9 @@
    "window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments) };"
    "gtag('js', new Date()); gtag('config', 'G-KQSJ36RMR3') }"))
 
-;; This is somewhat problematic, duplication.
-;; The point is the key is used, but still.
-;;
-;; I think best would be to include the key in the actual EDN files and generate routes dynamically, thus:
-;; {:key :index :path "/" :title "Main page" :content ...}
-;;
-;; FIXME: It's missing the newly-added :heading.
-(def routes
-  {:index {:path "/" :title "Main page"}
-   :about {:path "/about" :title "About me"}
-   :self-realisation {:path "/self-realisation" :title "Self-realisation"}
-   :services-guidance {:path "/services/spiritual-guidance" :title "Spiritual guidance"}
-   :services-reading {:path "/services/intuitive-astrology-reading" :title "Intuitive astrology reading"}
-   :services-healing {:path "/services/remote-energy-healing" :title "Remote energy healing"}
-   :services {:path "/services" :title "Services"}
-   :contact {:path "/contact" :title "Contact"}
-   :donate {:path "/donate" :title "Donate"}
-   :uncopyright {:path "/uncopyright" :title "Uncopyright"}})
+(def routes (utils/generate-routes))
 
+;; TODO: This should go to config.
 (def external-links
   {:gh-project-link "https://github.com/jakub-stastny/oso"
    :youtube-link "https://www.youtube.com/@jakub-stastny"
