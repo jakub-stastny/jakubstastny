@@ -1,3 +1,7 @@
+;; This is HD as well, possibly more HD than astrology.
+;; I may have 2 separate offerings OR I just one. Should I just name it "Intuitive reading"?
+;; It's good to have astrology in the URL, but SEO won't be important to me.
+
 {:key :services-reading :path "/services/intuitive-astrology-reading" :title "Intuitive astrology reading" :content
  [[:h2 "Intuitive astrology reading"]
   [:service-info {:donation 100 :duration "1 hour"}]
