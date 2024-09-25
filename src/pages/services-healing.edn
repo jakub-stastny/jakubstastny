@@ -2,7 +2,7 @@
 ;; This is from a screen capture of the flier.
 {:key :services-healing :path "/services/remote-energy-healing" :title "Remote energy healing" :content
  [[:h1 "Remote energy healing"]
-  [:service-info {:donation 100 :duration "1 hour"}]
+  [:service-info]
   [:div.columns
    [:div
     [:img {:src "/assets/healing.jpg" :height 400}]

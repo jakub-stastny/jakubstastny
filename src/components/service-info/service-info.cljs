@@ -2,8 +2,8 @@
   (:require-macros [macros :refer [component]]))
 
 (defn render [component]
-  (let [donation (.getAttribute component "donation")
-        duration (.getAttribute component "duration")]
+  (let [donation (or (.getAttribute component "donation") 100)
+        duration (or (.getAttribute component "duration") "1 hour")]
     (js/console.log donation duration)
     #html [:<>
            [:link {:rel "stylesheet" :href "/css/service-info.css"}]
