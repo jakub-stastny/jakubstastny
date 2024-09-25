@@ -4,6 +4,24 @@ main {
   text-align: center;
 }
 
+section {
+  padding: 50px 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+section h2 {
+  padding: 0;
+}
+
+section:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+section:nth-child(even) {
+  background-color: #e6e6e6;
+}
+
 @media (min-width: 1200px) {
   .columns {
     display: flex;
